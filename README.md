@@ -38,8 +38,7 @@ Basic HTML:
 <a href="#" class="button">Button Default</a>
 <a href="#" class="button blue">Blue Button</a>
 <div class="button red">
-  Drop Down 
-			
+  Drop-Down 
   <ul>
     <li><a href="#">Link 1</a></li>
     <li><a href="#">Link 2</a></li>
