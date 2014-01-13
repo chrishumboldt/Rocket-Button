@@ -17,11 +17,11 @@
 // Variables
 // ---------------------------------------------------------------------------------------
 // Defaults
-$default-class					: 'button';
-$default-colour					: 'grey';
-$default-size					: 'normal';
-$default-type					: 'flat';
-$default-shape					: 'rounded';
+$default-btn-class				: 'button';
+$default-btn-colour				: 'grey';
+$default-btn-size				: 'normal';
+$default-btn-type				: 'flat';
+$default-btn-shape				: 'rounded';
 
 // General
 $images-path					: '../images';
@@ -207,7 +207,7 @@ $drp-font-size					: 0.813em;
 
 
 // Buttons
-@mixin button($colour: $default-colour, $size: $default-size, $type: $default-type, $shape: $default-shape) {
+@mixin button($colour: $default-btn-colour, $size: $default-btn-size, $type: $default-btn-type, $shape: $default-btn-shape) {
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
@@ -221,7 +221,7 @@ $drp-font-size					: 0.813em;
 	}
 		
 	// Active state
-	&:active:not(.drop-down-open) {
+	&:active:not(.button-drop-down-open) {
 		@include drop-shadow-inset();
 		text-shadow: fade-out($white, 0.75) 0px 1px 0;
 	}
@@ -233,7 +233,7 @@ $drp-font-size					: 0.813em;
 		background-color: $white;
 		@include button-drop-down();
 	}
-	&.drop-down {
+	&.button-drop-down {
 		.arrow {
 			display: inline-block;
 			height: 8px;
@@ -407,13 +407,13 @@ $drp-font-size					: 0.813em;
 	&:hover {
 		background-color: lighten(saturate($colour, $saturate), $lighten);
 	}
-	&.drop-down-open:hover {
+	&.button-drop-down-open:hover {
 		background-color: $colour;
 	}
-	&:active:not(.drop-down-open) {
+	&:active:not(.button-drop-down-open) {
 		@include btn-active($colour);
 	}
-	&.drop-down {
+	&.button-drop-down {
 		
 		li a:hover {
 			background-color: $colour;
@@ -437,16 +437,16 @@ $drp-font-size					: 0.813em;
 	&:hover {
 		background-color: $grey-link-hover;
 	}
-	&.drop-down-open:hover {
+	&.button-drop-down-open:hover {
 		background-color: $grey-link;
 	}
-	&:active:not(.drop-down-open) {
+	&:active:not(.button-drop-down-open) {
 		background-color: $grey-link;
 	}
 	&:visited {
 		color: lighten(#000, 40%);
 	}
-	&.drop-down li a:hover {
+	&.button-drop-down li a:hover {
 		background-color: $blue;
 	}
 }
@@ -457,18 +457,18 @@ $drp-font-size					: 0.813em;
 	&:hover {
 		background-color: lighten(#000, 35%);
 	}
-	&.drop-down-open:hover {
+	&.button-drop-down-open:hover {
 		background-color: $base-black;
 	}
 	&:visited {
 		color: $white;
 	}
-	&:active:not(.drop-down-open) {
+	&:active:not(.button-drop-down-open) {
 		color: #000;
 		text-shadow: fade-out($white, 0.75) 0px 1px 0;
 		background-color: lighten(#000, 25%);
 	}
-	&.drop-down {
+	&.button-drop-down {
 		li a:hover {
 			background-color: $base-black;
 		}
@@ -561,7 +561,7 @@ $drp-font-size					: 0.813em;
 	font-size: 0.750em;
 	
 	// Drop down padding
-	&.drop-down {
+	&.button-drop-down {
 		
 		.arrow {
 			padding-left: $btn-padding-s;
@@ -584,7 +584,7 @@ $drp-font-size					: 0.813em;
 	font-size: 0.875em;
 	
 	// Drop down padding
-	&.drop-down {
+	&.button-drop-down {
 
 		.arrow {
 			padding-left: $btn-padding-n;
@@ -609,7 +609,7 @@ $drp-font-size					: 0.813em;
 	font-size: 1em;
 	
 	// Drop down padding
-	&.drop-down {
+	&.button-drop-down {
 
 		.arrow {
 			height: 10px;
@@ -635,7 +635,7 @@ $drp-font-size					: 0.813em;
 	font-size: 1.125em;
 	
 	// Drop down padding
-	&.drop-down {
+	&.button-drop-down {
 		
 		.arrow {
 			height: 12px;
@@ -667,6 +667,6 @@ $drp-font-size					: 0.813em;
 
 // Classes
 // ---------------------------------------------------------------------------------------
-.#{$default-class} {
+.#{$default-btn-class} {
 	@include buttonplate();
 }

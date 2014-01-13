@@ -10,7 +10,7 @@
 // Plugin
 (function($){
 
-	var $buttons							= function(){
+	var $buttonplate						= function(){
 		
 		// ------------------------------------------------ SETUP
 		var $object 						= this;
@@ -34,42 +34,53 @@
 			// Close any drop downs
 			$('html').on('click', function(){
 				
-				$('.drop-down-open').removeClass('drop-down-open').find('ul').hide();
+				$('.button-drop-down-open').removeClass('button-drop-down-open').find('ul').hide();
 			});
 			
 			// Set list options / Show list function
 			if($this_button.find('ul').length > 0){
 
-				$this_button.addClass('drop-down');
-				$btn_width					= $this_button.outerWidth();
-				$this_button.find('ul').width($btn_width);
+				$this_button.addClass('button-drop-down');
 				
+				$object.size_drop_down();
+				$(window).resize(function(){
+				
+					$object.size_drop_down();
+				});
 				$object.show_drop_down();
 			}
 		}
 		
 
 		// ------------------------------------------------ FUNCTIONS
+		// Show drop-down
 		$object.show_drop_down				= function(){
 			
 			$this_button.on('click', function(){
 				
 				$this_button.find('ul').fadeIn('fast', function(){
 					
-					$this_button.addClass('drop-down-open');
+					$this_button.addClass('button-drop-down-open');
 				});
 			});
+		}
+		
+		// Size drop-down
+		$object.size_drop_down				= function(){
+			
+			$btn_width					= $this_button.outerWidth();
+			$this_button.find('ul').width($btn_width);
 		}
 	};
 	
 	// Call the plugin
-	$.fn.buttons							= function($options){
+	$.fn.buttonplate						= function($options){
 		
 		var len = this.length;
 
 		return this.each(function(index) {
 			
-			var me = $(this), key = 'buttons' + (len > 1 ? '-' + ++index : ''), instance = (new $buttons).init(me, $options);
+			var me = $(this), key = 'buttonplate' + (len > 1 ? '-' + ++index : ''), instance = (new $buttonplate).init(me, $options);
 			me.data(key, instance).data('key', key);
 		});
 	};
