@@ -17,14 +17,15 @@
 // Variables
 // ---------------------------------------------------------------------------------------
 // Defaults
-$default_colour					: 'grey';
-$default_size					: 'normal';
-$default_type					: 'flat';
-$default_shape					: 'rounded';
+$default-class					: 'button';
+$default-colour					: 'grey';
+$default-size					: 'normal';
+$default-type					: 'flat';
+$default-shape					: 'rounded';
 
 // General
-$images_path					: '../images';
-$corner_radius					: 3px;
+$images-path					: '../images';
+$corner-radius					: 3px;
 
 // Colours
 $white							: #fff;
@@ -42,78 +43,171 @@ $aqua							: #1abcaf;
 $purple							: #9b59b6;
 
 // Sizes
-$btn_size_s						: 30px;
-$btn_size_n						: 38px;
-$btn_size_l						: 46px;
-$btn_size_xl					: 58px;
+$btn-size-s						: 30px;
+$btn-size-n						: 38px;
+$btn-size-l						: 46px;
+$btn-size-xl					: 58px;
 
-$btn_padding_s					: 18px;
-$btn_padding_n					: 22px;
-$btn_padding_l					: 26px;
-$btn_padding_xl					: 32px;
+$btn-padding-s					: 18px;
+$btn-padding-n					: 22px;
+$btn-padding-l					: 26px;
+$btn-padding-xl					: 32px;
 
 // Drop-down options
-$drp_away_from_button			: 4px;
-$drp_spacing 					: $btn_padding_s;
-$drp_height						: 34px;
-$drp_font_size					: 0.813em;
+$drp-away-from-button			: 4px;
+$drp-spacing 					: $btn-padding-s;
+$drp-height						: 34px;
+$drp-font-size					: 0.813em;
 
 
 // Mixins
 // ---------------------------------------------------------------------------------------
 // General
-@mixin rounded-corners($radius: $corner_radius) {
+@mixin rounded-corners($radius: $corner-radius) {
 	border-radius: $radius;
 	-o-border-radius: $radius;
 	-ms-border-radius: $radius;
 	-moz-border-radius: $radius;
 	-webkit-border-radius: $radius;
 }
-@mixin rounded-corners-top($radius: $corner_radius) {
+@mixin rounded-corners-top($radius: $corner-radius) {
 	border-radius: $radius $radius 0px 0px;
 	-o-border-radius: $radius $radius 0px 0px;
 	-ms-border-radius: $radius $radius 0px 0px;
 	-moz-border-radius: $radius $radius 0px 0px;
 	-webkit-border-radius: $radius $radius 0px 0px;
 }
-@mixin rounded-corners-bottom($radius: $corner_radius) {
+@mixin rounded-corners-bottom($radius: $corner-radius) {
 	border-radius: 0px 0px $radius $radius;
 	-o-border-radius: 0px 0px $radius $radius;
 	-ms-border-radius: 0px 0px $radius $radius;
 	-moz-border-radius: 0px 0px $radius $radius;
 	-webkit-border-radius: 0px 0px $radius $radius;
 }
-@mixin animate($attribute, $transition_speed: 0.2s) {
-	-webkit-transition: $attribute $transition_speed ease-out;
-	-moz-transition: $attribute $transition_speed ease-out;
-	-o-transition: $attribute $transition_speed ease-out;
-	-ms-transition: $attribute $transition_speed ease-out;
-	transition: $attribute $transition_speed ease-out;
+@mixin animate($attribute, $transition-speed: 0.2s) {
+	-webkit-transition: $attribute $transition-speed ease-out;
+	-moz-transition: $attribute $transition-speed ease-out;
+	-o-transition: $attribute $transition-speed ease-out;
+	-ms-transition: $attribute $transition-speed ease-out;
+	transition: $attribute $transition-speed ease-out;
 }
-@mixin drop-shadow($color: fade-out(#000, 0.6), $size: 5px, $vertical_offset: 2px, $horizontal_offset: 0px) {
-	box-shadow: $horizontal_offset $vertical_offset $size $color;
-	-webkit-box-shadow: $horizontal_offset $vertical_offset $size $color;
-	-moz-box-shadow: $horizontal_offset $vertical_offset $size $color;
+@mixin drop-shadow($color: fade-out(#000, 0.6), $size: 5px, $vertical-offset: 2px, $horizontal-offset: 0px) {
+	box-shadow: $horizontal-offset $vertical-offset $size $color;
+	-webkit-box-shadow: $horizontal-offset $vertical-offset $size $color;
+	-moz-box-shadow: $horizontal-offset $vertical-offset $size $color;
 }
-@mixin drop-shadow-inset($color: fade-out(#000, 0.6), $size: 5px, $vertical_offset: 2px, $horizontal_offset: 0px) {
-	box-shadow: inset $horizontal_offset $vertical_offset $size $color;
-	-webkit-box-shadow: inset $horizontal_offset $vertical_offset $size $color;
-	-moz-box-shadow: inset $horizontal_offset $vertical_offset $size $color;
+@mixin drop-shadow-inset($color: fade-out(#000, 0.6), $size: 5px, $vertical-offset: 2px, $horizontal-offset: 0px) {
+	box-shadow: inset $horizontal-offset $vertical-offset $size $color;
+	-webkit-box-shadow: inset $horizontal-offset $vertical-offset $size $color;
+	-moz-box-shadow: inset $horizontal-offset $vertical-offset $size $color;
 }
 @mixin button-gradient($colour) {
-	$top_colour					: lighten($colour, 8%);
-	$bottom_colour				: darken($colour, 10%);
-	background: $top_colour;
-	background: -webkit-gradient(linear, left top, left bottom, from($top_colour), to($bottom_colour));
-	background: -webkit-linear-gradient(top, $top_colour, $bottom_colour); 
-	background: -moz-linear-gradient(top, $top_colour, $bottom_colour); 
-	background: -ms-linear-gradient(top, $top_colour, $bottom_colour); 
-	background: -o-linear-gradient(top, $top_colour, $bottom_colour); 
-	background: linear-gradient(top, $top_colour, $bottom_colour);
+	$top-colour					: lighten($colour, 8%);
+	$bottom-colour				: darken($colour, 10%);
+	background: $top-colour;
+	background: -webkit-gradient(linear, left top, left bottom, from($top-colour), to($bottom-colour));
+	background: -webkit-linear-gradient(top, $top-colour, $bottom-colour); 
+	background: -moz-linear-gradient(top, $top-colour, $bottom-colour); 
+	background: -ms-linear-gradient(top, $top-colour, $bottom-colour); 
+	background: -o-linear-gradient(top, $top-colour, $bottom-colour); 
+	background: linear-gradient(top, $top-colour, $bottom-colour);
 }
 
+
+// Make buttons
+@mixin buttonplate() {
+	@include button();
+
+	// Colours
+	&.black {
+		@include btn-colour-black();
+	}
+	&.blue {
+		@include btn-colour-blue();
+	}
+	&.blue-dark {
+		@include btn-colour-blue-dark();
+	}
+	&.green {
+		@include btn-colour-green();
+	}
+	&.yellow {
+		@include btn-colour-yellow();
+	}
+	&.orange {
+		@include btn-colour-orange();
+	}
+	&.red {
+		@include btn-colour-red();
+	}
+	&.aqua {
+		@include btn-colour-aqua();
+	}
+	&.purple {
+		@include btn-colour-purple();
+	}
+
+	// Gradients
+	&.grey.gradient {
+		@include btn-gradient-grey();
+	}
+	&.black.gradient {
+		@include btn-gradient-black();
+	}
+	&.blue.gradient {
+		@include btn-gradient-blue();
+	}
+	&.blue-dark.gradient {
+		@include btn-gradient-blue-dark();
+	}
+	&.green.gradient {
+		@include btn-gradient-green();
+	}
+	&.yellow.gradient {
+		@include btn-gradient-yellow();
+	}
+	&.orange.gradient {
+		@include btn-gradient-orange();
+	}
+	&.red.gradient {
+		@include btn-gradient-red();
+	}
+	&.aqua.gradient {
+		@include btn-gradient-aqua();
+	}
+	&.purple.gradient {
+		@include btn-gradient-purple();
+	}
+
+	// Sizes
+	&.small {
+		@include btn-size-s();
+	}
+	&.normal {
+		@include btn-size-n();
+	}
+	&.large {
+		@include btn-size-l();
+	}
+	&.extra-large {
+		@include btn-size-xl();
+	}
+
+	// Shapes
+	&.rounded {
+		@include btn-shape-rounded();
+	}
+	&.pill {
+		@include btn-shape-pill();
+	}
+	&.squared {
+		@include btn-shape-squared();
+	}
+}
+
+
 // Buttons
-@mixin button($colour: $default_colour, $size: $default_size, $type: $default_type, $shape: $default_shape) {
+@mixin button($colour: $default-colour, $size: $default-size, $type: $default-type, $shape: $default-shape) {
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
@@ -144,7 +238,7 @@ $drp_font_size					: 0.813em;
 			display: inline-block;
 			height: 8px;
 			width: 12px;
-			background-image: url('#{$images_path}/arrow-dark.png');
+			background-image: url('#{$images-path}/arrow-dark.png');
 			background-repeat: no-repeat;
 			background-position: right;
 			background-size: 12px 8px;
@@ -153,7 +247,7 @@ $drp_font_size					: 0.813em;
 			    only screen and (-o-min-device-pixel-ratio: 3/2),
 			    only screen and (min--moz-device-pixel-ratio: 1.5),
 			    only screen and (min-device-pixel-ratio: 1.5) {
-					background-image: url('#{$images_path}/arrow-dark-2x.png');
+					background-image: url('#{$images-path}/arrow-dark-2x.png');
 			}
 		}
 	}
@@ -251,14 +345,13 @@ $drp_font_size					: 0.813em;
 		@include btn-shape-pill();
 	}
 }
-
 @mixin button-drop-down() {
 	
 	// CSS
 	display: none;
 	position: absolute;
 	padding: 0px;
-	margin: $drp_away_from_button 0px;
+	margin: $drp-away-from-button 0px;
 	@include rounded-corners();
 	@include drop-shadow();
 		
@@ -282,7 +375,7 @@ $drp_font_size					: 0.813em;
 		a {
 			display: block;
 			text-align: left;
-			color: $base_black;
+			color: $base-black;
 			text-decoration: none;
 			vertical-align: middle;
 			
@@ -292,17 +385,16 @@ $drp_font_size					: 0.813em;
 		}
 	}
 }
-
 @mixin set-line($position: 'top') {
 	
 	// Determine where the line goes
 	@if $position == 'top' {
 		
-		border-top: 1px solid $grey_light;
+		border-top: 1px solid $grey-light;
 	}
 	@else if $position == 'bottom' {
 		
-		border-bottom: 1px solid $grey_light;
+		border-bottom: 1px solid $grey-light;
 	}
 }
 
@@ -327,13 +419,13 @@ $drp_font_size					: 0.813em;
 			background-color: $colour;
 		}
 		.arrow {
-			background-image: url('#{$images_path}/arrow-white.png');
+			background-image: url('#{$images-path}/arrow-white.png');
 		
 			@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
 			    only screen and (-o-min-device-pixel-ratio: 3/2),
 			    only screen and (min--moz-device-pixel-ratio: 1.5),
 			    only screen and (min-device-pixel-ratio: 1.5) {
-					background-image: url('#{$images_path}/arrow-white-2x.png');
+					background-image: url('#{$images-path}/arrow-white-2x.png');
 			}
 		}
 	}
@@ -381,13 +473,13 @@ $drp_font_size					: 0.813em;
 			background-color: $base-black;
 		}
 		.arrow {
-			background-image: url('#{$images_path}/arrow-white.png');
+			background-image: url('#{$images-path}/arrow-white.png');
 		
 			@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
 			    only screen and (-o-min-device-pixel-ratio: 3/2),
 			    only screen and (min--moz-device-pixel-ratio: 1.5),
 			    only screen and (min-device-pixel-ratio: 1.5) {
-					background-image: url('#{$images_path}/arrow-white-2x.png');
+					background-image: url('#{$images-path}/arrow-white-2x.png');
 			}
 		}
 	}
@@ -432,7 +524,7 @@ $drp_font_size					: 0.813em;
 	@include btn-set-gradient($grey-link);
 }
 @mixin btn-gradient-black() {
-	@include btn-set-gradient($base_black);
+	@include btn-set-gradient($base-black);
 }
 @mixin btn-gradient-blue() {
 	@include btn-set-gradient($blue);
@@ -461,59 +553,59 @@ $drp_font_size					: 0.813em;
 
 // Sizes
 @mixin btn-size-s() {
-	$drp_height					: 30px;
+	$drp-height					: 30px;
 		
-	padding: 0px $btn_padding_s;
-	height: $btn_size_s;
-	line-height: $btn_size_s;
+	padding: 0px $btn-padding-s;
+	height: $btn-size-s;
+	line-height: $btn-size-s;
 	font-size: 0.750em;
 	
 	// Drop down padding
 	&.drop-down {
 		
 		.arrow {
-			padding-left: $btn_padding_s;
+			padding-left: $btn-padding-s;
 		}
 		ul {
-			margin-left: -$btn_padding_s;
+			margin-left: -$btn-padding-s;
 		}
 		li a {
-			padding: 0px $btn_padding_s;
-			height: $drp_height;
-			line-height: $drp_height;
+			padding: 0px $btn-padding-s;
+			height: $drp-height;
+			line-height: $drp-height;
 			font-size: 0.938em;
 		}
 	}
 }
 @mixin btn-size-n() {
-	padding: 0px $btn_padding_n;
-	height: $btn_size_n;
-	line-height: $btn_size_n;
+	padding: 0px $btn-padding-n;
+	height: $btn-size-n;
+	line-height: $btn-size-n;
 	font-size: 0.875em;
 	
 	// Drop down padding
 	&.drop-down {
 
 		.arrow {
-			padding-left: $btn_padding_n;
+			padding-left: $btn-padding-n;
 		}
 		ul {
-			margin-left: -$btn_padding_n;
+			margin-left: -$btn-padding-n;
 		}
 		li a {
-			padding: 0px $btn_padding_n;
-			height: $drp_height;
-			line-height: $drp_height;
+			padding: 0px $btn-padding-n;
+			height: $drp-height;
+			line-height: $drp-height;
 			font-size: 0.875em;
 		}
 	}
 }
 @mixin btn-size-l() {
-	$drp_height				: 36px;
+	$drp-height				: 36px;
 	
-	padding: 0px $btn_padding_l;
-	height: $btn_size_l;
-	line-height: $btn_size_l;
+	padding: 0px $btn-padding-l;
+	height: $btn-size-l;
+	line-height: $btn-size-l;
 	font-size: 1em;
 	
 	// Drop down padding
@@ -521,25 +613,25 @@ $drp_font_size					: 0.813em;
 
 		.arrow {
 			height: 10px;
-			padding-left: $btn_padding_l;
+			padding-left: $btn-padding-l;
 		}
 		ul {
-			margin-left: -$btn_padding_l;
+			margin-left: -$btn-padding-l;
 		}
 		li a {
-			padding: 0px $btn_padding_l;
-			height: $drp_height;
-			line-height: $drp_height;
+			padding: 0px $btn-padding-l;
+			height: $drp-height;
+			line-height: $drp-height;
 			font-size: 0.813em;
 		}
 	}
 }
 @mixin btn-size-xl() {
-	$drp_height				: 38px;
+	$drp-height				: 38px;
 		
-	padding: 0px $btn_padding_xl;
-	height: $btn_size_xl;
-	line-height: $btn_size_xl;
+	padding: 0px $btn-padding-xl;
+	height: $btn-size-xl;
+	line-height: $btn-size-xl;
 	font-size: 1.125em;
 	
 	// Drop down padding
@@ -547,15 +639,15 @@ $drp_font_size					: 0.813em;
 		
 		.arrow {
 			height: 12px;
-			padding-left: $btn_padding_xl;
+			padding-left: $btn-padding-xl;
 		}
 		ul {
-			margin-left: -$btn_padding_xl;
+			margin-left: -$btn-padding-xl;
 		}
 		li a {
-			padding: 0px $btn_padding_xl;
-			height: $drp_height;
-			line-height: $drp_height;
+			padding: 0px $btn-padding-xl;
+			height: $drp-height;
+			line-height: $drp-height;
 			font-size: 0.813em;
 		}
 	}
@@ -575,93 +667,6 @@ $drp_font_size					: 0.813em;
 
 // Classes
 // ---------------------------------------------------------------------------------------
-// Base button
-.button {
-	@include button();
-}
-
-// Colours
-.button.black {
-	@include btn-colour-black();
-}
-.button.blue {
-	@include btn-colour-blue();
-}
-.button.blue-dark {
-	@include btn-colour-blue-dark();
-}
-.button.green {
-	@include btn-colour-green();
-}
-.button.yellow {
-	@include btn-colour-yellow();
-}
-.button.orange {
-	@include btn-colour-orange();
-}
-.button.red {
-	@include btn-colour-red();
-}
-.button.aqua {
-	@include btn-colour-aqua();
-}
-.button.purple {
-	@include btn-colour-purple();
-}
-
-// Gradients
-.button.grey.gradient {
-	@include btn-gradient-grey();
-}
-.button.black.gradient {
-	@include btn-gradient-black();
-}
-.button.blue.gradient {
-	@include btn-gradient-blue();
-}
-.button.blue-dark.gradient {
-	@include btn-gradient-blue-dark();
-}
-.button.green.gradient {
-	@include btn-gradient-green();
-}
-.button.yellow.gradient {
-	@include btn-gradient-yellow();
-}
-.button.orange.gradient {
-	@include btn-gradient-orange();
-}
-.button.red.gradient {
-	@include btn-gradient-red();
-}
-.button.aqua.gradient {
-	@include btn-gradient-aqua();
-}
-.button.purple.gradient {
-	@include btn-gradient-purple();
-}
-
-// Sizes
-.button.small {
-	@include btn-size-s();
-}
-.button.normal {
-	@include btn-size-n();
-}
-.button.large {
-	@include btn-size-l();
-}
-.button.extra-large {
-	@include btn-size-xl();
-}
-
-// Shapes
-.button.rounded {
-	@include btn-shape-rounded();
-}
-.button.pill {
-	@include btn-shape-pill();
-}
-.button.squared {
-	@include btn-shape-squared();
+.#{$default-class} {
+	@include buttonplate();
 }
