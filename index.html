@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!--Meta setup - Required for apple device-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	
+    <!--Title-->
+    <title>Buttonplate</title>
+	
+    <!--Required javascript-->
+    <script src="js/min/jquery-v1.10.2.min.js"></script>
+
+    <!--Buttonplate-->
+    <script src="js/min/buttonplate.min.js"></script>
+    <link href="css/buttonplate.css" rel="stylesheet" type="text/css">
+	
+	<script>
+	$(document).ready(function(){
+		
+		$('.button').buttons();
+	});
+	</script>
+	
+	<!--Custom styles-->
+	<style>
+	html {
+		font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+		background-color: #fff;
+	}
+	body {
+		margin: 0px;
+		padding: 0px;
+	}
+	.container {
+		width: 1100px;
+		margin: 0px auto;
+		padding: 0px 20px;
+	}
+	h4 {
+		margin: 0px;
+		padding: 80px 0px 10px 0px;
+	}
+	</style>
+
+</head>
+<body>
+	
+	<!--Container-->
+	<div class="container">
+		
+		<h4>Basic Buttons With Colour</h4>
+		
+		<a href="#" class="button grey">Default (Grey)</a>
+		<a href="#" class="button black">Black</a>
+		<a href="#" class="button blue">Blue</a>
+		<a href="#" class="button blue-dark">Blue Dark</a>
+		<a href="#" class="button green">Green</a>
+		<a href="#" class="button yellow">Yellow</a>
+		<a href="#" class="button orange">Orange</a>
+		<a href="#" class="button red">Red</a>
+		<a href="#" class="button aqua">Aqua</a>
+		<a href="#" class="button purple">Purple</a>
+		
+		<h4>Drop Down Button</h4>
+
+		<div class="button red">
+			Drop Down 
+			<ul>
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+				<li class="line-top"><a href="#">Link 3</a></li>
+			</ul>
+		</div>
+		
+	</div>
+
+</body>
+</html>

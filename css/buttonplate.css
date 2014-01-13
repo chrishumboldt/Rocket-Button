@@ -10,6 +10,7 @@
   vertical-align: middle;
   text-align: center;
   border: none;
+  text-decoration: none;
   border-radius: 3px;
   -o-border-radius: 3px;
   -ms-border-radius: 3px;
@@ -31,9 +32,9 @@
   cursor: pointer;
 }
 .button:active:not(.drop-down-open) {
-  box-shadow: inset 0px 0px 3px 0 2px 5px rgba(0, 0, 0, 0.45);
-  -webkit-box-shadow: inset 0px 0px 3px 0 2px 5px rgba(0, 0, 0, 0.45);
-  -moz-box-shadow: inset 0px 0px 3px 0 2px 5px rgba(0, 0, 0, 0.45);
+  box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: inset 0px 2px 5px rgba(0, 0, 0, 0.4);
   text-shadow: rgba(255, 255, 255, 0.25) 0px 1px 0;
 }
 .button:hover {
@@ -48,16 +49,22 @@
 .button ul {
   display: none;
   position: absolute;
+  padding: 0px;
   margin: 4px 0px;
   margin-left: -22px;
+  line-height: 34px;
   border-radius: 3px;
   -o-border-radius: 3px;
   -ms-border-radius: 3px;
   -moz-border-radius: 3px;
   -webkit-border-radius: 3px;
-  box-shadow: 0px 0px 3px 0 2px 5px rgba(0, 0, 0, 0.45);
-  -webkit-box-shadow: 0px 0px 3px 0 2px 5px rgba(0, 0, 0, 0.45);
-  -moz-box-shadow: 0px 0px 3px 0 2px 5px rgba(0, 0, 0, 0.45);
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  -webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+}
+.button ul li {
+  padding: 0px;
+  margin: 0px;
 }
 .button ul li:first-child a {
   border-radius: 3px 3px 0px 0px;
@@ -82,10 +89,13 @@
 .button ul li a {
   display: block;
   padding: 0px 22px;
-  text-align: left;
-  line-height: 30px;
+  height: 34px;
   font-size: 0.875em;
+  line-height: 34px;
+  text-align: left;
   color: #333333;
+  text-decoration: none;
+  vertical-align: middle;
 }
 .button ul li a:hover {
   color: white;

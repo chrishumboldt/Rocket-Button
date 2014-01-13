@@ -31,7 +31,6 @@ $aqua							: #1abc9c;
 $purple							: #9b59b6;
 
 $corner_radius					: 3px;
-$box_shadow						: 0 2px 5px fade-out(#000, 0.55);
 
 $btn_size_s						: 30px;
 $btn_size_n						: 38px;
@@ -45,7 +44,7 @@ $btn_padding_xl					: 26px;
 
 $drp_away_from_button			: 4px;
 $drp_spacing 					: $btn_padding_s;
-$drp_line_height				: 30px;
+$drp_height						: 34px;
 $drp_font_size					: 0.813em;
 
 
@@ -80,12 +79,12 @@ $drp_font_size					: 0.813em;
 	-ms-transition: $attribute $transition_speed ease-out;
 	transition: $attribute $transition_speed ease-out;
 }
-@mixin drop-shadow($color: fadeout(#000, 60%), $size: 3px, $vertical_offset: 0px, $horizontal_offset: 0px) {
+@mixin drop-shadow($color: fade-out(#000, 0.6), $size: 5px, $vertical_offset: 2px, $horizontal_offset: 0px) {
 	box-shadow: $horizontal_offset $vertical_offset $size $color;
 	-webkit-box-shadow: $horizontal_offset $vertical_offset $size $color;
 	-moz-box-shadow: $horizontal_offset $vertical_offset $size $color;
 }
-@mixin drop-shadow-inset($color: fadeout(#000, 60%), $size: 3px, $vertical_offset: 0px, $horizontal_offset: 0px) {
+@mixin drop-shadow-inset($color: fade-out(#000, 0.6), $size: 5px, $vertical_offset: 2px, $horizontal_offset: 0px) {
 	box-shadow: inset $horizontal_offset $vertical_offset $size $color;
 	-webkit-box-shadow: inset $horizontal_offset $vertical_offset $size $color;
 	-moz-box-shadow: inset $horizontal_offset $vertical_offset $size $color;
@@ -97,6 +96,7 @@ $drp_font_size					: 0.813em;
 	vertical-align: middle;
 	text-align: center;
 	border: none;
+	text-decoration: none;
 	@include rounded-corners();
 	@include animate(background-color);
 	
@@ -107,7 +107,7 @@ $drp_font_size					: 0.813em;
 		
 	// Active state
 	&:active:not(.drop-down-open) {
-		@include drop-shadow-inset($box_shadow);
+		@include drop-shadow-inset();
 		text-shadow: fade-out($white, 0.75) 0px 1px 0;
 	}
 	
@@ -169,6 +169,7 @@ $drp_font_size					: 0.813em;
 	@if $size == 'small' {
 		$drp_spacing 			: $btn_padding_s;
 		$drp_font_size			: 0.938em;
+		$drp_height				: 30px;
 	}
 	@else if $size == 'normal' {
 		$drp_spacing 			: $btn_padding_n;
@@ -181,18 +182,22 @@ $drp_font_size					: 0.813em;
 	@else if $size == 'extra-large' {
 		$drp_spacing 			: $btn_padding_xl;
 		$drp_font_size			: 0.813em;
-		$drp_line_height		: 34px;
+		$drp_height				: 38px;
 	}
 	
 	// CSS
 	display: none;
 	position: absolute;
+	padding: 0px;
 	margin: $drp_away_from_button 0px;
 	margin-left: -$drp_spacing;
+	line-height: $drp_height;
 	@include rounded-corners();
-	@include drop-shadow($box_shadow);
+	@include drop-shadow();
 		
 	li {
+		padding: 0px;
+		margin: 0px;
 		&:first-child a {
 			@include rounded-corners-top();
 		}
@@ -210,10 +215,13 @@ $drp_font_size					: 0.813em;
 		a {
 			display: block;
 			padding: 0px $drp_spacing;
-			text-align: left;
-			line-height: $drp_line_height;
+			height: $drp_height;
 			font-size: $drp_font_size;
+			line-height: $drp_height;
+			text-align: left;
 			color: $base_black;
+			text-decoration: none;
+			vertical-align: middle;
 			
 			&:hover {
 				color: $white;
