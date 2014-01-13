@@ -1,0 +1,373 @@
+/**
+ * SASS File: 		buttonplate.sass
+ * Author:        	Chris Humboldt
+ * Link:			http://getwebplate.com/plugins/buttonplate
+ * Last Edited:   	13 January 2014
+ * Edited By:		Chris Humboldt
+ */
+
+
+// Table of Contents:
+// ---------------------------------------------------------------------------------------
+// Variables
+// Mixins
+// Classes
+
+
+// Variables
+// ---------------------------------------------------------------------------------------
+$white							: #fff;
+$base-black						: lighten(#000, 20%);
+$grey-light						: lighten(#000, 90%);
+$grey-link						: lighten(#000, 92%);
+$grey-link-hover				: lighten(#000, 96%);
+$blue							: #3498da;
+$blue-dark						: #34495e;
+$green							: #27ae60;
+$yellow							: #f1c40f;
+$orange							: #e57e22;
+$red							: #e74c3c;
+$aqua							: #1abc9c;
+$purple							: #9b59b6;
+
+$corner_radius					: 3px;
+$box_shadow						: 0 2px 5px fade-out(#000, 0.55);
+
+$btn_size_s						: 30px;
+$btn_size_n						: 38px;
+$btn_size_l						: 46px;
+$btn_size_xl					: 50px;
+
+$btn_padding_s					: 18px;
+$btn_padding_n					: 22px;
+$btn_padding_l					: 24px;
+$btn_padding_xl					: 26px;
+
+$drp_away_from_button			: 4px;
+$drp_spacing 					: $btn_padding_s;
+$drp_line_height				: 30px;
+$drp_font_size					: 0.813em;
+
+
+// Mixins
+// ---------------------------------------------------------------------------------------
+// General
+@mixin rounded-corners($radius: $corner_radius) {
+	border-radius: $radius;
+	-o-border-radius: $radius;
+	-ms-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-webkit-border-radius: $radius;
+}
+@mixin rounded-corners-top($radius: $corner_radius) {
+	border-radius: $radius $radius 0px 0px;
+	-o-border-radius: $radius $radius 0px 0px;
+	-ms-border-radius: $radius $radius 0px 0px;
+	-moz-border-radius: $radius $radius 0px 0px;
+	-webkit-border-radius: $radius $radius 0px 0px;
+}
+@mixin rounded-corners-bottom($radius: $corner_radius) {
+	border-radius: 0px 0px $radius $radius;
+	-o-border-radius: 0px 0px $radius $radius;
+	-ms-border-radius: 0px 0px $radius $radius;
+	-moz-border-radius: 0px 0px $radius $radius;
+	-webkit-border-radius: 0px 0px $radius $radius;
+}
+@mixin animate($attribute, $transition_speed: 0.2s) {
+	-webkit-transition: $attribute $transition_speed ease-out;
+	-moz-transition: $attribute $transition_speed ease-out;
+	-o-transition: $attribute $transition_speed ease-out;
+	-ms-transition: $attribute $transition_speed ease-out;
+	transition: $attribute $transition_speed ease-out;
+}
+@mixin drop-shadow($color: fadeout(#000, 60%), $size: 3px, $vertical_offset: 0px, $horizontal_offset: 0px) {
+	box-shadow: $horizontal_offset $vertical_offset $size $color;
+	-webkit-box-shadow: $horizontal_offset $vertical_offset $size $color;
+	-moz-box-shadow: $horizontal_offset $vertical_offset $size $color;
+}
+@mixin drop-shadow-inset($color: fadeout(#000, 60%), $size: 3px, $vertical_offset: 0px, $horizontal_offset: 0px) {
+	box-shadow: inset $horizontal_offset $vertical_offset $size $color;
+	-webkit-box-shadow: inset $horizontal_offset $vertical_offset $size $color;
+	-moz-box-shadow: inset $horizontal_offset $vertical_offset $size $color;
+}
+
+// Buttons
+@mixin button($colour: 'grey', $type: 'flat', $size: 'normal') {
+	display: inline-block;
+	vertical-align: middle;
+	text-align: center;
+	border: none;
+	@include rounded-corners();
+	@include animate(background-color);
+	
+	// Hover state
+	&:hover {
+		cursor: pointer;
+	}
+		
+	// Active state
+	&:active:not(.drop-down-open) {
+		@include drop-shadow-inset($box_shadow);
+		text-shadow: fade-out($white, 0.75) 0px 1px 0;
+	}
+	
+	// Colours
+	@if $colour == 'grey' {
+		@include btn-colour-grey();
+	}
+	@if $colour == 'black' {
+		@include btn-colour-black();
+	}
+	@else if $colour == 'blue' {
+		@include btn-colour-blue();
+	}
+	@else if $colour == 'blue-dark' {
+		@include btn-colour-blue-dark();
+	}
+	@else if $colour == 'green' {
+		@include btn-colour-green();
+	}
+	@else if $colour == 'yellow' {
+		@include btn-colour-yellow();
+	}
+	@else if $colour == 'orange' {
+		@include btn-colour-orange();
+	}
+	@else if $colour == 'red' {
+		@include btn-colour-red();
+	}
+	@else if $colour == 'aqua' {
+		@include btn-colour-aqua();
+	}
+	@else if $colour == 'purple' {
+		@include btn-colour-purple();
+	}
+	
+	// Size
+	@if $size == 'small' {
+		@include btn-size-s();
+	}
+	@else if $size == 'normal' {
+		@include btn-size-n();
+	}
+	@else if $size == 'large' {
+		@include btn-size-l();
+	}
+	@else if $size == 'extra-large' {
+		@include btn-size-xl();
+	}
+	
+	// Drop down list
+	ul {
+		@include button-drop-down($size);
+	}
+}
+
+@mixin button-drop-down($size) {
+	
+	// Calculate margin left
+	@if $size == 'small' {
+		$drp_spacing 			: $btn_padding_s;
+		$drp_font_size			: 0.938em;
+	}
+	@else if $size == 'normal' {
+		$drp_spacing 			: $btn_padding_n;
+		$drp_font_size			: 0.875em;
+	}
+	@else if $size == 'large' {
+		$drp_spacing 			: $btn_padding_l;
+		$drp_font_size			: 0.813em;
+	}
+	@else if $size == 'extra-large' {
+		$drp_spacing 			: $btn_padding_xl;
+		$drp_font_size			: 0.813em;
+		$drp_line_height		: 34px;
+	}
+	
+	// CSS
+	display: none;
+	position: absolute;
+	margin: $drp_away_from_button 0px;
+	margin-left: -$drp_spacing;
+	@include rounded-corners();
+	@include drop-shadow($box_shadow);
+		
+	li {
+		&:first-child a {
+			@include rounded-corners-top();
+		}
+		&:last-child a {
+			@include rounded-corners-bottom();
+		}
+		&.line-top {
+			@include set-line('top');
+		}
+		&.line-bottom {
+			@include set-line('bottom');
+		}
+		
+		// Links
+		a {
+			display: block;
+			padding: 0px $drp_spacing;
+			text-align: left;
+			line-height: $drp_line_height;
+			font-size: $drp_font_size;
+			color: $base_black;
+			
+			&:hover {
+				color: $white;
+				background-color: $blue;
+			}
+		}
+	}
+}
+
+@mixin set-line($position: 'top') {
+	
+	// Determine where the line goes
+	@if $position == 'top' {
+		
+		border-top: 1px solid $grey_light;
+	}
+	@else if $position == 'bottom' {
+		
+		border-bottom: 1px solid $grey_light;
+	}
+}
+
+
+// Colours
+@mixin btn-set-colour($colour, $saturate: 26%, $lighten: 5%) {
+	color: $white;
+	background-color: $colour;
+		
+	&:hover {
+		background-color: lighten(saturate($colour, $saturate), $lighten);
+	}
+	&.drop-down-open:hover {
+		background-color: $colour;
+	}
+	&:active:not(.drop-down-open) {
+		@include btn-active($colour);
+	}
+}
+@mixin btn-colour-grey() {
+	color: lighten(#000, 40%);
+	background-color: $grey-link;
+		
+	&:hover {
+		background-color: $grey-link-hover;
+	}
+	&:active {
+		background-color: $grey-link;
+	}
+	&:visited {
+		color: lighten(#000, 40%);
+	}
+}
+@mixin btn-colour-black() {
+	color: $white;
+	background-color: $base-black;
+		
+	&:hover {
+		background-color: lighten(#000, 35%);
+	}
+	&:visited {
+		color: $white;
+	}
+	&:active {
+		color: #000;
+		text-shadow: fade-out($white, 0.75) 0px 1px 0;
+		background-color: lighten(#000, 25%);
+	}
+}
+@mixin btn-colour-blue() {
+	@include btn-set-colour($blue);
+}
+@mixin btn-colour-blue-dark() {
+	@include btn-set-colour($blue-dark, 30%);
+}
+@mixin btn-colour-green() {
+	@include btn-set-colour($green, 10%);
+}
+@mixin btn-colour-yellow() {
+	@include btn-set-colour($yellow);
+}
+@mixin btn-colour-orange() {
+	@include btn-set-colour($orange);
+}
+@mixin btn-colour-red() {
+	@include btn-set-colour($red);
+}
+@mixin btn-colour-aqua() {
+	@include btn-set-colour($aqua, 2%, 6%);
+}
+@mixin btn-colour-purple() {
+	@include btn-set-colour($purple, 30%);
+}
+@mixin btn-active($colour) {
+	color: darken($colour, 18%);
+	background-color: $colour;
+}
+
+
+// Sizes
+@mixin btn-size-s() {
+	padding: 0px $btn_padding_s;
+	height: $btn_size_s;
+	line-height: $btn_size_s;
+	font-size: 0.750em;
+}
+@mixin btn-size-n() {
+	padding: 0px $btn_padding_n;
+	height: $btn_size_n;
+	line-height: $btn_size_n;
+	font-size: 0.875em;
+}
+@mixin btn-size-l() {
+	padding: 0px $btn_padding_l;
+	height: $btn_size_l;
+	line-height: $btn_size_l;
+	font-size: 1em;
+}
+@mixin btn-size-xl() {
+	padding: 0px $btn_padding_xl;
+	height: $btn_size_xl;
+	line-height: $btn_size_xl;
+	font-size: 1.125em;
+}
+
+
+// Classes
+// ---------------------------------------------------------------------------------------
+.button {
+	@include button('grey', 'flat');
+}
+.button.black {
+	@include btn-colour-black();
+}
+.button.blue {
+	@include btn-colour-blue();
+}
+.button.blue-dark {
+	@include btn-colour-blue-dark();
+}
+.button.green {
+	@include btn-colour-green();
+}
+.button.yellow {
+	@include btn-colour-yellow();
+}
+.button.orange {
+	@include btn-colour-orange();
+}
+.button.red {
+	@include btn-colour-red();
+}
+.button.aqua {
+	@include btn-colour-aqua();
+}
+.button.purple {
+	@include btn-colour-purple();
+}
