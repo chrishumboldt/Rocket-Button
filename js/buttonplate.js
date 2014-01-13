@@ -34,6 +34,7 @@
 			// Close any drop downs
 			$('html').on('click', function(){
 				
+				$object.size_drop_down();
 				$('.button-drop-down-open').removeClass('button-drop-down-open').find('ul').hide();
 			});
 			
@@ -42,7 +43,6 @@
 
 				$this_button.addClass('button-drop-down');
 				
-				$object.size_drop_down();
 				$(window).resize(function(){
 				
 					$object.size_drop_down();
