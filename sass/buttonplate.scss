@@ -16,6 +16,17 @@
 
 // Variables
 // ---------------------------------------------------------------------------------------
+// Defaults
+$default_colour					: 'grey';
+$default_size					: 'normal';
+$default_type					: 'flat';
+$default_shape					: 'rounded';
+
+// General
+$images_path					: '../images';
+$corner_radius					: 3px;
+
+// Colours
 $white							: #fff;
 $base-black						: lighten(#000, 20%);
 $grey-light						: lighten(#000, 90%);
@@ -30,8 +41,7 @@ $red							: #e74c3c;
 $aqua							: #1abcaf;
 $purple							: #9b59b6;
 
-$corner_radius					: 3px;
-
+// Sizes
 $btn_size_s						: 30px;
 $btn_size_n						: 38px;
 $btn_size_l						: 46px;
@@ -42,12 +52,11 @@ $btn_padding_n					: 22px;
 $btn_padding_l					: 24px;
 $btn_padding_xl					: 26px;
 
+// Drop-down options
 $drp_away_from_button			: 4px;
 $drp_spacing 					: $btn_padding_s;
 $drp_height						: 34px;
 $drp_font_size					: 0.813em;
-
-$images_path					: '../images';
 
 
 // Mixins
@@ -91,15 +100,25 @@ $images_path					: '../images';
 	-webkit-box-shadow: inset $horizontal_offset $vertical_offset $size $color;
 	-moz-box-shadow: inset $horizontal_offset $vertical_offset $size $color;
 }
+@mixin button-gradient($colour) {
+	$top_colour					: lighten($colour, 8%);
+	$bottom_colour				: darken($colour, 10%);
+	background: $top_colour;
+	background: -webkit-gradient(linear, left top, left bottom, from($top_colour), to($bottom_colour));
+	background: -webkit-linear-gradient(top, $top_colour, $bottom_colour); 
+	background: -moz-linear-gradient(top, $top_colour, $bottom_colour); 
+	background: -ms-linear-gradient(top, $top_colour, $bottom_colour); 
+	background: -o-linear-gradient(top, $top_colour, $bottom_colour); 
+	background: linear-gradient(top, $top_colour, $bottom_colour);
+}
 
 // Buttons
-@mixin button($colour: 'grey', $type: 'flat', $size: 'normal') {
+@mixin button($colour: $default_colour, $size: $default_size, $type: $default_type, $shape: $default_shape) {
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
 	border: none;
 	text-decoration: none;
-	@include rounded-corners();
 	@include animate(background-color);
 	
 	// Hover state
@@ -116,66 +135,95 @@ $images_path					: '../images';
 	// Drop down list
 	ul {
 		list-style: none;
-		@include button-drop-down($size);
+		z-index: 1;
+		background-color: $white;
+		@include button-drop-down();
 	}
 	&.drop-down {
-		background-image: url('#{$images_path}/arrow-dark.png');
-		background-repeat: no-repeat;
-		background-position: right;
-		background-size: 30px 8px;
+		.arrow {
+			display: inline-block;
+			height: 8px;
+			width: 12px;
+			background-image: url('#{$images_path}/arrow-dark.png');
+			background-repeat: no-repeat;
+			background-position: right;
+			background-size: 12px 8px;
 		
-		@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-		    only screen and (-o-min-device-pixel-ratio: 3/2),
-		    only screen and (min--moz-device-pixel-ratio: 1.5),
-		    only screen and (min-device-pixel-ratio: 1.5) {
-				background-image: url('#{$images_path}/arrow-dark-2x.png');
-		}
-
-		// Drop down based on size
-		@if $size == 'small' {
-			padding-right: $btn_padding_s + 26;
-		}
-		@else if $size == 'normal' {
-			padding-right: $btn_padding_n + 22;
-		}
-		@else if $size == 'large' {
-			padding-right: $btn_padding_l + 20;
-		}
-		@else if $size == 'extra-large' {
-			padding-right: $btn_padding_xl + 18;
+			@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+			    only screen and (-o-min-device-pixel-ratio: 3/2),
+			    only screen and (min--moz-device-pixel-ratio: 1.5),
+			    only screen and (min-device-pixel-ratio: 1.5) {
+					background-image: url('#{$images_path}/arrow-dark-2x.png');
+			}
 		}
 	}
 	
 	// Colours
-	@if $colour == 'grey' {
-		@include btn-colour-grey();
+	@if $type == 'flat' {
+		
+		@if $colour == 'grey' {
+			@include btn-colour-grey();
+		}
+		@if $colour == 'black' {
+			@include btn-colour-black();
+		}
+		@else if $colour == 'blue' {
+			@include btn-colour-blue();
+		}
+		@else if $colour == 'blue-dark' {
+			@include btn-colour-blue-dark();
+		}
+		@else if $colour == 'green' {
+			@include btn-colour-green();
+		}
+		@else if $colour == 'yellow' {
+			@include btn-colour-yellow();
+		}
+		@else if $colour == 'orange' {
+			@include btn-colour-orange();
+		}
+		@else if $colour == 'red' {
+			@include btn-colour-red();
+		}
+		@else if $colour == 'aqua' {
+			@include btn-colour-aqua();
+		}
+		@else if $colour == 'purple' {
+			@include btn-colour-purple();
+		}
 	}
-	@if $colour == 'black' {
-		@include btn-colour-black();
-	}
-	@else if $colour == 'blue' {
-		@include btn-colour-blue();
-	}
-	@else if $colour == 'blue-dark' {
-		@include btn-colour-blue-dark();
-	}
-	@else if $colour == 'green' {
-		@include btn-colour-green();
-	}
-	@else if $colour == 'yellow' {
-		@include btn-colour-yellow();
-	}
-	@else if $colour == 'orange' {
-		@include btn-colour-orange();
-	}
-	@else if $colour == 'red' {
-		@include btn-colour-red();
-	}
-	@else if $colour == 'aqua' {
-		@include btn-colour-aqua();
-	}
-	@else if $colour == 'purple' {
-		@include btn-colour-purple();
+	@else if $type == 'gradient' {
+		
+		@if $colour == 'grey' {
+			@include btn-gradient-grey();
+		}
+		@if $colour == 'black' {
+			@include btn-gradient-black();
+		}
+		@else if $colour == 'blue' {
+			@include btn-gradient-blue();
+		}
+		@else if $colour == 'blue-dark' {
+			@include btn-gradient-blue-dark();
+		}
+		@else if $colour == 'green' {
+			@include btn-gradient-green();
+		}
+		@else if $colour == 'yellow' {
+			@include btn-gradient-yellow();
+		}
+		@else if $colour == 'orange' {
+			@include btn-gradient-orange();
+		}
+		@else if $colour == 'red' {
+			@include btn-gradient-red();
+		}
+		@else if $colour == 'aqua' {
+			@include btn-gradient-aqua();
+		}
+		@else if $colour == 'purple' {
+			@include btn-gradient-purple();
+		}
 	}
 	
 	// Size
@@ -191,37 +239,26 @@ $images_path					: '../images';
 	@else if $size == 'extra-large' {
 		@include btn-size-xl();
 	}
+	
+	// Shape
+	@if $shape == 'rounded' {
+		@include btn-shape-rounded();
+	}
+	@else if $shape == 'pill' {
+		@include btn-shape-pill();
+	}
+	@else if $shape == 'squared' {
+		@include btn-shape-pill();
+	}
 }
 
-@mixin button-drop-down($size) {
-	
-	// Calculate margin left
-	@if $size == 'small' {
-		$drp_spacing 			: $btn_padding_s;
-		$drp_font_size			: 0.938em;
-		$drp_height				: 30px;
-	}
-	@else if $size == 'normal' {
-		$drp_spacing 			: $btn_padding_n;
-		$drp_font_size			: 0.875em;
-	}
-	@else if $size == 'large' {
-		$drp_spacing 			: $btn_padding_l;
-		$drp_font_size			: 0.813em;
-	}
-	@else if $size == 'extra-large' {
-		$drp_spacing 			: $btn_padding_xl;
-		$drp_font_size			: 0.813em;
-		$drp_height				: 38px;
-	}
+@mixin button-drop-down() {
 	
 	// CSS
 	display: none;
 	position: absolute;
 	padding: 0px;
 	margin: $drp_away_from_button 0px;
-	margin-left: -$drp_spacing;
-	line-height: $drp_height;
 	@include rounded-corners();
 	@include drop-shadow();
 		
@@ -244,10 +281,6 @@ $images_path					: '../images';
 		// Links
 		a {
 			display: block;
-			padding: 0px $drp_spacing;
-			height: $drp_height;
-			font-size: $drp_font_size;
-			line-height: $drp_height;
 			text-align: left;
 			color: $base_black;
 			text-decoration: none;
@@ -255,7 +288,6 @@ $images_path					: '../images';
 			
 			&:hover {
 				color: $white;
-				background-color: $blue;
 			}
 		}
 	}
@@ -290,13 +322,19 @@ $images_path					: '../images';
 		@include btn-active($colour);
 	}
 	&.drop-down {
-		background-image: url('#{$images_path}/arrow-white.png');
 		
-		@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
-		    only screen and (-o-min-device-pixel-ratio: 3/2),
-		    only screen and (min--moz-device-pixel-ratio: 1.5),
-		    only screen and (min-device-pixel-ratio: 1.5) {
-				background-image: url('#{$images_path}/arrow-white-2x.png');
+		li a:hover {
+			background-color: $colour;
+		}
+		.arrow {
+			background-image: url('#{$images_path}/arrow-white.png');
+		
+			@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+			    only screen and (-o-min-device-pixel-ratio: 3/2),
+			    only screen and (min--moz-device-pixel-ratio: 1.5),
+			    only screen and (min-device-pixel-ratio: 1.5) {
+					background-image: url('#{$images_path}/arrow-white-2x.png');
+			}
 		}
 	}
 }
@@ -307,11 +345,17 @@ $images_path					: '../images';
 	&:hover {
 		background-color: $grey-link-hover;
 	}
-	&:active {
+	&.drop-down-open:hover {
+		background-color: $grey-link;
+	}
+	&:active:not(.drop-down-open) {
 		background-color: $grey-link;
 	}
 	&:visited {
 		color: lighten(#000, 40%);
+	}
+	&.drop-down li a:hover {
+		background-color: $blue;
 	}
 }
 @mixin btn-colour-black() {
@@ -321,13 +365,31 @@ $images_path					: '../images';
 	&:hover {
 		background-color: lighten(#000, 35%);
 	}
+	&.drop-down-open:hover {
+		background-color: $base-black;
+	}
 	&:visited {
 		color: $white;
 	}
-	&:active {
+	&:active:not(.drop-down-open) {
 		color: #000;
 		text-shadow: fade-out($white, 0.75) 0px 1px 0;
 		background-color: lighten(#000, 25%);
+	}
+	&.drop-down {
+		li a:hover {
+			background-color: $base-black;
+		}
+		.arrow {
+			background-image: url('#{$images_path}/arrow-white.png');
+		
+			@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+			    only screen and (-o-min-device-pixel-ratio: 3/2),
+			    only screen and (min--moz-device-pixel-ratio: 1.5),
+			    only screen and (min-device-pixel-ratio: 1.5) {
+					background-image: url('#{$images_path}/arrow-white-2x.png');
+			}
+		}
 	}
 }
 @mixin btn-colour-blue() {
@@ -359,39 +421,166 @@ $images_path					: '../images';
 	background-color: $colour;
 }
 
+// Gradients
+@mixin btn-set-gradient($colour) {
+	@include button-gradient($colour);
+	border: 1px solid darken($colour, 14%);
+	border-top: 1px solid darken($colour, 8%);
+	border-bottom: 1px solid darken($colour, 20%);
+}
+@mixin btn-gradient-grey() {
+	@include btn-set-gradient($grey-link);
+}
+@mixin btn-gradient-black() {
+	@include btn-set-gradient($base_black);
+}
+@mixin btn-gradient-blue() {
+	@include btn-set-gradient($blue);
+}
+@mixin btn-gradient-blue-dark() {
+	@include btn-set-gradient($blue-dark);
+}
+@mixin btn-gradient-green() {
+	@include btn-set-gradient($green);
+}
+@mixin btn-gradient-yellow() {
+	@include btn-set-gradient($yellow);
+}
+@mixin btn-gradient-orange() {
+	@include btn-set-gradient($orange);
+}
+@mixin btn-gradient-red() {
+	@include btn-set-gradient($red);
+}
+@mixin btn-gradient-aqua() {
+	@include btn-set-gradient($aqua);
+}
+@mixin btn-gradient-purple() {
+	@include btn-set-gradient($purple);
+}
 
 // Sizes
 @mixin btn-size-s() {
+	$drp_height					: 30px;
+		
 	padding: 0px $btn_padding_s;
 	height: $btn_size_s;
 	line-height: $btn_size_s;
 	font-size: 0.750em;
+	
+	// Drop down padding
+	&.drop-down {
+		
+		.arrow {
+			padding-left: $btn_padding_s;
+		}
+		ul {
+			margin-left: -$btn_padding_s;
+		}
+		li a {
+			padding: 0px $btn_padding_s;
+			height: $drp_height;
+			line-height: $drp_height;
+			font-size: 0.938em;
+		}
+	}
 }
 @mixin btn-size-n() {
 	padding: 0px $btn_padding_n;
 	height: $btn_size_n;
 	line-height: $btn_size_n;
 	font-size: 0.875em;
+	
+	// Drop down padding
+	&.drop-down {
+
+		.arrow {
+			padding-left: $btn_padding_n;
+		}
+		ul {
+			margin-left: -$btn_padding_n;
+		}
+		li a {
+			padding: 0px $btn_padding_n;
+			height: $drp_height;
+			line-height: $drp_height;
+			font-size: 0.875em;
+		}
+	}
 }
 @mixin btn-size-l() {
+	$drp_height				: 36px;
+	
 	padding: 0px $btn_padding_l;
 	height: $btn_size_l;
 	line-height: $btn_size_l;
 	font-size: 1em;
+	
+	// Drop down padding
+	&.drop-down {
+
+		.arrow {
+			height: 10px;
+			padding-left: $btn_padding_l;
+		}
+		ul {
+			margin-left: -$btn_padding_l;
+		}
+		li a {
+			padding: 0px $btn_padding_l;
+			height: $drp_height;
+			line-height: $drp_height;
+			font-size: 0.813em;
+		}
+	}
 }
 @mixin btn-size-xl() {
+	$drp_height				: 38px;
+		
 	padding: 0px $btn_padding_xl;
 	height: $btn_size_xl;
 	line-height: $btn_size_xl;
 	font-size: 1.125em;
+	
+	// Drop down padding
+	&.drop-down {
+		
+		.arrow {
+			height: 12px;
+			padding-left: $btn_padding_xl;
+		}
+		ul {
+			margin-left: -$btn_padding_xl;
+		}
+		li a {
+			padding: 0px $btn_padding_xl;
+			height: $drp_height;
+			line-height: $drp_height;
+			font-size: 0.813em;
+		}
+	}
+}
+
+// Shapes
+@mixin btn-shape-rounded() {
+	@include rounded-corners();
+}
+@mixin btn-shape-pill() {
+	@include rounded-corners(100px);
+}
+@mixin btn-shape-squared() {
+	@include rounded-corners(0px);
 }
 
 
 // Classes
 // ---------------------------------------------------------------------------------------
+// Base button
 .button {
-	@include button('grey', 'flat');
+	@include button();
 }
+
+// Colours
 .button.black {
 	@include btn-colour-black();
 }
@@ -418,4 +607,61 @@ $images_path					: '../images';
 }
 .button.purple {
 	@include btn-colour-purple();
+}
+
+// Gradients
+.button.grey.gradient {
+	@include btn-gradient-grey();
+}
+.button.black.gradient {
+	@include btn-gradient-black();
+}
+.button.blue.gradient {
+	@include btn-gradient-blue();
+}
+.button.blue-dark.gradient {
+	@include btn-gradient-blue-dark();
+}
+.button.green.gradient {
+	@include btn-gradient-green();
+}
+.button.yellow.gradient {
+	@include btn-gradient-yellow();
+}
+.button.orange.gradient {
+	@include btn-gradient-orange();
+}
+.button.red.gradient {
+	@include btn-gradient-red();
+}
+.button.aqua.gradient {
+	@include btn-gradient-aqua();
+}
+.button.purple.gradient {
+	@include btn-gradient-purple();
+}
+
+// Sizes
+.button.small {
+	@include btn-size-s();
+}
+.button.normal {
+	@include btn-size-n();
+}
+.button.large {
+	@include btn-size-l();
+}
+.button.extra-large {
+	@include btn-size-xl();
+}
+
+// Shapes
+.button.rounded {
+	@include btn-shape-rounded();
+}
+.button.pill {
+	@include btn-shape-pill();
+}
+.button.squared {
+	@include btn-shape-squared();
 }

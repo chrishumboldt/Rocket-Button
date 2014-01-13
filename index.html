@@ -18,7 +18,14 @@
 	<script>
 	$(document).ready(function(){
 		
+		// Execute buttons
 		$('.button').buttons();
+		
+		// Prevent default hash click
+		$('.button').on('click', function($e){
+			
+			$e.preventDefault();
+		});
 	});
 	</script>
 	
@@ -36,6 +43,7 @@
 		width: 1100px;
 		margin: 0px auto;
 		padding: 0px 20px;
+		padding-bottom: 100px;
 	}
 	h4 {
 		margin: 0px;
@@ -49,7 +57,7 @@
 	<!--Container-->
 	<div class="container">
 		
-		<h4>Basic Buttons With Colour</h4>
+		<h4>Flat Buttons</h4>
 		
 		<a href="#" class="button grey">Default (Grey)</a>
 		<a href="#" class="button black">Black</a>
@@ -62,10 +70,23 @@
 		<a href="#" class="button aqua">Aqua</a>
 		<a href="#" class="button purple">Purple</a>
 		
+		<h4>Gradient Buttons</h4>
+		
+		<a href="#" class="button grey gradient">Default (Grey)</a>
+		<a href="#" class="button black gradient">Black</a>
+		<a href="#" class="button blue gradient">Blue</a>
+		<a href="#" class="button blue-dark gradient">Blue Dark</a>
+		<a href="#" class="button green gradient">Green</a>
+		<a href="#" class="button yellow gradient">Yellow</a>
+		<a href="#" class="button orange gradient">Orange</a>
+		<a href="#" class="button red gradient">Red</a>
+		<a href="#" class="button aqua gradient">Aqua</a>
+		<a href="#" class="button purple gradient">Purple</a>
+		
 		<h4>Drop Down Button</h4>
 
 		<div class="button">
-			Drop-Down Default
+			Drop-Down Default<div class="arrow"></div>
 			<ul>
 				<li><a href="#">Link 1</a></li>
 				<li><a href="#">Link 2</a></li>
@@ -74,13 +95,35 @@
 		</div>
 
 		<div class="button blue">
-			Drop-Down Colour
+			Drop-Down Blue<div class="arrow"></div>
 			<ul>
 				<li><a href="#">Link 1</a></li>
 				<li><a href="#">Link 2</a></li>
 				<li class="line-top"><a href="#">Link 3</a></li>
 			</ul>
 		</div>
+
+		<div class="button purple">
+			Drop-Down Purple<div class="arrow"></div>
+			<ul>
+				<li><a href="#">Link 1</a></li>
+				<li><a href="#">Link 2</a></li>
+				<li class="line-top"><a href="#">Link 3</a></li>
+			</ul>
+		</div>
+		
+		<h4>Button Sizes</h4>
+		
+		<a href="#" class="button green small">Small</a>
+		<a href="#" class="button green">Normal</a>
+		<a href="#" class="button green large">Large</a>
+		<a href="#" class="button green extra-large">Extra Large</a>
+		
+		<h4>Button Shapes</h4>
+		
+		<a href="#" class="button red">Default (Rounded)</a>
+		<a href="#" class="button red pill">Pill Button</a>
+		<a href="#" class="button red squared">Squared Button</a>
 		
 	</div>
 
