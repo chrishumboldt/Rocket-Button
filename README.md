@@ -7,7 +7,7 @@ A global button library.
 Getting Started
 =========
 
-This plugin requires jQuery for the dropdown options and is included.
+This plugin requires jQuery for the drop-down options and is included.
 
 See an example below of a basic include.
 
