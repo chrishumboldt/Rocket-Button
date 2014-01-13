@@ -15,6 +15,7 @@
 		// ------------------------------------------------ SETUP
 		var $object 						= this;
 		var $btn_width						= 0;
+		var $this_button					= false;
 		
 
 		// ------------------------------------------------ SETTINGS
@@ -38,7 +39,8 @@
 			
 			// Set list options / Show list function
 			if($this_button.find('ul').length > 0){
-				
+
+				$this_button.addClass('drop-down');
 				$btn_width					= $this_button.outerWidth();
 				$this_button.find('ul').width($btn_width);
 				

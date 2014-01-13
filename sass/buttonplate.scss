@@ -27,7 +27,7 @@ $green							: #27ae60;
 $yellow							: #f1c40f;
 $orange							: #e57e22;
 $red							: #e74c3c;
-$aqua							: #1abc9c;
+$aqua							: #1abcaf;
 $purple							: #9b59b6;
 
 $corner_radius					: 3px;
@@ -46,6 +46,8 @@ $drp_away_from_button			: 4px;
 $drp_spacing 					: $btn_padding_s;
 $drp_height						: 34px;
 $drp_font_size					: 0.813em;
+
+$images_path					: '../images';
 
 
 // Mixins
@@ -111,6 +113,39 @@ $drp_font_size					: 0.813em;
 		text-shadow: fade-out($white, 0.75) 0px 1px 0;
 	}
 	
+	// Drop down list
+	ul {
+		list-style: none;
+		@include button-drop-down($size);
+	}
+	&.drop-down {
+		background-image: url('#{$images_path}/arrow-dark.png');
+		background-repeat: no-repeat;
+		background-position: right;
+		background-size: 30px 8px;
+		
+		@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+		    only screen and (-o-min-device-pixel-ratio: 3/2),
+		    only screen and (min--moz-device-pixel-ratio: 1.5),
+		    only screen and (min-device-pixel-ratio: 1.5) {
+				background-image: url('#{$images_path}/arrow-dark-2x.png');
+		}
+
+		// Drop down based on size
+		@if $size == 'small' {
+			padding-right: $btn_padding_s + 26;
+		}
+		@else if $size == 'normal' {
+			padding-right: $btn_padding_n + 22;
+		}
+		@else if $size == 'large' {
+			padding-right: $btn_padding_l + 20;
+		}
+		@else if $size == 'extra-large' {
+			padding-right: $btn_padding_xl + 18;
+		}
+	}
+	
 	// Colours
 	@if $colour == 'grey' {
 		@include btn-colour-grey();
@@ -155,11 +190,6 @@ $drp_font_size					: 0.813em;
 	}
 	@else if $size == 'extra-large' {
 		@include btn-size-xl();
-	}
-	
-	// Drop down list
-	ul {
-		@include button-drop-down($size);
 	}
 }
 
@@ -258,6 +288,16 @@ $drp_font_size					: 0.813em;
 	}
 	&:active:not(.drop-down-open) {
 		@include btn-active($colour);
+	}
+	&.drop-down {
+		background-image: url('#{$images_path}/arrow-white.png');
+		
+		@media only screen and (-webkit-min-device-pixel-ratio: 1.5),
+		    only screen and (-o-min-device-pixel-ratio: 3/2),
+		    only screen and (min--moz-device-pixel-ratio: 1.5),
+		    only screen and (min-device-pixel-ratio: 1.5) {
+				background-image: url('#{$images_path}/arrow-white-2x.png');
+		}
 	}
 }
 @mixin btn-colour-grey() {
