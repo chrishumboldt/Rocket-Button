@@ -16,9 +16,9 @@ See an example below of a basic include.
 	<!--Required javascript-->
 	<script src="js/min/jquery-v1.10.2.min.js"></script>
 	
-    	<!--Buttonplate-->
-    	<script src="js/min/buttonplate.min.js"></script>
-    	<link href="css/buttonplate.css" rel="stylesheet" type="text/css">
+	<!--Buttonplate-->
+	<script src="js/min/buttonplate.min.js"></script>
+	<link href="css/buttonplate.css" rel="stylesheet" type="text/css">
 </head>
 ```
 
