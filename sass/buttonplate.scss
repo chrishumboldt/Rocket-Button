@@ -208,6 +208,7 @@ $drp-font-size					: 0.813em;
 
 // Buttons
 @mixin button($colour: $default-btn-colour, $size: $default-btn-size, $type: $default-btn-type, $shape: $default-btn-shape) {
+	position: relative;
 	display: inline-block;
 	vertical-align: middle;
 	text-align: center;
