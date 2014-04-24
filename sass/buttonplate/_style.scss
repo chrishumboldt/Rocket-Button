@@ -1,0 +1,122 @@
+/**
+ * SASS File: 		_style.scss
+ * Type: 			partial
+ * Author:        	Chris Humboldt
+ * Last Edited:   	23 April 2014
+ */
+
+
+// Table of contents
+// ---------------------------------------------------------------------------------------
+// Button style flat
+// Button style gradient
+// Button style line
+
+
+// Button style flat
+// ---------------------------------------------------------------------------------------
+@mixin button-style-flat($colour, $lighten: 5%) {
+
+	// Setup
+	@if lightness($colour) < 60% {
+		color: $white;
+	}
+	background-color: $colour;
+
+	// States
+	&:hover {
+		// Check saturations
+		@if saturation($colour) > 0% {
+			@if saturation($colour) > 50% {
+				background-color: lighten(saturate($colour, 8%), $lighten);
+			}
+			@else{
+				background-color: lighten(saturate($colour, 30%), $lighten);
+			}
+		}
+		@else {
+			background-color: lighten($colour, $lighten);
+		}
+	}
+	&:active {
+		@if lightness($colour) < 60% {
+			color: darken($colour, 18%);
+		}
+		background-color: $colour;
+	}
+	&:visited {
+		color: $white;
+	}
+}
+
+
+// Button style gradient
+// ---------------------------------------------------------------------------------------
+@mixin button-style-gradient($colour) {
+
+	// Setup
+	@if lightness($colour) < 60% {
+		color: $white;
+	}
+
+	// Gradient
+	$top-colour					: lighten($colour, 8%);
+	$bottom-colour				: darken($colour, 10%);
+	background: $top-colour;
+	background: -webkit-gradient(linear, left top, left bottom, from($top-colour), to($bottom-colour));
+	background: -webkit-linear-gradient(top, $top-colour, $bottom-colour); 
+	background: -moz-linear-gradient(top, $top-colour, $bottom-colour); 
+	background: -ms-linear-gradient(top, $top-colour, $bottom-colour); 
+	background: -o-linear-gradient(top, $top-colour, $bottom-colour); 
+	background: linear-gradient(top, $top-colour, $bottom-colour);
+	border: 1px solid darken($colour, 14%);
+	border-top: 1px solid darken($colour, 8%);
+	border-bottom: 1px solid darken($colour, 20%);
+
+	// States
+	&:active {
+		@if lightness($colour) < 60% {
+			color: darken($colour, 18%);
+		}
+	}
+}
+
+
+// Button style line
+// ---------------------------------------------------------------------------------------
+@mixin button-style-line($colour, $border-size: 2px, $lighten: 5%) {
+
+	// Setup
+	@if lightness($colour) < 60% {
+		color: $colour;
+	}	
+	background: transparent;
+	border: $colour solid $border-size;
+
+	// States
+	&:hover {
+		// Check saturations
+		@if saturation($colour) > 0% {
+			@if saturation($colour) > 50% {
+				border: lighten(saturate($colour, 8%), $lighten) solid $border-size;
+				color: lighten(saturate($colour, 8%), $lighten);
+			}
+			@else{
+				border: lighten(saturate($colour, 30%), $lighten) solid $border-size;
+				color: lighten(saturate($colour, 30%), $lighten);
+			}
+		}
+		@else {
+			border: lighten($colour, $lighten) solid $border-size;
+			@if lightness($colour) < 60% {
+				color: lighten($colour, $lighten);
+			}
+		}
+		// background-color: fade-out($colour, 0.9);
+	}
+	&:active {
+		border: $colour solid $border-size;
+		background-color: fade-out($colour, 0.6);
+	}
+}
+
