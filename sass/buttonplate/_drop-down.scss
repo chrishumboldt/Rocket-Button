@@ -1,0 +1,87 @@
+/**
+ * SASS File: 		_drop-down.scss
+ * Type: 			partial
+ * Author:        	Chris Humboldt
+ * Last Edited:   	2 May 2014
+ */
+
+
+// Table of contents
+// ---------------------------------------------------------------------------------------
+// Variables
+// Drop-downs
+// Set line
+
+
+// Variables
+// ---------------------------------------------------------------------------------------
+$default-colour 			: $blue;
+$away-from-button			: 4px;
+$images-root				: "../img" !default;
+
+
+// Drop-downs
+// ---------------------------------------------------------------------------------------
+@mixin drop-down($colour: $default-colour) {
+
+	// List
+	ul {
+		display: none;
+		position: absolute;
+		padding: 0px;
+		margin: $away-from-button 0px;
+		list-style: none;
+		z-index: 1;
+		background-color: $white;
+		@include border-radius();
+		@include drop-shadow();
+
+		li {
+			padding: 0px;
+			margin: 0px;
+			&:first-child a {
+				@include border-radius-top();
+			}
+			&:last-child a {
+				@include border-radius-bottom();
+			}
+			&.line-top {
+				@include set-line(top);
+			}
+			&.line-bottom {
+				@include set-line(bottom);
+			}
+			
+			// Links
+			a {
+				display: block;
+				text-align: left;
+				color: $black-base;
+				text-decoration: none;
+				vertical-align: middle;
+				
+				&:hover {
+					color: $white;
+				}
+			}
+		}
+	}
+}
+
+
+// Set line
+// ---------------------------------------------------------------------------------------
+@mixin set-line($position: top) {
+	
+	// Determine where the line goes
+	@if $position == top {
+		
+		border-top: 1px solid $grey-light;
+	}
+	@else if $position == bottom {
+		
+		border-bottom: 1px solid $grey-light;
+	}
+}
+
+

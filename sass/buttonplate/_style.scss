@@ -2,7 +2,7 @@
  * SASS File: 		_style.scss
  * Type: 			partial
  * Author:        	Chris Humboldt
- * Last Edited:   	23 April 2014
+ * Last Edited:   	2 May 2014
  */
 
 
@@ -62,13 +62,7 @@
 	// Gradient
 	$top-colour					: lighten($colour, 8%);
 	$bottom-colour				: darken($colour, 10%);
-	background: $top-colour;
-	background: -webkit-gradient(linear, left top, left bottom, from($top-colour), to($bottom-colour));
-	background: -webkit-linear-gradient(top, $top-colour, $bottom-colour); 
-	background: -moz-linear-gradient(top, $top-colour, $bottom-colour); 
-	background: -ms-linear-gradient(top, $top-colour, $bottom-colour); 
-	background: -o-linear-gradient(top, $top-colour, $bottom-colour); 
-	background: linear-gradient(top, $top-colour, $bottom-colour);
+	@include gradient-vertical($top-colour, $bottom-colour);
 	border: 1px solid darken($colour, 14%);
 	border-top: 1px solid darken($colour, 8%);
 	border-bottom: 1px solid darken($colour, 20%);
@@ -112,11 +106,11 @@
 				color: lighten($colour, $lighten);
 			}
 		}
-		// background-color: fade-out($colour, 0.9);
 	}
 	&:active {
 		border: $colour solid $border-size;
 		background-color: fade-out($colour, 0.6);
 	}
 }
+
 
