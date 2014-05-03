@@ -32,9 +32,9 @@ $ar-colours 				: (
 
 // Buttonplate CSS
 // ---------------------------------------------------------------------------------------
-@mixin buttonplate-css() {
+@mixin buttonplate-css($font: true) {
 	.button {
-		@include button-setup();
+		@include button-setup($font);
 
 		// Sizes
 		@include button-size-normal(); // Default

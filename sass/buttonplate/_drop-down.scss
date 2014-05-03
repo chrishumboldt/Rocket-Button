@@ -114,10 +114,15 @@ $images-root				: "../img" !default;
 // Drop-down link hover
 // ---------------------------------------------------------------------------------------
 @mixin drop-down-link-hover($colour, $lighten: 0%) {
+
+	// Colour
+	@if lightness($colour) < 60% {
+		color: $white
+	}
+	
 	// Check saturations
 	@if saturation($colour) > 0% {
-		@if saturation($colour) > 50% {
-			color: $white;
+		@if saturation($colour) > 38% {
 			background-color: lighten(saturate($colour, 8%), $lighten);
 		}
 		@else{
