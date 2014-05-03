@@ -2,7 +2,7 @@
  * SASS File: 		_style.scss
  * Type: 			partial
  * Author:        	Chris Humboldt
- * Last Edited:   	2 May 2014
+ * Last Edited:   	3 May 2014
  */
 
 
@@ -47,6 +47,11 @@
 	&:visited {
 		color: $white;
 	}
+
+	// Drop-down link hover
+	&.button-drop-down ul li a:hover {
+		@include drop-down-link-hover($colour, $lighten);
+	}
 }
 
 
@@ -72,6 +77,11 @@
 		@if lightness($colour) < 60% {
 			color: darken($colour, 18%);
 		}
+	}
+
+	// Drop-down link hover
+	&.button-drop-down ul li a:hover {
+		@include drop-down-link-hover($colour);
 	}
 }
 
@@ -109,7 +119,12 @@
 	}
 	&:active {
 		border: $colour solid $border-size;
-		background-color: fade-out($colour, 0.6);
+		background-color: fade-out($colour, 0.8);
+	}
+
+	// Drop-down link hover
+	&.button-drop-down ul li a:hover {
+		@include drop-down-link-hover($colour, $lighten);
 	}
 }
 

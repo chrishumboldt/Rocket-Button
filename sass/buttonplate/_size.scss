@@ -18,11 +18,14 @@ $btn-size-s						: 30px;
 $btn-size-n						: 38px;
 $btn-size-l						: 46px;
 $btn-size-xl					: 58px;
+
 $btn-padding-s					: 18px;
 $btn-padding-n					: 22px;
 $btn-padding-l					: 26px;
 $btn-padding-xl					: 32px;
+
 $drp-height						: 34px;
+$drp-height-xl					: 40px;
 
 
 // Button size
@@ -32,22 +35,94 @@ $drp-height						: 34px;
 	height: $btn-size-s;
 	line-height: $btn-size-s;
 	font-size: 0.750em;
+
+	// Arrow
+	.arrow {
+		margin-left: $btn-padding-s / 2;
+	}
+
+	// Drop-down
+	&.button-drop-down {
+		ul {
+			margin-left: -$btn-padding-s;
+		}
+		li a {
+			padding: 0px $btn-padding-s;
+			height: $drp-height;
+			line-height: $drp-height;
+			font-size: 0.938em;
+		}
+	}
 }
 @mixin button-size-normal() {
 	padding: 0px $btn-padding-n;
 	height: $btn-size-n;
 	line-height: $btn-size-n;
 	font-size: 0.875em;
+
+	// Arrow
+	.arrow {
+		margin-left: $btn-padding-n / 2;
+	}
+
+	// Drop-down
+	&.button-drop-down {
+		ul {
+			margin-left: -$btn-padding-n;
+		}
+		li a {
+			padding: 0px $btn-padding-n;
+			height: $drp-height;
+			line-height: $drp-height;
+			font-size: 0.875em;
+		}
+	}
 }
 @mixin button-size-large() {
 	padding: 0px $btn-padding-l;
 	height: $btn-size-l;
 	line-height: $btn-size-l;
 	font-size: 1em;
+
+	// Arrow
+	.arrow {
+		margin-left: $btn-padding-l / 2;
+	}
+
+	// Drop-down
+	&.button-drop-down {
+		ul {
+			margin-left: -$btn-padding-l;
+		}
+		li a {
+			padding: 0px $btn-padding-l;
+			height: $drp-height;
+			line-height: $drp-height;
+			font-size: 0.813em;
+		}
+	}
 }
 @mixin button-size-extra-large() {
 	padding: 0px $btn-padding-xl;
 	height: $btn-size-xl;
 	line-height: $btn-size-xl;
 	font-size: 1.125em;
+
+	// Arrow
+	.arrow {
+		margin-left: $btn-padding-xl / 2;
+	}
+
+	// Drop-down
+	&.button-drop-down {
+		ul {
+			margin-left: -$btn-padding-xl;
+		}
+		li a {
+			padding: 0px $btn-padding-xl;
+			height: $drp-height-xl;
+			line-height: $drp-height-xl;
+			font-size: 0.813em;
+		}
+	}
 }

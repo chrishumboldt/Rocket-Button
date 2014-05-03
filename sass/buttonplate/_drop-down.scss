@@ -2,7 +2,7 @@
  * SASS File: 		_drop-down.scss
  * Type: 			partial
  * Author:        	Chris Humboldt
- * Last Edited:   	2 May 2014
+ * Last Edited:   	3 May 2014
  */
 
 
@@ -11,6 +11,7 @@
 // Variables
 // Drop-downs
 // Set line
+// Drop-down link hover
 
 
 // Variables
@@ -29,7 +30,7 @@ $images-root				: "../img" !default;
 		display: none;
 		position: absolute;
 		padding: 0px;
-		margin: $away-from-button 0px;
+		margin-top: $away-from-button;
 		list-style: none;
 		z-index: 1;
 		background-color: $white;
@@ -61,7 +62,7 @@ $images-root				: "../img" !default;
 				vertical-align: middle;
 				
 				&:hover {
-					color: $white;
+					background-color: $grey-link-hover;
 				}
 			}
 		}
@@ -82,6 +83,26 @@ $images-root				: "../img" !default;
 		
 		border-bottom: 1px solid $grey-light;
 	}
+}
+
+
+// Drop-down link hover
+// ---------------------------------------------------------------------------------------
+@mixin drop-down-link-hover($colour, $lighten: 0%) {
+	// Check saturations
+	@if saturation($colour) > 0% {
+		@if saturation($colour) > 50% {
+			color: $white;
+			background-color: lighten(saturate($colour, 8%), $lighten);
+		}
+		@else{
+			background-color: lighten(saturate($colour, 30%), $lighten);
+		}
+	}
+	@else {
+		background-color: lighten($colour, $lighten);
+	}
+
 }
 
 
