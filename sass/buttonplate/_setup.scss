@@ -34,7 +34,7 @@ $images-root					: "../img" !default;
 
 // Button setup
 // ---------------------------------------------------------------------------------------
-@mixin button-setup() {
+@mixin button-setup($font: true) {
 	position: relative;
 	display: inline-block;
 	color: lighten(#000, 40%);
@@ -67,7 +67,6 @@ $images-root					: "../img" !default;
 		display: inline-block;
 		height: 10px;
 		width: 12px;
-		font-family: 'icomoon';
 		speak: none;
 		font-style: normal;
 		font-weight: normal;
@@ -76,8 +75,12 @@ $images-root					: "../img" !default;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 
-		&:before {
-			content: "\f107";
+		@if $font == true {
+			font-family: 'icomoon';
+			
+			&:before {
+				content: "\f107";
+			}
 		}
 	}
 
