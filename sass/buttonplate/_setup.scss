@@ -1,0 +1,90 @@
+/**
+ * SASS File: 		_setup.scss
+ * Type: 			partial
+ * Author:        	Chris Humboldt
+ * Last Edited:   	3 May 2014
+ */
+
+
+// Table of contents
+// ---------------------------------------------------------------------------------------
+// Variables
+// Font face
+// Button setup
+
+
+// Variables
+// ---------------------------------------------------------------------------------------
+$images-root					: "../img" !default;
+
+
+// Font face
+// ---------------------------------------------------------------------------------------
+@font-face {
+	font-family: 'icomoon';
+	src:url('buttonplate-fonts/icomoon.eot?c4hmew');
+	src:url('buttonplate-fonts/icomoon.eot?#iefixc4hmew') format('embedded-opentype'),
+		url('buttonplate-fonts/icomoon.woff?c4hmew') format('woff'),
+		url('buttonplate-fonts/icomoon.ttf?c4hmew') format('truetype'),
+		url('buttonplate-fonts/icomoon.svg?c4hmew#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+// Button setup
+// ---------------------------------------------------------------------------------------
+@mixin button-setup() {
+	position: relative;
+	display: inline-block;
+	color: lighten(#000, 40%);
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	border: none;
+	background-color: $grey-link;
+	outline: none;
+	-webkit-appearance: none;
+	
+	// Hover state
+	&:hover { 
+		cursor: pointer;
+		background-color: $grey-link-hover;
+	}
+	// Visited state
+	&:visited {
+		color: lighten(#000, 40%);
+	}
+	// Active state
+	&:active {
+		@include drop-shadow-inset(fade-out(#000, 0.7), 5px, 2px, 0px);
+		text-shadow: fade-out($white, 0.75) 0px 1px 0;
+		background-color: $grey-link;
+	}
+
+	// Arrow
+	.arrow {
+		display: inline-block;
+		height: 10px;
+		width: 12px;
+		font-family: 'icomoon';
+		speak: none;
+		font-style: normal;
+		font-weight: normal;
+		font-variant: normal;
+		text-transform: none;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+
+		&:before {
+			content: "\f107";
+		}
+	}
+
+	// Animations
+	-webkit-transition: border 0.2s ease-out, background 0.2s ease-out;
+	-moz-transition: border 0.2s ease-out, background 0.2s ease-out;
+	-ms-transition: border 0.2s ease-out, background 0.2s ease-out;
+	-o-transition: border 0.2s ease-out, background 0.2s ease-out;
+	transition: border 0.2s ease-out, background 0.2s ease-out;
+}
