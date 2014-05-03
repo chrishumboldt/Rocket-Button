@@ -11,6 +11,7 @@
 // Variables
 // Drop-downs
 // Set line
+// Drop-down position
 // Drop-down link hover
 
 
@@ -82,6 +83,30 @@ $images-root				: "../img" !default;
 	@else if $position == bottom {
 		
 		border-bottom: 1px solid $grey-light;
+	}
+}
+
+
+// Drop-down position
+// ---------------------------------------------------------------------------------------
+@mixin drop-down-position($spacing, $link-height, $font-size) {
+
+	// Arrow
+	.arrow {
+		margin-left: $spacing / 2;
+	}
+
+	// Drop down
+	&.button-drop-down {
+		ul {
+			margin-left: -$spacing;
+		}
+		li a {
+			padding: 0px $spacing;
+			height: $link-height;
+			line-height: $link-height;
+			font-size: $font-size;
+		}
 	}
 }
 

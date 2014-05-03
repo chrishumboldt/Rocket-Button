@@ -119,7 +119,7 @@
 	}
 	&:active {
 		border: $colour solid $border-size;
-		background-color: fade-out($colour, 0.8);
+		background-color: fade-out($colour, 0.9);
 	}
 
 	// Drop-down link hover
