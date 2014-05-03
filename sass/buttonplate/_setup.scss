@@ -68,6 +68,7 @@ $images-root					: "../img" !default;
 		height: 10px;
 		width: 12px;
 		speak: none;
+		font-family: 'icomoon';
 		font-style: normal;
 		font-weight: normal;
 		font-variant: normal;
@@ -75,12 +76,8 @@ $images-root					: "../img" !default;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
 
-		@if $font == true {
-			font-family: 'icomoon';
-			
-			&:before {
-				content: "\f107";
-			}
+		&:before {
+			content: "\f107";
 		}
 	}
 
