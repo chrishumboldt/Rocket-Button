@@ -1,6 +1,6 @@
 /**
- * SASS File: 		_import.scss
- * Type: 			importer
+ * SASS File: 		_alignment.scss
+ * Type: 			partial
  * Author:        	Chris Humboldt
  * Last Edited:   	28 March 2014
  */
@@ -8,18 +8,11 @@
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
-// Imports
+// Global
 
 
-// Imports
+// Global
 // ---------------------------------------------------------------------------------------
-@import "animation";
-@import "background";
-@import "border";
-@import "colour";
-@import "display";
-@import "drop-shadow";
-@import "global";
-@import "gradient";
-@import "ios";
-@import "text";
+@mixin center() {
+	margin: 0px auto;
+}
