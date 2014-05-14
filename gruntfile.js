@@ -17,7 +17,8 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'css/buttonplate.css': 'sass/buttonplate.scss'
+					'css/buttonplate.css': 'sass/buttonplate.scss',
+					'css/demo.css': 'sass/demo.scss'
 				}
 			}
 		}, 

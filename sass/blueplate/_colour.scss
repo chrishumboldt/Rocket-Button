@@ -2,14 +2,16 @@
  * SASS File: 		_colour.scss
  * Type: 			partial
  * Author:        	Chris Humboldt
- * Last Edited:   	22 March 2014
+ * Last Edited:   	14 May 2014
  */
 
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
 // Mono
-// Basic
+// Primary
+// Secondary
+// Lists
 
 
 // Mono
@@ -22,15 +24,73 @@ $grey-medium 					: lighten($black, 65%);
 $grey-dark						: lighten($black, 40%);
 $grey-link						: lighten($black, 92%);
 $grey-link-hover				: lighten($black, 96%);
+$grey-form 						: lighten(#000, 82%);
 
 
-// Basic
+// Primary
 // ---------------------------------------------------------------------------------------
-$blue							: #3498da;
-$blue-dark						: #34495e;
+$aqua 							: #37bc9b;
+$aqua-light						: #48cfad;
+$blue 							: #3498da;
+$blue-light 					: #4fc1e9;
 $green							: #27ae60;
-$yellow							: #f1c40f;
-$orange							: #e57e22;
+$green-light 					: #8cc152;
+$orange							: #e18327;
+$orange-light					: #f4a353;
+$pink 							: #eb5367;
+$pink-light 					: #ec87c0;
+$purple							: #967adc;
+$purple-light 					: #ac92ec;
 $red							: #e74c3c;
-$aqua							: #1abcaf;
-$purple							: #9b59b6;
+$red-light						: #fc6e51;
+$yellow							: #f6bb42;
+$yellow-light 					: #ffce54;
+
+
+// Secondary
+// ---------------------------------------------------------------------------------------
+$off-white 						: #f5f7fa;
+$off-white-dark 				: #e6e9ed;
+$grey-blue-light 				: #ccd1d9;
+$grey-blue 						: #aab2bd;
+$grey-blue-dark 				: #656d78;
+$grey-blue-extra-dark 			: #434a54;
+
+
+// Lists
+// ---------------------------------------------------------------------------------------
+$ar-colours-primary				: (
+	"grey"						: $grey-link, 
+	"black"						: $black-base, 
+	"white"						: $white,
+	"aqua"						: $aqua, 
+	"blue"						: $blue, 
+	"green"						: $green, 
+	"orange"					: $orange, 
+	"pink"						: $pink, 
+	"purple"					: $purple, 
+	"red"						: $red, 
+	"yellow"					: $yellow
+);
+
+$ar-colours-primary-light		: (
+	"aqua-light"				: $aqua-light, 
+	"blue-light"				: $blue-light, 
+	"green-light"				: $green-light, 
+	"orange-light"				: $orange-light,
+	"pink-light"				: $pink-light, 
+	"purple-light"				: $purple-light, 
+	"red-light"					: $red-light, 
+	"yellow-light"				: $yellow-light
+);
+
+$ar-colours-secondary			: (
+	"off-white"					: $off-white, 
+	"off-white-dark"			: $off-white-dark, 
+	"grey-blue-light"			: $grey-blue-light, 
+	"grey-blue"					: $grey-blue, 
+	"grey-blue-dark"			: $grey-blue-dark, 
+	"grey-blue-extra-dark"		: $grey-blue-extra-dark, 
+);
+
+
