@@ -45,6 +45,11 @@ $images-root					: "../img" !default;
 	background-color: $grey-link;
 	outline: none;
 	-webkit-appearance: none;
+
+	// Respond
+	@include respond-to(small) {
+		width: 100%;
+	}
 	
 	// Hover state
 	&:hover { 
@@ -57,7 +62,7 @@ $images-root					: "../img" !default;
 	}
 	// Active state
 	&:active {
-		@include drop-shadow-inset(fade-out(#000, 0.7), 5px, 2px, 0px);
+		@include drop-shadow-inset(fade-out(#000, 0.85), 5px, 2px, 0px);
 		text-shadow: fade-out($white, 0.75) 0px 1px 0;
 		background-color: $grey-link;
 	}
