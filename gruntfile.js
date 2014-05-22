@@ -22,7 +22,6 @@ module.exports = function(grunt) {
 				}
 			}
 		}, 
-		// End of SASS
 		// Uglify
 		uglify: {
 			my_target: {
