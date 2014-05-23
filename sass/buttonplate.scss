@@ -9,8 +9,14 @@
 
 // Table of Contents:
 // ---------------------------------------------------------------------------------------
+// Variables
 // Imports
 // Execute Buttonplate CSS
+
+
+// Variables
+// ---------------------------------------------------------------------------------------
+$font-face-buttonplate 		: "icon-font-buttonplate";
 
 
 // Imports
@@ -21,4 +27,6 @@
 
 // Execute Buttonplate CSS
 // ---------------------------------------------------------------------------------------
-// @include buttonplate-css();
+@include buttonplate-css();
+
+
