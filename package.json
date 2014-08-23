@@ -1,6 +1,6 @@
 {
   "name": "Buttonplate",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "A global button library.",
   "repository": {
     "type": "git",
@@ -20,9 +20,9 @@
   },
   "homepage": "http://getwebplate.com/plugins/buttonplate",
   "devDependencies": {
-    "grunt": "~0.4.2",
-    "grunt-contrib-sass": "~0.6.0",
-    "grunt-contrib-uglify": "^0.4.0",
-    "grunt-contrib-watch": "~0.5.3"
+    "grunt": "~0.4.5",
+    "grunt-contrib-sass": "~0.8.0",
+    "grunt-contrib-uglify": "~0.5.1",
+    "grunt-contrib-watch": "~0.6.1"
   }
 }

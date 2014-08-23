@@ -2,21 +2,28 @@
  * SASS File: 		_import.scss
  * Type: 			importer
  * Author:        	Chris Humboldt
- * Last Edited:   	27 May 2014
+ * Last Edited:   	14 August 2014
  */
 
 
 // Table of contents
 // ---------------------------------------------------------------------------------------
+// Development
 // Mixin imports
 // CSS imports
 // Execute import
 
 
+// Development
+// ---------------------------------------------------------------------------------------
+@import "development/functions";
+@import "development/mixins";
+
+
 // Mixin imports
 // ---------------------------------------------------------------------------------------
-@import "alignment";
 @import "animation";
+@import "arrow";
 @import "background";
 @import "border";
 @import "breakpoint";
@@ -29,6 +36,7 @@
 @import "ios";
 @import "layout";
 @import "responsive-layout";
+@import "size";
 @import "spacing";
 @import "text";
 @import "transform";
@@ -36,10 +44,10 @@
 
 // CSS imports
 // ---------------------------------------------------------------------------------------
-@import "css/alignment";
 @import "css/background";
 @import "css/display";
 @import "css/global";
+@import "css/layout";
 @import "css/position";
 @import "css/responsive-layout";
 @import "css/sizing";
