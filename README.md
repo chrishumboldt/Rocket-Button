@@ -15,6 +15,7 @@ See an example below of a basic include.
 <head>
 	<!--Required javascript-->
 	<script src="js/min/jquery-v1.10.2.min.js"></script>
+	<script src="js/min/modernizr-custom-v2.8.3.min.js"></script>
 	
 	<!--Buttonplate-->
 	<script src="js/min/buttonplate.min.js"></script>
