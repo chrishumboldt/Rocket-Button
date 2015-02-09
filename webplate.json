@@ -2,12 +2,10 @@
 	"name": "buttonplate",
 	"production": {
 		"css": "css/buttonplate.css",
-		"sass": "sass/buttonplate.scss",
 		"js": "js/min/buttonplate.min.js"
 	},
 	"development": {
 		"css": "css/buttonplate.css",
-		"sass": "sass/buttonplate.scss",
 		"js": "js/buttonplate.js"
 	}
 }
