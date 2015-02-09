@@ -44,7 +44,7 @@ $lightness-threshold-line 	: 98%;
 		}
 
 		// Drop-down link hover
-		&.button-drop-down ul li a:hover {
+		.no-touch &.button-drop-down ul li a:hover {
 			@include drop-down-link-hover($colour);
 		}
 	}
@@ -104,7 +104,7 @@ $lightness-threshold-line 	: 98%;
 		}
 
 		// Drop-down link hover
-		&.button-drop-down ul li a:hover {
+		.no-touch &.button-drop-down ul li a:hover {
 			@include drop-down-link-hover($colour, $lighten);
 		}
 	}
@@ -225,7 +225,7 @@ $lightness-threshold-line 	: 98%;
 	}
 
 	// Drop-down link hover
-	&.button-drop-down ul li a:hover {
+	.no-touch &.button-drop-down ul li a:hover {
 		@include drop-down-link-hover($colour);
 	}
 }
@@ -287,7 +287,7 @@ $lightness-threshold-line 	: 98%;
 	}
 
 	// Drop-down link hover
-	&.button-drop-down ul li a:hover {
+	.no-touch &.button-drop-down ul li a:hover {
 		@include drop-down-link-hover($colour, $lighten);
 	}
 }
