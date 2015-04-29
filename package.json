@@ -1,28 +1,28 @@
 {
-  "name": "Buttonplate",
-  "version": "1.4.3",
-  "description": "A global button library.",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/chrishumboldt/Buttonplate.git"
-  },
-  "keywords": [
-    "Buttons",
-    "CSS",
-    "Webplate",
-    "Responsive",
-    "SASS"  
-  ],
-  "author": "Chris Humboldt",
-  "license": "Apache License, Version 2.0",
-  "bugs": {
-    "url": "https://github.com/chrishumboldt/Buttonplate/issues"
-  },
-  "homepage": "http://getwebplate.com/plugins/buttonplate",
-  "devDependencies": {
-    "grunt": "~0.4.5",
-    "grunt-contrib-sass": "~0.8.0",
-    "grunt-contrib-uglify": "~0.5.1",
-    "grunt-contrib-watch": "~0.6.1"
-  }
+	"name": "Buttonplate",
+	"version": "1.5.0",
+	"description": "A global button library.",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/chrishumboldt/Buttonplate.git"
+	},
+	"keywords": [
+		"Buttons",
+		"CSS",
+		"Webplate",
+		"Responsive",
+		"SASS"
+	],
+	"author": "Chris Humboldt",
+	"license": "Apache License, Version 2.0",
+	"bugs": {
+		"url": "https://github.com/chrishumboldt/Buttonplate/issues"
+	},
+	"homepage": "http://getwebplate.com/plugins/buttonplate",
+	"devDependencies": {
+		"grunt": "~0.4.5",
+		"grunt-contrib-sass": "~0.8.0",
+		"grunt-contrib-uglify": "~0.5.1",
+		"grunt-contrib-watch": "~0.6.1"
+	}
 }
