@@ -6,7 +6,7 @@
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A global button library.",
-	"main": "css/buttonplate.css",
+	"main": ["css/buttonplate.css", "js/min/buttonplate.min.js"],
 	"keywords": [
 		"Webplate",
 		"Buttonplate",
