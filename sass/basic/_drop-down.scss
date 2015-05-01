@@ -2,7 +2,7 @@
  * File: _drop-down.scss
  * Type: SASS basic file
  * Author: Chris Humboldt
- * Last Edited: 24 April 2015
+ * Last Edited: 1 May 2015
  */
 
 // Table of contents
@@ -60,7 +60,7 @@ $away-from-button			: 4px;
 				text-decoration: none;
 				vertical-align: middle;
 				
-				.bp-no-touchevents &:hover {
+				.bp-no-touch &:hover {
 					@include background-colour($grey-link-hover);
 				}
 			}
