@@ -8,6 +8,7 @@
 // Table of contents
 // ---------------------------------------------------------------------------------------
 // Tools
+// Touch check
 // Component call
 // Prototype component
 
@@ -80,16 +81,16 @@ var tool = {
 	}
 };
 
+// Touch check
+// ---------------------------------------------------------------------------------------
+var $htmlElement = document.getElementsByTagName('html')[0];
+if (!tool.isTouch() && !tool.hasClass($htmlElement, 'bp-no-touch')) {
+	tool.classAdd($htmlElement, 'bp-no-touch');
+}
+
 // Component call
 // ---------------------------------------------------------------------------------------
 function Buttonplate($selector) {
-	// Add touch detection
-	var $htmlElement = document.getElementsByTagName('html')[0];
-	if (!tool.isTouch() && !tool.hasClass($htmlElement, 'bp-no-touch')) {
-		tool.classAdd($htmlElement, 'bp-no-touch');
-	}
-
-	// Component
 	var $selectorType = $selector.charAt(0).toString();
 
 	if ($selectorType === '.') {
