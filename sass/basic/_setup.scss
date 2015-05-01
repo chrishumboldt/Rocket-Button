@@ -42,7 +42,7 @@
 		@include text-colour(lighten(#000, 40%));
 	}
 	// Hover state
-	.no-touch &:hover { 
+	.bp-no-touchevents &:hover { 
 		@include cursor(pointer);
 		@include background-colour($grey-link-hover);
 	}

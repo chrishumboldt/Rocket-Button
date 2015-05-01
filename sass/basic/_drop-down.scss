@@ -60,14 +60,14 @@ $away-from-button			: 4px;
 				text-decoration: none;
 				vertical-align: middle;
 				
-				.no-touch &:hover {
+				.bp-no-touchevents &:hover {
 					@include background-colour($grey-link-hover);
 				}
 			}
 		}
 
 		// Show state
-		&.button-drop-down-open {
+		&.bp-drop-down-open {
 			@include opacity(1);
 			@include visibility(visible);
 		}
@@ -97,7 +97,7 @@ $away-from-button			: 4px;
 	}
 
 	// Drop down
-	&.button-drop-down {
+	&.bp-drop-down {
 		ul {
 			@include margin-left(-$spacing);
 		}
