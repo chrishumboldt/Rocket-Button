@@ -1,16 +1,8 @@
 /**
- * SASS File: 		_setup.scss
- * Type: 			partial
- * Author:        	Chris Humboldt
- * Last Edited:   	23 May 2014
+ * File: _setup.scss
+ * Type: SASS module
+ * Author: Chris Humboldt
  */
-
-
-// Table of contents
-// ---------------------------------------------------------------------------------------
-// Font face
-// Button setup
-
 
 // Font face
 // ---------------------------------------------------------------------------------------
@@ -25,7 +17,6 @@
 	font-style: normal;
 }
 
-
 // Button setup
 // ---------------------------------------------------------------------------------------
 @mixin button-setup($font: true) {
@@ -33,35 +24,26 @@
 	@include display(inline-block);
 	@include text-align(center);
 	@include text-colour(lighten(#000, 40%));
-	text-decoration: none;
-	vertical-align: middle;
-	border: none;
+	@include text-decoration(none);
+	@include vertical-align(middle);
+	@include border-no();
 	@include background-colour($grey-link);
 	outline: none;
 	-webkit-appearance: none;
 
-	// Respond
-	@include respond-to(small) {
-		@include width(100%);
-	}
-
-	// Visited state
 	&:visited {
 		@include text-colour(lighten(#000, 40%));
 	}
-	// Hover state
-	.no-touch &:hover { 
-		cursor: pointer;
+	.buttonplate-no-touch &:hover {
+		@include cursor(pointer);
 		@include background-colour($grey-link-hover);
 	}
-	// Active state
 	&:active {
 		@include drop-shadow-inset(fade-out(#000, 0.85), 5px, 2px, 0px);
 		text-shadow: fade-out($white, 0.75) 0px 1px 0;
 		@include background-colour($grey-link);
 	}
 
-	// Arrow
 	.arrow {
 		@include display(inline-block);
 		@include height(10px);
@@ -81,10 +63,11 @@
 		}
 	}
 
-	// Animations
 	-webkit-transition: border 0.2s ease-out, background 0.2s ease-out;
 	-moz-transition: border 0.2s ease-out, background 0.2s ease-out;
 	-ms-transition: border 0.2s ease-out, background 0.2s ease-out;
 	-o-transition: border 0.2s ease-out, background 0.2s ease-out;
 	transition: border 0.2s ease-out, background 0.2s ease-out;
+
+	@include drop-down();
 }

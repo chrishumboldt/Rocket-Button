@@ -1,42 +1,29 @@
 /**
- * SASS File: 		demo.scss
- * Type: 			execute
- * Author:        	Chris Humboldt
- * Last Edited:   	25 September 2014
+ * File: demo.scss
+ * Type: SASS demo
+ * Author: Chris Humboldt
  */
-
-
-// Table of contents
-// ---------------------------------------------------------------------------------------
-// Imports
-// Demo styles
-
 
 // Import
 // ---------------------------------------------------------------------------------------
-@import "../bower_components/blueplate/sass/blueplate.scss";
-
+@import "../bower_components/blueplate/sass/import";
 
 // Demo styles
 // ---------------------------------------------------------------------------------------
 @include global-setup();
-
 body {
 	@include no-spacing();
 }
-
 // Container
 .container {
 	@include limit();
 	padding: 20px 20px;
 	padding-bottom: $space-large;
-
-	@include respond-to(large) {
+	@include breakpoint(large) {
 		padding: 40px 20px;
 		padding-bottom: $space-x-large;
 	}
 }
-
 // Blocks
 .block {
 	@include row();
@@ -49,12 +36,10 @@ body {
 		}
 	}
 }
-
 // Headings
 h3 {
 	padding-top: $space-large;
 }
-
 // Buttons
 .button {
 	margin-top: $space-small;

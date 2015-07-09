@@ -1,108 +1,107 @@
 /**
- * jQuery File: 	buttonplate.js
- * Type:			plugin
- * Author:        	Chris Humboldt
- * Last Edited:   	1 October 2014
+ * File: buttonplate.js
+ * Type: Javascript component
+ * Author: Chris Humboldt
  */
 
+var buttonplate = function($selector) {
+	// Tools
+	var tool = function(document) {
+		// Variables
+		var $toolEl = {
+			body: document.getElementsByTagName('body')[0],
+			html: document.getElementsByTagName('html')[0]
+		};
 
-// Plugin
-;(function($, window, document, undefined)
-{
-	// Plugin setup & settings
-	var $plugin_name					= 'buttonplate', $defaults =
-	{
-	};
-	
-	// The actual plugin constructor
-	function Plugin($element, $options) 
-	{
-		this.element 					= $element;
-		this.settings 					= $.extend({}, $defaults, $options);
-		this._defaults 					= $defaults;
-		this._name 						= $plugin_name;
-
-		// Initilize plugin
-		this.init();
-	}
-	
-	// Plugin
-	// ---------------------------------------------------------------------------------------
-	Plugin.prototype 					= 
-	{
-		init 							: function()
-		{
-			// Variables
-			// ---------------------------------------------------------------------------------------
-			var $this 					= this;
-			var $settings 				= $this.settings;
-			var $button 				= $($this.element);
-
-
-			// Execute
-			// ---------------------------------------------------------------------------------------
-			fc_button_setup();
-
-
-			// Functions
-			// ---------------------------------------------------------------------------------------
-			// Button drop size
-			function fc_button_setup()
-			{
-				if($button.find('ul').length > 0)
-				{
-					$button.addClass('button-drop-down');
+		// Functions
+		var classAdd = function($element, $class) {
+			var $crtClass = $element.className;
+			if ($crtClass.match(new RegExp('\\b' + $class + '\\b', 'g')) === null) {
+				$element.className = $crtClass === '' ? $class : $crtClass + ' ' + $class;
+			}
+		};
+		var classClear = function($element) {
+			$element.removeAttribute('class');
+		};
+		var classRemove = function($element, $class) {
+			if ($element.className.indexOf($class) > -1) {
+				$element.className = $element.className.split(' ').filter(function($val) {
+					return $val != $class;
+				}).toString().replace(/,/g, ' ');
+				if ($element.className === '') {
+					classClear($element);
 				}
-			};
+			}
+		};
+		var isTouch = function() {
+			return 'ontouchstart' in window || 'onmsgesturechange' in window;
+		};
+
+		return {
+			classAdd: classAdd,
+			classClear: classClear,
+			classRemove: classRemove,
+			element: $toolEl,
+			isTouch: isTouch
+		}
+	}(document);
+
+	// Select elements
+	var $selectorType = $selector.charAt(0).toString();
+	if ($selectorType === '.') {
+		var $elements = document.querySelectorAll($selector);
+		for (var $i = $elements.length - 1; $i >= 0; $i--) {
+			new buttonplateComponent($elements[$i], tool);
+		};
+	} else if ($selectorType === '#') {
+		new buttonplateComponent(document.getElementById($selector.substring(1)), tool);
+	}
+};
+
+var buttonplateComponent = function($this, tool) {
+	// Variables
+	var $self = $this;
+	var $buttonDropDown = $self.getElementsByTagName('ul')[0];
+
+	// Internal functions
+	function basicSetup() {
+		if (!tool.isTouch()) {
+			tool.classAdd(tool.element.html, 'buttonplate-no-touch');
 		}
 	};
 
-
-	// Global calls
-	// ---------------------------------------------------------------------------------------
-	// On click show
-	$(document).on('click', '.button-drop-down', function()
-	{
-		var $button 					= $(this);
-		var $button_w					= $button.outerWidth();
-
-		// Show drop down
-		$button.find('ul').width($button_w).fadeIn('fast', function()
-		{	
-			$button.addClass('button-drop-down-open');
-		});
-	});
-
-	// Close drop-downs
-	$(document).on('click', function(){
-		
-		$('.button-drop-down-open').removeClass('button-drop-down-open').find('ul').hide();
-	});
-
-	// On resize
-	$(window).resize(function()
-	{
-		$('.button-drop-down-open').removeClass('button-drop-down-open').find('ul').hide();
-	});
-
-
-	// Plugin wrapper
-	// ---------------------------------------------------------------------------------------
-	$.fn[$plugin_name] 					= function($options)
-	{
-		var $plugin;
-
-		this.each(function()
-		{
-			$plugin 					= $.data(this, 'plugin_' + $plugin_name);
-
-			if(!$plugin)
-			{
-				$plugin 				= new Plugin(this, $options);
-				$.data(this, 'plugin_' + $plugin_name, $plugin);
-			}
-		});
-
-		return $plugin;
+	function buttonDropDownSetup() {
+		if ($buttonDropDown !== undefined) {
+			tool.classAdd($self, 'buttonplate-drop-down');
+			buttonDropDownTrigger();
+		}
 	};
-})(jQuery, window, document);
+
+	function buttonDropDownTrigger() {
+		// Hide existing
+		document.onclick = function() {
+			var $openDropDowns = document.querySelectorAll('.buttonplate-drop-down .open');
+			for (var $i = $openDropDowns.length - 1; $i >= 0; $i--) {
+				tool.classRemove($openDropDowns[$i], 'open');
+			};
+		};
+		$buttonDropDown.onclick = function() {
+			setTimeout(function() {
+				tool.classRemove($buttonDropDown, 'open');
+			}, 15);
+		};
+
+		// Show
+		$self.onclick = function() {
+			setTimeout(function() {
+				var $buttonW = $self.clientWidth;
+				$buttonDropDown.style.width = $buttonW + 'px';
+				tool.classAdd($buttonDropDown, 'open');
+			});
+		};
+	}
+
+	// Calls
+	basicSetup();
+	buttonDropDownSetup();
+};

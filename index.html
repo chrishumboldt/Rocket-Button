@@ -4,42 +4,25 @@
     <!-- Meta setup -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-	
+
     <!-- Title -->
     <title>Buttonplate</title>
-	
-    <!-- Required javascript -->
-    <script src="js/min/jquery-v1.10.2.min.js"></script>
-    <script src="js/min/modernizr-custom-v2.8.3.min.js"></script>
 
-    <!-- Buttonplate -->
+    <!-- Include Buttonplate -->
     <script src="js/buttonplate.js"></script>
-    <link href="css/buttonplate.css" rel="stylesheet" type="text/css">
-	
+	<link href="css/buttonplate.css" rel="stylesheet" type="text/css">
+
 	<!-- Demo -->
-	<script>
-	$(document).ready(function()
-	{	
-		// Execute buttonplate
-		$('.button').buttonplate();
-		
-		// Prevent default hash click
-		$('.button').on('click', function($e)
-		{	
-			$e.preventDefault();
-		});
-	});
-	</script>
     <link href="css/demo.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
-	
+
 	<!-- Container -->
 	<div class="container">
-		
+
 		<h3>Flat Buttons</h3>
-		
+
 		<a href="#" class="button white">White</a>
 		<a href="#" class="button grey">Grey</a>
 		<a href="#" class="button black">Black</a>
@@ -51,9 +34,9 @@
 		<a href="#" class="button purple">Purple</a>
 		<a href="#" class="button red">Red</a>
 		<a href="#" class="button yellow">Yellow</a>
-		
+
 		<h3>Gradient Buttons</h3>
-		
+
 		<a href="#" class="button gradient-white">White</a>
 		<a href="#" class="button gradient-grey">Grey</a>
 		<a href="#" class="button gradient-black">Black</a>
@@ -65,9 +48,9 @@
 		<a href="#" class="button gradient-purple">Purple</a>
 		<a href="#" class="button gradient-red">Red</a>
 		<a href="#" class="button gradient-yellow">Yellow</a>
-		
+
 		<h3>Line Buttons</h3>
-		
+
 		<a href="#" class="button line-white">White</a>
 		<a href="#" class="button line-grey">Grey</a>
 		<a href="#" class="button line-black">Black</a>
@@ -79,10 +62,10 @@
 		<a href="#" class="button line-purple">Purple</a>
 		<a href="#" class="button line-red">Red</a>
 		<a href="#" class="button line-yellow">Yellow</a>
-		
+
 		<h3>Drop Down Button</h3>
 
-		<div class="button drop-down">
+		<div class="button">
 			Drop-Down Default<div class="arrow"></div>
 			<ul>
 				<li><a href="#">Link 1</a></li>
@@ -91,7 +74,7 @@
 			</ul>
 		</div>
 
-		<div class="button blue drop-down">
+		<div class="button blue">
 			Drop-Down Blue<div class="arrow"></div>
 			<ul>
 				<li><a href="#">Link 1</a></li>
@@ -99,21 +82,26 @@
 				<li class="line-top"><a href="#">Link 3</a></li>
 			</ul>
 		</div>
-		
+
 		<h3>Button Sizes</h3>
-		
+
 		<a href="#" class="button green small">Small</a>
 		<a href="#" class="button green">Normal</a>
 		<a href="#" class="button green large">Large</a>
 		<a href="#" class="button green x-large">Extra Large</a>
-		
+
 		<h3>Button Shapes</h3>
-		
+
 		<a href="#" class="button red">Rounded (default)</a>
 		<a href="#" class="button red pill">Pill Button</a>
 		<a href="#" class="button red square">Squared Button</a>
-		
+
 	</div>
+
+	<script>
+		// Execute component
+		new buttonplate('.button');
+	</script>
 
 </body>
 </html>
