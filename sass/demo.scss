@@ -1,14 +1,8 @@
 /**
  * File: demo.scss
- * Type: SASS demo file
+ * Type: SASS demo
  * Author: Chris Humboldt
- * Last Edited: 24 April 2015
  */
-
-// Table of contents
-// ---------------------------------------------------------------------------------------
-// Imports
-// Demo styles
 
 // Import
 // ---------------------------------------------------------------------------------------
@@ -17,23 +11,19 @@
 // Demo styles
 // ---------------------------------------------------------------------------------------
 @include global-setup();
-
 body {
 	@include no-spacing();
 }
-
 // Container
 .container {
 	@include limit();
 	padding: 20px 20px;
 	padding-bottom: $space-large;
-
-	@include respond-to(large) {
+	@include breakpoint(large) {
 		padding: 40px 20px;
 		padding-bottom: $space-x-large;
 	}
 }
-
 // Blocks
 .block {
 	@include row();
@@ -46,12 +36,10 @@ body {
 		}
 	}
 }
-
 // Headings
 h3 {
 	padding-top: $space-large;
 }
-
 // Buttons
 .button {
 	margin-top: $space-small;
