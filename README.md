@@ -47,10 +47,10 @@ Instead of including the CSS file above, you can import the SASS file and create
 There are a variety of options for the SASS builds.
 
 SASS | Default | Options | Description
-@include button-setup(); | | | This is a required function that needs to be made on all buttons.
-@include button-shape(x); | rounded | pill, rounded, square | Set the shape of the button.
-@include button-size(x) | normal | small, normal, large, x-large | Set the size of the button.
-@include button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour.
+button-setup(); | | | This is a required function that needs to be made on all buttons.
+button-shape(x); | rounded | pill, rounded, square | Set the shape of the button.
+button-size(x) | normal | small, normal, large, x-large | Set the size of the button.
+button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour.
 
 ## Javascript call
 If you want to enable button drop downs then you will need to execute the following Javascript.
