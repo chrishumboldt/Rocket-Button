@@ -1,12 +1,12 @@
 {
 	"name": "buttonplate",
-	"version": "2.0.1",
+	"version": "2.0.2",
 	"homepage": "http://getwebplate.com/plugins/buttonplate",
 	"authors": [
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A global button library.",
-	"main": ["css/buttonplate.css", "js/min/buttonplate.min.js"],
+	"main": ["css/buttonplate.css", "js/min/buttonplate.js"],
 	"keywords": [
 		"Button",
 		"Component",
