@@ -1,16 +1,17 @@
 {
-	"name": "Buttonplate",
-	"version": "2.0.0",
-	"description": "A global button library.",
+	"name": "buttonplate",
+	"version": "2.0.1",
+	"description": "A universal button library.",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/chrishumboldt/Buttonplate.git"
 	},
 	"keywords": [
-		"Buttons",
-		"CSS",
+		"Button",
+		"Component",
 		"Webplate",
 		"Responsive",
+		"Javascript",
 		"SASS"
 	],
 	"author": "Chris Humboldt",
@@ -20,9 +21,9 @@
 	},
 	"homepage": "http://getwebplate.com/plugins/buttonplate",
 	"devDependencies": {
-		"grunt": "~0.4.5",
-		"grunt-contrib-sass": "~0.8.0",
-		"grunt-contrib-uglify": "~0.5.1",
-		"grunt-contrib-watch": "~0.6.1"
+		"gulp": "^3.9.0",
+		"gulp-livereload": "^3.8.0",
+		"gulp-sass": "^2.0.4",
+		"gulp-uglify": "^1.3.0"
 	}
 }
