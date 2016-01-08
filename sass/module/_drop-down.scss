@@ -60,7 +60,7 @@ $away-from-button: 4px;
 					vertical-align: middle;
 
 					.buttonplate-no-touch &:hover {
-						@include background-colour($grey-link-hover);
+						@include background-colour(darken($grey-x-light, 3%));
 					}
 				}
 			}

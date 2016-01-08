@@ -60,8 +60,12 @@ bower install buttonplate
       <p>If you want to enable button drop downs then you will need to execute the following Javascript.</p>
 <pre class="prettyprint linenums">
 &lt;script&gt;
-   new buttonplate('.btn-primary');
-   new buttonplate('.btn-secondary');
+new buttonplate({
+    selector: '.btn-primary'
+});
+new buttonplate({
+    selector: '.btn-secondary'
+});
 &lt;/script&gt;
 </pre>
       <br>
@@ -152,7 +156,7 @@ bower install buttonplate
    <script src="js/buttonplate.js"></script>
    <script src="js/demo.js"></script>
 	<script>
-	new buttonplate('.button');
+	new buttonplate();
    var $buttons = document.querySelectorAll('a.button');
    for (var $i = $buttons.length - 1; $i >= 0; $i--) {
       $buttons[$i].onclick = function(event) {
