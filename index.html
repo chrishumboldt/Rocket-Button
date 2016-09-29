@@ -31,7 +31,7 @@ bower install buttonplate
 			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-    &lt;link href=&quot;css/buttonplate.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;css/buttonplate.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 </pre>
 	      <p>Now class your button to gain the desired effect. For example:</p>
@@ -42,7 +42,7 @@ bower install buttonplate
 	      <h4>SASS Implementation</h4>
 	      <p>Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:</p>
 <pre class="prettyprint linenums">
-@import "buttonplate/sass/import";
+@import "buttonplate/build/sass/import";
 
 .btn-primary,
 .btn-secondary {
@@ -60,16 +60,19 @@ bower install buttonplate
 </pre>
 	      <br>
 	      <h4>Javascript Call</h4>
-	      <p>If you want to enable button drop downs then you will need to execute the following Javascript.</p>
+	      <p>If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
-&lt;script&gt;
-new buttonplate({
-    selector: '.btn-primary'
-});
-new buttonplate({
-    selector: '.btn-secondary'
-});
-&lt;/script&gt;
+&lt;body&gt;
+   &lt;script src=&quot;js/buttonplate.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script&gt;
+   new buttonplate({
+      selector: '.btn-primary'
+   });
+   new buttonplate({
+      selector: '.btn-secondary'
+   });
+   &lt;/script&gt;
+&lt;/body&gt;
 </pre>
 	      <br>
 	      <h4>Working Examples</h4>

@@ -13,7 +13,7 @@ Start by including the necessary files.
 
 ```
 <head>
-	<link href="css/buttonplate.css" rel="stylesheet" type="text/css">
+	<link href="css/buttonplate.min.css" rel="stylesheet" type="text/css">
 </head>
 ```
 
@@ -27,7 +27,7 @@ Now class your button to gain the desired effect. For example:
 Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:
 
 ```
-@import "buttonplate/sass/import";
+@import "buttonplate/build/sass/import";
 
 .btn-primary,
 .btn-secondary {
@@ -57,14 +57,17 @@ button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of 
 If you want to enable button drop downs then you will need to execute the following Javascript.
 
 ```
-<script>
-new buttonplate({
-   selector: '.btn-primary'
-});
-new buttonplate({
-   selector: '.btn-secondary'
-});
-</script>
+<body>
+	<script src="js/buttonplate.min.js"></script>
+	<script>
+	new buttonplate({
+	   selector: '.btn-primary'
+	});
+	new buttonplate({
+	   selector: '.btn-secondary'
+	});
+	</script>
+</body>
 ```
 
 ## Author
