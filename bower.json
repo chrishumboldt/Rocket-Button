@@ -1,33 +1,26 @@
 {
 	"name": "buttonplate",
-	"version": "2.0.3",
-	"homepage": "http://getwebplate.com/plugins/buttonplate",
 	"authors": [
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A global button library.",
-	"main": ["css/buttonplate.css", "js/min/buttonplate.js"],
+	"main": ["css/buttonplate.min.css", "js/buttonplate.min.js"],
 	"keywords": [
-		"Button",
-		"Component",
 		"Webplate",
+		"Component",
+		"Button",
 		"Responsive",
 		"Javascript",
 		"SASS"
 	],
-	"license": "Apache License, Version 2.0",
+	"license": "Apache-2.0",
 	"ignore": [
 		"**/.*",
-		"node_modules",
-		"test",
-		"tests",
-		"gulpfile.js",
-		"package.json",
 		"index.html",
-		"bower.json",
-		"css/demo.css",
-		"js/demo.js",
-		"js/min/demo.js",
-		"sass/demo.scss"
-	]
+		"bower.json"
+	],
+	"devDependencies": {
+		"blueplate": "^2.0.0",
+		"webplate-demo": "^1.0.0"
+	}
 }
