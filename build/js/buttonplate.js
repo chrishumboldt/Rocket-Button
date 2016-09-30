@@ -1,15 +1,118 @@
 /**
- * File: buttonplate.js
- * Type: Javascript component
+ * File: build/js/buttonplate.js
+ * Type: Javascript component file
  * Author: Chris Humboldt
- */
+**/
 
-// Table of contents
-// Defaults
-// Tools
-// Variables
+// Component
+var buttonplate = function () {
+	// Variables
+	var defaults = {
+		selector: '.button'
+	};
+	// Webplate tools (partial)
+	var web = {
+		element: {
+			body: document.getElementsByTagName('body')[0],
+			html: document.getElementsByTagName('html')[0]
+		},
+		classAdd: function (element, classValue) {
+			var self = this;
+			if (self.exists(element)) {
+				if (typeof classValue === 'object') {
+					for (var i = 0, len = classValue.length; i < len; i++) {
+						self.classAddExecute(element, classValue[i]);
+					}
+				} else if (self.hasWhiteSpace(classValue)) {
+					var classes = classValue.split(' ');
+					for (var i = 0, len = classes.length; i < len; i++) {
+						self.classAddExecute(element, classes[i]);
+					}
+				} else {
+					self.classAddExecute(element, classValue);
+				}
+			}
+		},
+		classAddExecute: function (element, classValue) {
+			var crtClass = element.className;
+			if (crtClass.match(new RegExp('\\b' + classValue + '\\b', 'g')) === null) {
+				element.className = crtClass === '' ? classValue : crtClass + ' ' + classValue;
+			}
+		},
+		exists: function (check) {
+			return (check === null || check === false || typeof (check) == 'undefined') ? false : true;
+		},
+		hasClass: function (element, classValue) {
+			return (' ' + element.className + ' ').indexOf(' ' + classValue + ' ') > -1;
+		},
+		hasWhiteSpace: function (check) {
+			return /\s/.test(check);
+		},
+		isTouch: function () {
+			return 'ontouchstart' in window || 'onmsgesturechange' in window;
+		},
+		log: function (text) {
+			if (window && window.console) {
+				console.log(text);
+			}
+		}
+	}
+	// Functions
+	var applyButtonDrop = function (options) {
+		getButtonDrops(options, function (buttonDrops) {
+			for (var i = 0, len = buttonDrops.length; i < len; i++) {
+				web.classAdd(buttonDrops[i].parentNode, 'buttonplate-drop-down');
+				applyButtonDropEvent(buttonDrops[i].parentNode, buttonDrops[i]);
+			}
+		});
+	};
+	var applyButtonDropEvent = function (button, dropDown) {
+		button.onclick = function () {
+			closeAllOpenButtonDrops();
+			dropDown.style.width = button.clientWidth + 'px';
+			web.classAdd(dropDown, '_open');
+		};
+	};
+	var closeAllOpenButtonDrops = function () {
+		// var buttonDrops = document.querySelectorAll(options.selector + ' ul');
+		// if (buttonDrops.length > 0) {
+		//
+		// }
+	};
+	var getButtonDrops = function (options, callBack) {
+		var buttonDrops = document.querySelectorAll(options.selector + ' ul');
+		if (buttonDrops.length > 0 && typeof callBack === 'function') {
+			return callBack(buttonDrops);
+		}
+		return false;
+	};
+	var touchCheck = function () {
+		if (!web.isTouch()) {
+			web.classAdd(web.element.html, 'buttonplate-no-touch');
+		}
+	};
+	// Initialiser
+	var init = function (userOptions) {
+		var userOptions = userOptions || false;
+		var options = {
+			selector: userOptions.selector || defaults.selector
+		}
 
-// Defaults
+		// Execute
+		applyButtonDrop(options);
+	};
+	// Return
+	return {
+		defaults: defaults,
+		init: init,
+		touchCheck: touchCheck
+	};
+}();
+
+// Execute
+buttonplate.touchCheck();
+
+/*
 var $buttonplateDefault = {
 	selector: '.button'
 };
@@ -116,3 +219,4 @@ var buttonplateComponent = function($this, tool) {
 	basicSetup();
 	buttonDropDownSetup();
 };
+*/
