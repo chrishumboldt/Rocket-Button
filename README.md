@@ -11,7 +11,7 @@ bower install buttonplate
 ## CSS Implementation
 Start by including the necessary files.
 
-```
+```html
 <head>
 	<link href="css/buttonplate.min.css" rel="stylesheet" type="text/css">
 </head>
@@ -19,14 +19,14 @@ Start by including the necessary files.
 
 Now class your button to gain the desired effect. For example:
 
-```
+```html
 <button class="button line-red large">Example Button</button>
 ```
 
 ## SASS Implementation
 Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:
 
-```
+```scss
 @import "buttonplate/build/sass/import";
 
 .btn-primary,
@@ -56,18 +56,16 @@ button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of 
 ## Javascript call
 If you want to enable button drop downs then you will need to execute the following Javascript.
 
-```
-<body>
-	<script src="js/buttonplate.min.js"></script>
-	<script>
-	buttonplate.init({
-	   selector: '.btn-primary'
-	});
-	buttonplate.init({
-	   selector: '.btn-secondary'
-	});
-	</script>
-</body>
+```html
+<script src="js/buttonplate.min.js"></script>
+<script>
+buttonplate.init({
+   selector: '.btn-primary'
+});
+buttonplate.init({
+   selector: '.btn-secondary'
+});
+</script>
 ```
 
 ## Author
