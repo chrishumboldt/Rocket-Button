@@ -60,10 +60,10 @@ If you want to enable button drop downs then you will need to execute the follow
 <body>
 	<script src="js/buttonplate.min.js"></script>
 	<script>
-	new buttonplate({
+	buttonplate.init({
 	   selector: '.btn-primary'
 	});
-	new buttonplate({
+	buttonplate.init({
 	   selector: '.btn-secondary'
 	});
 	</script>
