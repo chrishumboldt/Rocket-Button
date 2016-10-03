@@ -7,9 +7,11 @@
 // Component
 var buttonplate = function () {
 	// Variables
+	var buttonDropClassName = 'buttonplate-drop-down';
 	var defaults = {
 		selector: '.button'
 	};
+	var documentOnClick = false;
 	// Webplate tools (partial)
 	var web = {
 		element: {
@@ -39,6 +41,38 @@ var buttonplate = function () {
 				element.className = crtClass === '' ? classValue : crtClass + ' ' + classValue;
 			}
 		},
+		classClear: function (element) {
+			if (this.exists(element)) {
+				element.removeAttribute('class');
+			}
+		},
+		classRemove: function (element, classValue) {
+			var self = this;
+			if (self.exists(element)) {
+				if (typeof classValue === 'object') {
+					for (var i = classValue.length - 1; i >= 0; i--) {
+						self.classRemoveExecute(element, classValue[i]);
+					}
+				} else if (self.hasWhiteSpace(classValue)) {
+					var classes = classValue.split(' ');
+					for (var i = 0, len = classes.length; i < len; i++) {
+						self.classRemoveExecute(element, classes[i]);
+					}
+				} else {
+					self.classRemoveExecute(element, classValue);
+				}
+			}
+		},
+		classRemoveExecute: function (element, classValue) {
+			if (element.className.indexOf(classValue) > -1) {
+				element.className = element.className.split(' ').filter(function (val) {
+					return val != classValue;
+				}).toString().replace(/,/g, ' ');
+				if (element.className === '') {
+					this.classClear(element);
+				}
+			}
+		},
 		exists: function (check) {
 			return (check === null || check === false || typeof (check) == 'undefined') ? false : true;
 		},
@@ -56,35 +90,37 @@ var buttonplate = function () {
 				console.log(text);
 			}
 		}
-	}
+	};
 	// Functions
 	var applyButtonDrop = function (options) {
-		getButtonDrops(options, function (buttonDrops) {
+		var buttonDrops = document.querySelectorAll(options.selector + ' ul');
+		if (buttonDrops.length > 0) {
 			for (var i = 0, len = buttonDrops.length; i < len; i++) {
-				web.classAdd(buttonDrops[i].parentNode, 'buttonplate-drop-down');
+				web.classAdd(buttonDrops[i].parentNode, buttonDropClassName);
 				applyButtonDropEvent(buttonDrops[i].parentNode, buttonDrops[i]);
 			}
-		});
+		}
 	};
 	var applyButtonDropEvent = function (button, dropDown) {
 		button.onclick = function () {
 			closeAllOpenButtonDrops();
 			dropDown.style.width = button.clientWidth + 'px';
-			web.classAdd(dropDown, '_open');
+			setTimeout(function () {
+				web.classAdd(dropDown, '_open');
+			}, 50);
+		};
+	};
+	var applyDocumentOnClick = function () {
+		documentOnClick = true;
+		document.onclick = function() {
+			closeAllOpenButtonDrops();
 		};
 	};
 	var closeAllOpenButtonDrops = function () {
-		// var buttonDrops = document.querySelectorAll(options.selector + ' ul');
-		// if (buttonDrops.length > 0) {
-		//
-		// }
-	};
-	var getButtonDrops = function (options, callBack) {
-		var buttonDrops = document.querySelectorAll(options.selector + ' ul');
-		if (buttonDrops.length > 0 && typeof callBack === 'function') {
-			return callBack(buttonDrops);
+		var openDropDowns = document.querySelectorAll('.' + buttonDropClassName + ' ul._open');
+		for (var i = 0, len = openDropDowns.length; i < len; i++) {
+			web.classRemove(openDropDowns[i], '_open');
 		}
-		return false;
 	};
 	var touchCheck = function () {
 		if (!web.isTouch()) {
@@ -96,10 +132,13 @@ var buttonplate = function () {
 		var userOptions = userOptions || false;
 		var options = {
 			selector: userOptions.selector || defaults.selector
-		}
+		};
 
 		// Execute
 		applyButtonDrop(options);
+		if (!documentOnClick) {
+			applyDocumentOnClick();
+		}
 	};
 	// Return
 	return {
@@ -111,112 +150,3 @@ var buttonplate = function () {
 
 // Execute
 buttonplate.touchCheck();
-
-/*
-var $buttonplateDefault = {
-	selector: '.button'
-};
-
-var buttonplate = function($userOptions) {
-	// Tools
-	var tool = function(document) {
-		// Variables
-		var $toolEl = {
-			body: document.getElementsByTagName('body')[0],
-			html: document.getElementsByTagName('html')[0]
-		};
-
-		// Functions
-		var classAdd = function($element, $class) {
-			var $crtClass = $element.className;
-			if ($crtClass.match(new RegExp('\\b' + $class + '\\b', 'g')) === null) {
-				$element.className = $crtClass === '' ? $class : $crtClass + ' ' + $class;
-			}
-		};
-		var classClear = function($element) {
-			$element.removeAttribute('class');
-		};
-		var classRemove = function($element, $class) {
-			if ($element.className.indexOf($class) > -1) {
-				$element.className = $element.className.split(' ').filter(function($val) {
-					return $val != $class;
-				}).toString().replace(/,/g, ' ');
-				if ($element.className === '') {
-					classClear($element);
-				}
-			}
-		};
-		var isTouch = function() {
-			return 'ontouchstart' in window || 'onmsgesturechange' in window;
-		};
-
-		return {
-			classAdd: classAdd,
-			classClear: classClear,
-			classRemove: classRemove,
-			element: $toolEl,
-			isTouch: isTouch
-		}
-	}(document);
-
-	// Select elements
-	var $selector = ($userOptions && $userOptions.selector) ? $userOptions.selector : $buttonplateDefault.selector;
-	var $selectorType = $selector.charAt(0).toString();
-	if ($selectorType === '#' && $selector.indexOf('.') < 0) {
-		new buttonplateComponent(document.getElementById($selector.substring(1)), tool);
-	} else {
-		var $elements = document.querySelectorAll($selector);
-		for (var $i = 0; $i < $elements.length; $i++) {
-			new buttonplateComponent($elements[$i], tool);
-		}
-	}
-};
-
-var buttonplateComponent = function($this, tool) {
-	// Variables
-	var $self = $this;
-	var $buttonDropDown = $self.getElementsByTagName('ul')[0];
-
-	// Internal functions
-	function basicSetup() {
-		if (!tool.isTouch()) {
-			tool.classAdd(tool.element.html, 'buttonplate-no-touch');
-		}
-	};
-
-	function buttonDropDownSetup() {
-		if ($buttonDropDown !== undefined) {
-			tool.classAdd($self, 'buttonplate-drop-down');
-			buttonDropDownTrigger();
-		}
-	};
-
-	function buttonDropDownTrigger() {
-		// Hide existing
-		document.onclick = function() {
-			var $openDropDowns = document.querySelectorAll('.buttonplate-drop-down .open');
-			for (var $i = $openDropDowns.length - 1; $i >= 0; $i--) {
-				tool.classRemove($openDropDowns[$i], 'open');
-			};
-		};
-		$buttonDropDown.onclick = function() {
-			setTimeout(function() {
-				tool.classRemove($buttonDropDown, 'open');
-			}, 15);
-		};
-
-		// Show
-		$self.onclick = function() {
-			setTimeout(function() {
-				var $buttonW = $self.clientWidth;
-				$buttonDropDown.style.width = $buttonW + 'px';
-				tool.classAdd($buttonDropDown, 'open');
-			});
-		};
-	}
-
-	// Calls
-	basicSetup();
-	buttonDropDownSetup();
-};
-*/
