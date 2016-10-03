@@ -5,7 +5,7 @@
 **/
 
 // Component
-var buttonplate = function () {
+var Buttonplate = function () {
 	// Variables
 	var buttonDropClassName = 'buttonplate-drop-down';
 	var defaults = {
@@ -149,4 +149,4 @@ var buttonplate = function () {
 }();
 
 // Execute
-buttonplate.touchCheck();
+Buttonplate.touchCheck();
