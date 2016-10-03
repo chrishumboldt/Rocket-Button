@@ -65,10 +65,10 @@ bower install buttonplate
 &lt;body&gt;
    &lt;script src=&quot;js/buttonplate.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
-   new buttonplate({
+   buttonplate.init({
       selector: '.btn-primary'
    });
-   new buttonplate({
+   buttonplate.init({
       selector: '.btn-secondary'
    });
    &lt;/script&gt;
@@ -116,7 +116,7 @@ bower install buttonplate
 			<a href class="button line-yellow">Yellow</a>
 	      <br><br>
 			<h5>Drop Down Button</h5>
-			<div class="button">
+			<div id="button-drop-1" class="button">
 				Drop-Down Default<div class="arrow"></div>
 				<ul>
 					<li><a href>Link 1</a></li>
@@ -124,12 +124,14 @@ bower install buttonplate
 					<li class="line-top"><a href>Link 3</a></li>
 				</ul>
 			</div>
-			<div class="button blue">
+			<div id="button-drop-2" class="button blue">
 				Drop-Down Blue<div class="arrow"></div>
 				<ul>
 					<li><a href>Link 1</a></li>
 					<li><a href>Link 2</a></li>
-					<li class="line-top"><a href>Link 3</a></li>
+					<li><a href>Link 3</a></li>
+					<li><a href>Link 4</a></li>
+					<li class="line-top"><a href>Link 5</a></li>
 				</ul>
 			</div>
 	      <br><br>
@@ -163,7 +165,12 @@ bower install buttonplate
    <script src="bower_components/webplate-demo/js/demo.min.js"></script>
    <script src="js/buttonplate.min.js"></script>
 	<script>
-	new buttonplate();
+	buttonplate.init({
+		selector: '#button-drop-1'
+	});
+	buttonplate.init({
+		selector: '#button-drop-2'
+	});
    var $buttons = document.querySelectorAll('a.button');
    for (var $i = $buttons.length - 1; $i >= 0; $i--) {
       $buttons[$i].onclick = function(event) {

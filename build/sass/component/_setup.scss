@@ -1,11 +1,10 @@
 /**
- * File: _setup.scss
- * Type: SASS module
+ * File: build/sass/component/_setup.scss
+ * Type: SASS component file
  * Author: Chris Humboldt
- */
+**/
 
 // Font face
-// ---------------------------------------------------------------------------------------
 @font-face {
 	font-family: 'buttonplate';
 	src:url('#{$font-face-buttonplate}/icomoon.eot?c4hmew');
@@ -18,7 +17,6 @@
 }
 
 // Button setup
-// ---------------------------------------------------------------------------------------
 @mixin button-setup($font: true) {
 	@include position(relative);
 	@include display(inline-block);
@@ -43,7 +41,6 @@
 		text-shadow: fade-out($white, 0.75) 0px 1px 0;
 		@include background-colour($grey-light);
 	}
-
 	.arrow {
 		@include display(inline-block);
 		@include height(10px);
@@ -57,7 +54,6 @@
 		text-transform: none;
 		-webkit-font-smoothing: antialiased;
 		-moz-osx-font-smoothing: grayscale;
-
 		&:before {
 			content: "\f107";
 		}
@@ -68,6 +64,6 @@
 	-ms-transition: border 0.2s ease-out, background 0.2s ease-out;
 	-o-transition: border 0.2s ease-out, background 0.2s ease-out;
 	transition: border 0.2s ease-out, background 0.2s ease-out;
-
+	
 	@include drop-down();
 }

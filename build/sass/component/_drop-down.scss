@@ -1,11 +1,10 @@
 /**
- * File: _drop-down.scss
- * Type: SASS module
+ * File: build/sass/component/_drop-down.scss
+ * Type: SASS component file
  * Author: Chris Humboldt
- */
+**/
 
 // Table of contents
-// ---------------------------------------------------------------------------------------
 // Variables
 // Drop-downs
 // Set line
@@ -13,12 +12,10 @@
 // Drop-down link hover
 
 // Variables
-// ---------------------------------------------------------------------------------------
 $default-colour: $blue;
 $away-from-button: 4px;
 
 // Drop-downs
-// ---------------------------------------------------------------------------------------
 @mixin drop-down($colour: $default-colour) {
 	&.buttonplate-drop-down {
 		// List
@@ -33,7 +30,6 @@ $away-from-button: 4px;
 			@include level(2);
 			@include opacity(0);
 			@include visibility(hidden);
-
 			li {
 				@include spacing-no();
 
@@ -49,7 +45,6 @@ $away-from-button: 4px;
 				&.line-bottom {
 					@include set-line(bottom);
 				}
-
 				// Links
 				a {
 					@include display(block);
@@ -57,15 +52,13 @@ $away-from-button: 4px;
 					@include text-colour($black-base);
 					text-decoration: none;
 					vertical-align: middle;
-
 					.buttonplate-no-touch &:hover {
 						@include background-colour(darken($grey-x-light, 3%));
 					}
 				}
 			}
-
 			// Show state
-			&.open {
+			&._open {
 				@include opacity(1);
 				@include visibility(visible);
 				@include animate(all, 0.4s);
@@ -75,9 +68,7 @@ $away-from-button: 4px;
 }
 
 // Set line
-// ---------------------------------------------------------------------------------------
 @mixin set-line($position: top) {
-
 	// Determine where the line goes
 	@if $position == top {
 		@include border-top($grey-light);
@@ -88,15 +79,10 @@ $away-from-button: 4px;
 }
 
 // Drop-down position
-// ---------------------------------------------------------------------------------------
 @mixin drop-down-position($spacing, $link-height, $font-size) {
-
-	// Arrow
 	.arrow {
 		@include margin-left($spacing / 2);
 	}
-
-	// Drop down
 	&.buttonplate-drop-down {
 		ul {
 			@include margin-left(-$spacing);
@@ -111,14 +97,11 @@ $away-from-button: 4px;
 }
 
 // Drop-down link hover
-// ---------------------------------------------------------------------------------------
 @mixin drop-down-link-hover($colour, $lighten: 0%) {
-
 	// Colour
 	@if lightness($colour) < 68% {
 		@include text-colour($white);
 	}
-
 	// Check saturations
 	@if saturation($colour) > 0% {
 		@if saturation($colour) > 38% {
