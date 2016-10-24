@@ -4,149 +4,227 @@
  * Author: Chris Humboldt
 **/
 
-// Component
-var Buttonplate = function () {
+// Webplate tools module extension
+var Web = (function (Web) {
 	// Variables
-	var buttonDropClassName = 'buttonplate-drop-down';
-	var defaults = {
-		selector: '.button'
-	};
-	var documentOnClick = false;
-	// Webplate tools (partial)
-	var web = {
-		element: {
+	if (!Web.element) {
+		var webEl = {
 			body: document.getElementsByTagName('body')[0],
-			html: document.getElementsByTagName('html')[0]
-		},
-		classAdd: function (element, classValue) {
-			var self = this;
-			if (self.exists(element)) {
-				if (typeof classValue === 'object') {
-					for (var i = 0, len = classValue.length; i < len; i++) {
-						self.classAddExecute(element, classValue[i]);
-					}
-				} else if (self.hasWhiteSpace(classValue)) {
-					var classes = classValue.split(' ');
-					for (var i = 0, len = classes.length; i < len; i++) {
-						self.classAddExecute(element, classes[i]);
-					}
-				} else {
-					self.classAddExecute(element, classValue);
-				}
-			}
-		},
-		classAddExecute: function (element, classValue) {
-			var crtClass = element.className;
-			if (crtClass.match(new RegExp('\\b' + classValue + '\\b', 'g')) === null) {
-				element.className = crtClass === '' ? classValue : crtClass + ' ' + classValue;
-			}
-		},
-		classClear: function (element) {
-			if (this.exists(element)) {
-				element.removeAttribute('class');
-			}
-		},
-		classRemove: function (element, classValue) {
-			var self = this;
-			if (self.exists(element)) {
-				if (typeof classValue === 'object') {
-					for (var i = classValue.length - 1; i >= 0; i--) {
-						self.classRemoveExecute(element, classValue[i]);
-					}
-				} else if (self.hasWhiteSpace(classValue)) {
-					var classes = classValue.split(' ');
-					for (var i = 0, len = classes.length; i < len; i++) {
-						self.classRemoveExecute(element, classes[i]);
-					}
-				} else {
-					self.classRemoveExecute(element, classValue);
-				}
-			}
-		},
-		classRemoveExecute: function (element, classValue) {
-			if (element.className.indexOf(classValue) > -1) {
-				element.className = element.className.split(' ').filter(function (val) {
-					return val != classValue;
-				}).toString().replace(/,/g, ' ');
-				if (element.className === '') {
-					this.classClear(element);
-				}
-			}
-		},
-		exists: function (check) {
+			html: document.getElementsByTagName('html')[0],
+			title: document.getElementsByTagName('title')[0],
+			webplateScript: document.getElementById('webplate')
+		};
+		Web.element = webEl;
+	}
+	// Basic checks
+	if (!Web.exists) {
+		var exists = function (check) {
 			return (check === null || check === false || typeof (check) == 'undefined') ? false : true;
-		},
-		hasClass: function (element, classValue) {
-			return (' ' + element.className + ' ').indexOf(' ' + classValue + ' ') > -1;
-		},
-		hasWhiteSpace: function (check) {
-			return /\s/.test(check);
-		},
-		isTouch: function () {
-			return 'ontouchstart' in window || 'onmsgesturechange' in window;
-		},
-		log: function (text) {
+		};
+		Web.exists = exists;
+	}
+	if (!Web.has) {
+		var has = {
+			spaces: function (check) {
+				return /\s/.test(check);
+			},
+			class: function (element, className) {
+				return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
+			}
+		};
+		Web.has = has;
+	}
+	if (!Web.is) {
+		var is = {
+			touch: function () {
+				return 'ontouchstart' in window || 'onmsgesturechange' in window;
+			}
+		};
+		Web.is = is;
+	}
+	// Classes
+	if (!Web.class) {
+		var classMethods = {
+			add: function (element, className) {
+				if (exists(element)) {
+					if (typeof className === 'object') {
+						for (var i = 0, len = className.length; i < len; i++) {
+							classMethods.addExecute(element, className[i]);
+						}
+					} else if (has.spaces(className)) {
+						var classes = className.split(' ');
+						for (var i = 0, len = classes.length; i < len; i++) {
+							classMethods.addExecute(element, classes[i]);
+						}
+					} else {
+						classMethods.addExecute(element, className);
+					}
+				}
+			},
+			addExecute: function (element, className) {
+				var crtClass = element.className;
+				if (crtClass.match(new RegExp('\\b' + className + '\\b', 'g')) === null) {
+					element.className = crtClass === '' ? className : crtClass + ' ' + className;
+				}
+			},
+			clear: function (element) {
+				if (exists(element)) {
+					element.removeAttribute('class');
+				}
+			},
+			remove: function (element, className) {
+				if (exists(element)) {
+					if (typeof className === 'object') {
+						for (var i = className.length - 1; i >= 0; i--) {
+							classMethods.removeExecute(element, className[i]);
+						}
+					} else if (has.spaces(className)) {
+						var classes = className.split(' ');
+						for (var i = 0, len = classes.length; i < len; i++) {
+							classMethods.removeExecute(element, classes[i]);
+						}
+					} else {
+						classMethods.removeExecute(element, className);
+					}
+				}
+			},
+			removeExecute: function (element, className) {
+				if (element.className.indexOf(className) > -1) {
+					element.className = element.className.split(' ').filter(function (val) {
+						return val != className;
+					}).toString().replace(/,/g, ' ');
+					if (element.className === '') {
+						classMethods.clear(element);
+					}
+				}
+			}
+		};
+		Web.class = classMethods;
+	}
+	// Development
+	if (!Web.log) {
+		var log = function (text) {
 			if (window && window.console) {
 				console.log(text);
 			}
-		}
-	};
-	// Functions
-	var applyButtonDrop = function (options) {
-		var buttonDrops = document.querySelectorAll(options.selector + ' ul');
-		if (buttonDrops.length > 0) {
-			for (var i = 0, len = buttonDrops.length; i < len; i++) {
-				web.classAdd(buttonDrops[i].parentNode, buttonDropClassName);
-				applyButtonDropEvent(buttonDrops[i].parentNode, buttonDrops[i]);
+		};
+		Web.log = log;
+	}
+	// Events
+	if (!Web.event) {
+		var eventMethods = {
+			add: function (elem, type, eventHandle) {
+				if (elem == null || typeof (elem) == 'undefined') return;
+				if (elem.addEventListener) {
+					elem.addEventListener(type, eventHandle, false);
+				} else if (elem.attachEvent) {
+					elem.attachEvent('on' + type, eventHandle);
+				} else {
+					elem['on' + type] = eventHandle;
+				}
+			},
+			remove: function (elem, type, eventHandle) {
+				if (elem == null || typeof (elem) == 'undefined') return;
+				if (elem.removeEventListener) {
+					elem.removeEventListener(type, eventHandle, false);
+				} else if (elem.detachEvent) {
+					elem.detachEvent('on' + type, eventHandle);
+				} else {
+					elem['on' + type] = eventHandle;
+				}
 			}
+		};
+		Web.event = eventMethods;
+	}
+
+	return Web;
+})(Web || {});
+
+// Component container
+var Buttonplate = (function () {
+	// Variables
+	var defaults = {
+		selector: '.button'
+	};
+	var buttonDropClassName = 'buttonplate-drop-down';
+	var documentOnClick = false;
+
+	// Inner component
+	var component = function (button) {
+		// Variables
+		var buttonUL = button.querySelector('ul');
+		// Check
+		if (!buttonUL) {
+			return false;
 		}
-	};
-	var applyButtonDropEvent = function (button, dropDown) {
-		button.onclick = function () {
-			closeAllOpenButtonDrops();
-			dropDown.style.width = button.clientWidth + 'px';
+		// Functions
+		var applyButtonDrop = function () {
+			Web.class.add(button, buttonDropClassName);
+			button.onclick = function () {
+				buttonOpen();
+			};
+		};
+		var buttonClose = function () {
+			Web.class.remove(buttonUL, '_open');
+		};
+		var buttonOpen = function () {
+			closeAll();
+			buttonUL.style.width = button.clientWidth + 'px';
 			setTimeout(function () {
-				web.classAdd(dropDown, '_open');
-			}, 50);
+				Web.class.add(buttonUL, '_open');
+			});
+		};
+		// Execute and return
+		applyButtonDrop();
+		return {
+			button: button,
+			close: buttonClose,
+			open: buttonOpen
 		};
 	};
-	var applyDocumentOnClick = function () {
-		documentOnClick = true;
-		document.onclick = function() {
-			closeAllOpenButtonDrops();
-		};
-	};
-	var closeAllOpenButtonDrops = function () {
+
+	// Functions
+	var closeAll = function () {
 		var openDropDowns = document.querySelectorAll('.' + buttonDropClassName + ' ul._open');
 		for (var i = 0, len = openDropDowns.length; i < len; i++) {
-			web.classRemove(openDropDowns[i], '_open');
+			Web.class.remove(openDropDowns[i], '_open');
 		}
 	};
-	var touchCheck = function () {
-		if (!web.isTouch()) {
-			web.classAdd(web.element.html, 'buttonplate-no-touch');
+	var setup = function () {
+		if (!Web.is.touch()) {
+			Web.class.add(Web.element.html, 'bp-no-touch');
+		}
+		if (!documentOnClick) {
+			documentOnClick = true;
+			Web.event.add(document, 'click', function () {
+				closeAll();
+			});
 		}
 	};
+
 	// Initialiser
 	var init = function (userOptions) {
-		var userOptions = userOptions || false;
+		var userOptions = (typeof userOptions === 'object') ? userOptions : false;
 		var options = {
 			selector: userOptions.selector || defaults.selector
 		};
-
-		// Execute
-		applyButtonDrop(options);
-		if (!documentOnClick) {
-			applyDocumentOnClick();
+		var buttons = document.querySelectorAll(options.selector);
+		if (buttons.length < 1) {
+			return false;
 		}
+		// Initialise each and return
+		var objReturn = [];
+		for (var i = 0, len = buttons.length; i < len; i++) {
+		   objReturn.push(new component(buttons[i]));
+		}
+		return objReturn;
 	};
-	// Return
+
+	// Execute and return
+	setup();
 	return {
 		defaults: defaults,
-		init: init,
-		touchCheck: touchCheck
-	};
-}();
-
-// Execute
-Buttonplate.touchCheck();
+		closeAll: closeAll,
+		init: init
+	}
+})();

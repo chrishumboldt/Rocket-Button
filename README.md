@@ -46,12 +46,12 @@ Instead of including the CSS file above, you can import the SASS file and create
 
 There are a variety of options for the SASS builds.
 
-SASS | Default | Options | Description
----- | ---- | ---- | ----
-button-setup() | | | This is a required function that needs to be made on all buttons.
-button-shape(x) | rounded | pill, rounded, square | Set the shape of the button.
-button-size(x) | normal | small, normal, large, x-large | Set the size of the button.
-button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour.
+| SASS | Default | Options | Description |
+| ---- | ---- | ---- | ---- |
+| button-setup() | | | This is a required function that needs to be made on all buttons. |
+| button-shape(x) | rounded | pill, rounded, square | Set the shape of the button. |
+| button-size(x) | normal | small, normal, large, x-large | Set the size of the button. |
+| button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour. |
 
 ## Javascript call
 If you want to enable button drop downs then you will need to execute the following Javascript.
@@ -66,6 +66,35 @@ Buttonplate.init({
    selector: '.btn-secondary'
 });
 </script>
+```
+
+Each initialisation will return an array of component objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
+
+```javascript
+var myButton = Buttonplate.init({
+	selector: '#my-button'
+});
+// The button and all methods
+console.log(myButton[0].button);
+myButton[0].open();
+setTimeout(function () {
+	myButton[0].close();
+}, 4000);
+```
+
+Alternatively if you know the button selector is unique you can reference the button right away by including the 0 index. For example:
+
+```javascript
+var myButton = Buttonplate.init({
+	selector: '#my-button'
+})[0]; // Reference the first item in the array right away.
+```
+
+## Close All Drop Downs
+If you wish to close all open drop downs globally, for whatever reason, call the following Javascript method:
+
+```javascript
+Buttonplate.closeAll();
 ```
 
 ## Author
