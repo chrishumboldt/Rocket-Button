@@ -57,13 +57,19 @@ There are a variety of options for the SASS builds.
 If you want to enable button drop downs then you will need to execute the following Javascript.
 
 ```html
+<div id="btn-primary" class="button">
+	Drop-Down Default<div class="arrow"></div>
+	<ul>
+		<li><a href>Link 1</a></li>
+		<li><a href>Link 2</a></li>
+		<li class="line-top"><a href>Link 3</a></li>
+	</ul>
+</div>
+
 <script src="js/buttonplate.min.js"></script>
 <script>
 Buttonplate.init({
    selector: '.btn-primary'
-});
-Buttonplate.init({
-   selector: '.btn-secondary'
 });
 </script>
 ```
