@@ -171,6 +171,7 @@ bower install buttonplate
 	Buttonplate.init({
 		selector: '#button-drop-2'
 	});
+   // Stop all button events
    var $buttons = document.querySelectorAll('a.button');
    for (var $i = $buttons.length - 1; $i >= 0; $i--) {
       $buttons[$i].onclick = function(event) {
