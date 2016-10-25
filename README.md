@@ -54,41 +54,44 @@ There are a variety of options for the SASS builds.
 | button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour. |
 
 ## Javascript call
-If you want to enable button drop downs then you will need to execute the following Javascript.
+If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.
 
 ```html
-<div id="btn-primary" class="button">
-	Drop-Down Default<div class="arrow"></div>
-	<ul>
-		<li><a href>Link 1</a></li>
-		<li><a href>Link 2</a></li>
-		<li class="line-top"><a href>Link 3</a></li>
-	</ul>
-</div>
+<body>
+	<div id="btn-primary" class="button">
+		Drop-Down Default<div class="arrow"></div>
+		<ul>
+			<li><a href>Link 1</a></li>
+			<li><a href>Link 2</a></li>
+			<li class="line-top"><a href>Link 3</a></li>
+		</ul>
+	</div>
 
-<script src="js/buttonplate.min.js"></script>
-<script>
-Buttonplate.init({
-   selector: '.btn-primary'
-});
-</script>
+	// Include the script
+	<script src="js/buttonplate.min.js"></script>
+	<script>
+	Buttonplate.init({
+	   selector: '.btn-primary'
+	});
+	</script>
+</body>
 ```
 
 Each initialisation will return an array of component objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
-var myButton = Buttonplate.init({
-	selector: '#my-button'
+var buttons = Buttonplate.init({
+	selector: '.button'
 });
-// The button and all methods
-console.log(myButton[0].button);
-myButton[0].open();
-setTimeout(function () {
-	myButton[0].close();
-}, 4000);
+// The buttons and all methods
+for (var i = 0, len = buttons.length; i < len; i++) {
+   console.log(buttons[i].button);
+	myButton[i].open();
+	myButton[i].close();
+}
 ```
 
-Alternatively if you know the button selector is unique you can reference the button right away by including the 0 index. For example:
+Alternatively if you know the button selector is unique you can reference the button right away with the 0 index. For example:
 
 ```javascript
 var myButton = Buttonplate.init({

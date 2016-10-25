@@ -63,6 +63,16 @@ bower install buttonplate
 	      <p>If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;body&gt;
+   &lt;div id="btn-primary" class="button"&gt;
+      Drop-Down Default&lt;div class="arrow"&gt;&lt;/div&gt;
+      &lt;ul&gt;
+         &lt;li&gt;&lt;a href&gt;Link 1&lt;/a&gt;&lt;/li&gt;
+         &lt;li&gt;&lt;a href&gt;Link 2&lt;/a&gt;&lt;/li&gt;
+         &lt;li class="line-top"&gt;&lt;a href&gt;Link 3&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+   &lt;/div&gt;
+	
+   // Include the script
    &lt;script src=&quot;js/buttonplate.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
    Buttonplate.init({
