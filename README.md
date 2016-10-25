@@ -17,14 +17,27 @@ Start by including the necessary files.
 </head>
 ```
 
-Now class your button to gain the desired effect. For example:
+Now class your button with a modifier to gain the desired effect. For example:
 
 ```html
-<button class="button line-red large">Example Button</button>
+<button class="button _line-red _large">Example Button</button>
 ```
 
+There are a variety of options for the CSS modifiers.
+
+| Class | Options | Description |
+| ---- |  ---- | ---- |
+| _(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the colour of the button to **x** |
+| _flat-(x) | | Set the style of the button to flat and the colour to **x**. |
+| _gradient-(x) | | Set the style of the button to gradient and the colour to **x**. |
+| _line-(x) | | Set the style of the button to line and the colour to **x**. |
+| _(y) | small, normal, large, x-large | Set the size of the the button to **y** |
+| _(z) | rounded, pill, square | Set the shape of the the button to **z** |
+
+If no modifiers are provided then the colour will default to grey, the style to flat, the size to normal and the shape to rounded.
+
 ## SASS Implementation
-Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:
+Instead of including the CSS file above, you can import theSASS file and create your own button styles. See an example below:
 
 ```scss
 @import "buttonplate/build/sass/import";
@@ -58,7 +71,7 @@ If you want to enable button drop downs then you will need to execute the follow
 
 ```html
 <body>
-	<div id="btn-primary" class="button">
+	<div id="btn-primary" class="button _blue">
 		Drop-Down Default<div class="arrow"></div>
 		<ul>
 			<li><a href>Link 1</a></li>
