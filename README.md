@@ -28,9 +28,9 @@ There are a variety of options for the CSS modifiers.
 | Class | Options | Description |
 | ---- |  ---- | ---- |
 | _(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the colour of the button to **x** |
-| _flat-(x) | | Set the style of the button to flat and the colour to **x**. |
-| _gradient-(x) | | Set the style of the button to gradient and the colour to **x**. |
-| _line-(x) | | Set the style of the button to line and the colour to **x**. |
+| _flat-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to flat and the colour to **x**. |
+| _gradient-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to gradient and the colour to **x**. |
+| _line-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to line and the colour to **x**. |
 | _(y) | small, normal, large, x-large | Set the size of the the button to **y** |
 | _(z) | rounded, pill, square | Set the shape of the the button to **z** |
 
