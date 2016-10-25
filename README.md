@@ -85,7 +85,7 @@ var buttons = Buttonplate.init({
 });
 // The buttons and all methods
 for (var i = 0, len = buttons.length; i < len; i++) {
-   console.log(buttons[i].button);
+	console.log(buttons[i].button);
 	myButton[i].open();
 	myButton[i].close();
 }
