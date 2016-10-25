@@ -34,9 +34,9 @@ bower install buttonplate
     &lt;link href=&quot;css/buttonplate.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 </pre>
-	      <p>Now class your button to gain the desired effect. For example:</p>
+	      <p>Now class your button with modifiers to gain the desired effect. For example:</p>
 <pre class="prettyprint linenums">
-&lt;button class=&quot;button line-red large&quot;&gt;Example Button&lt;/button&gt;
+&lt;button class=&quot;button _line-red _large&quot;&gt;Example Button&lt;/button&gt;
 </pre>
 			<br>
 	      <h4>SASS Implementation</h4>
@@ -63,7 +63,7 @@ bower install buttonplate
 	      <p>If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;body&gt;
-   &lt;div id="btn-primary" class="button"&gt;
+   &lt;div id="btn-primary" class="button _blue"&gt;
       Drop-Down Default&lt;div class="arrow"&gt;&lt;/div&gt;
       &lt;ul&gt;
          &lt;li&gt;&lt;a href&gt;Link 1&lt;/a&gt;&lt;/li&gt;
@@ -71,7 +71,7 @@ bower install buttonplate
          &lt;li class="line-top"&gt;&lt;a href&gt;Link 3&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
    &lt;/div&gt;
-	
+
    // Include the script
    &lt;script src=&quot;js/buttonplate.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
@@ -87,43 +87,43 @@ bower install buttonplate
 	      <br>
 	      <h4>Working Examples</h4>
 			<p>Flat Buttons</p>
-			<a href class="button white">White</a>
-			<a href class="button grey">Grey</a>
-			<a href class="button black">Black</a>
-			<a href class="button aqua">Aqua</a>
-			<a href class="button blue">Blue</a>
-			<a href class="button green">Green</a>
-			<a href class="button orange">Orange</a>
-			<a href class="button pink">Pink</a>
-			<a href class="button purple">Purple</a>
-			<a href class="button red">Red</a>
-			<a href class="button yellow">Yellow</a>
+			<a href class="button _white">White</a>
+			<a href class="button _grey">Grey</a>
+			<a href class="button _black">Black</a>
+			<a href class="button _aqua">Aqua</a>
+			<a href class="button _blue">Blue</a>
+			<a href class="button _green">Green</a>
+			<a href class="button _orange">Orange</a>
+			<a href class="button _pink">Pink</a>
+			<a href class="button _purple">Purple</a>
+			<a href class="button _red">Red</a>
+			<a href class="button _yellow">Yellow</a>
 	      <br><br>
 			<p>Gradient Buttons</p>
-			<a href class="button gradient-white">White</a>
-			<a href class="button gradient-grey">Grey</a>
-			<a href class="button gradient-black">Black</a>
-			<a href class="button gradient-aqua">Aqua</a>
-			<a href class="button gradient-blue">Blue</a>
-			<a href class="button gradient-green">Green</a>
-			<a href class="button gradient-orange">Orange</a>
-			<a href class="button gradient-pink">Pink</a>
-			<a href class="button gradient-purple">Purple</a>
-			<a href class="button gradient-red">Red</a>
-			<a href class="button gradient-yellow">Yellow</a>
+			<a href class="button _gradient-white">White</a>
+			<a href class="button _gradient-grey">Grey</a>
+			<a href class="button _gradient-black">Black</a>
+			<a href class="button _gradient-aqua">Aqua</a>
+			<a href class="button _gradient-blue">Blue</a>
+			<a href class="button _gradient-green">Green</a>
+			<a href class="button _gradient-orange">Orange</a>
+			<a href class="button _gradient-pink">Pink</a>
+			<a href class="button _gradient-purple">Purple</a>
+			<a href class="button _gradient-red">Red</a>
+			<a href class="button _gradient-yellow">Yellow</a>
 	      <br><br>
 			<p>Line Buttons</p>
-			<a href class="button line-white">White</a>
-			<a href class="button line-grey">Grey</a>
-			<a href class="button line-black">Black</a>
-			<a href class="button line-aqua">Aqua</a>
-			<a href class="button line-blue">Blue</a>
-			<a href class="button line-green">Green</a>
-			<a href class="button line-orange">Orange</a>
-			<a href class="button line-pink">Pink</a>
-			<a href class="button line-purple">Purple</a>
-			<a href class="button line-red">Red</a>
-			<a href class="button line-yellow">Yellow</a>
+			<a href class="button _line-white">White</a>
+			<a href class="button _line-grey">Grey</a>
+			<a href class="button _line-black">Black</a>
+			<a href class="button _line-aqua">Aqua</a>
+			<a href class="button _line-blue">Blue</a>
+			<a href class="button _line-green">Green</a>
+			<a href class="button _line-orange">Orange</a>
+			<a href class="button _line-pink">Pink</a>
+			<a href class="button _line-purple">Purple</a>
+			<a href class="button _line-red">Red</a>
+			<a href class="button _line-yellow">Yellow</a>
 	      <br><br>
 			<h5>Drop Down Button</h5>
 			<div id="button-drop-1" class="button">
@@ -134,7 +134,7 @@ bower install buttonplate
 					<li class="line-top"><a href>Link 3</a></li>
 				</ul>
 			</div>
-			<div id="button-drop-2" class="button blue">
+			<div id="button-drop-2" class="button _blue">
 				Drop-Down Blue<div class="arrow"></div>
 				<ul>
 					<li><a href>Link 1</a></li>
@@ -146,15 +146,15 @@ bower install buttonplate
 			</div>
 	      <br><br>
 			<h5>Button Sizes</h5>
-			<a href class="button green small">Small</a>
-			<a href class="button green">Normal</a>
-			<a href class="button green large">Large</a>
-			<a href class="button green x-large">Extra Large</a>
+			<a href class="button _green _small">Small</a>
+			<a href class="button _green">Normal</a>
+			<a href class="button _green _large">Large</a>
+			<a href class="button _green _x-large">Extra Large</a>
 	      <br><br>
 			<h5>Button Shapes</h5>
-			<a href class="button red">Rounded (default)</a>
-			<a href class="button red pill">Pill Button</a>
-			<a href class="button red square">Squared Button</a>
+			<a href class="button _red">Rounded (default)</a>
+			<a href class="button _red _pill">Pill Button</a>
+			<a href class="button _red _square">Squared Button</a>
 	      <br><br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Buttonplate" class="link">https://github.com/chrishumboldt/Buttonplate</a></p>
