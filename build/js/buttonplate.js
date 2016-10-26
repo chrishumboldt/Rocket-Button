@@ -6,16 +6,6 @@
 
 // Webplate tools module extension
 var Web = (function (Web) {
-	// Variables
-	if (!Web.element) {
-		var webEl = {
-			body: document.getElementsByTagName('body')[0],
-			html: document.getElementsByTagName('html')[0],
-			title: document.getElementsByTagName('title')[0],
-			webplateScript: document.getElementById('webplate')
-		};
-		Web.element = webEl;
-	}
 	// Basic checks
 	if (!Web.exists) {
 		var exists = function (check) {
@@ -26,7 +16,7 @@ var Web = (function (Web) {
 	if (!Web.has) {
 		var has = {
 			spaces: function (check) {
-				return /\s/.test(check);
+			return /\s/.test(check);
 			},
 			class: function (element, className) {
 				return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
@@ -35,12 +25,12 @@ var Web = (function (Web) {
 		Web.has = has;
 	}
 	if (!Web.is) {
-		var is = {
-			touch: function () {
-				return 'ontouchstart' in window || 'onmsgesturechange' in window;
-			}
+		Web.is = {};
+	}
+	if (!Web.is.touch) {
+		Web.is.touch = function () {
+			return 'ontouchstart' in window || 'onmsgesturechange' in window;
 		};
-		Web.is = is;
 	}
 	// Classes
 	if (!Web.class) {
@@ -110,6 +100,13 @@ var Web = (function (Web) {
 		};
 		Web.log = log;
 	}
+	// DOM
+	if (!Web.dom) {
+		Web.dom = {};
+	}
+	if (!Web.dom.html) {
+		Web.dom.html = document.getElementsByTagName('html')[0];
+	}
 	// Events
 	if (!Web.event) {
 		var eventMethods = {
@@ -149,6 +146,25 @@ var Buttonplate = (function () {
 	var buttonDropClassName = 'buttonplate-drop-down';
 	var documentOnClick = false;
 
+	// Functions
+	var closeAll = function () {
+		var openDropDowns = document.querySelectorAll('.' + buttonDropClassName + ' ul._open');
+		for (var i = 0, len = openDropDowns.length; i < len; i++) {
+			Web.class.remove(openDropDowns[i], '_open');
+		}
+	};
+	var setup = function () {
+		if (!Web.is.touch()) {
+			Web.class.add(Web.dom.html, 'bp-no-touch');
+		}
+		if (!documentOnClick) {
+			documentOnClick = true;
+			Web.event.add(document, 'click', function () {
+				closeAll();
+			});
+		}
+	};
+
 	// Inner component
 	var component = function (button) {
 		// Variables
@@ -181,25 +197,6 @@ var Buttonplate = (function () {
 			close: buttonClose,
 			open: buttonOpen
 		};
-	};
-
-	// Functions
-	var closeAll = function () {
-		var openDropDowns = document.querySelectorAll('.' + buttonDropClassName + ' ul._open');
-		for (var i = 0, len = openDropDowns.length; i < len; i++) {
-			Web.class.remove(openDropDowns[i], '_open');
-		}
-	};
-	var setup = function () {
-		if (!Web.is.touch()) {
-			Web.class.add(Web.element.html, 'bp-no-touch');
-		}
-		if (!documentOnClick) {
-			documentOnClick = true;
-			Web.event.add(document, 'click', function () {
-				closeAll();
-			});
-		}
 	};
 
 	// Initialiser
