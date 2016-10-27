@@ -38,8 +38,8 @@ There are a variety of options for the CSS modifiers.
 | _flat-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to flat and the colour to **x**. |
 | _gradient-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to gradient and the colour to **x**. |
 | _line-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to line and the colour to **x**. |
-| _(y) | small, normal, large, x-large | Set the size of the the button to **y** |
-| _(z) | rounded, pill, square | Set the shape of the the button to **z** |
+| _(y) | small, normal, large, x-large | Set the size of the the button to **y**. |
+| _(z) | rounded, pill, square | Set the shape of the the button to **z**. |
 
 If no modifiers are provided then the colour will default to grey, the style to flat, the size to normal and the shape to rounded.
 
