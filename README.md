@@ -101,9 +101,8 @@ If you want to enable button drop downs then you will need to execute the follow
 Each initialisation will return an array of component objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
-var buttons = Buttonplate.init({
-	selector: '.button'
-});
+// By default the selector option is set to '.button'
+var buttons = Buttonplate.init();
 // The buttons and all methods
 for (var i = 0, len = buttons.length; i < len; i++) {
 	console.log(buttons[i].button);
