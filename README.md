@@ -103,6 +103,7 @@ Each initialisation will return an array of component objects (An array will alw
 ```javascript
 // By default the selector option is set to '.button'
 var buttons = Buttonplate.init();
+
 // The buttons and all methods
 for (var i = 0, len = buttons.length; i < len; i++) {
 	console.log(buttons[i].button);
