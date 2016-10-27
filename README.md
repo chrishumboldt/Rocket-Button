@@ -72,7 +72,7 @@ There are a variety of options for the SASS builds.
 | button-shape(x) | rounded | pill, rounded, square | Set the shape of the button. |
 | button-size(x) | normal | small, normal, large, x-large | Set the size of the button. |
 | button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour. |
-| buttonplate-css(x) | '.button' | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
+| buttonplate-css(x) | '.button' | | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
 
 ## Javascript Call
 If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.
