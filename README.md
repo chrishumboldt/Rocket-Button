@@ -44,7 +44,7 @@ There are a variety of options for the CSS modifiers.
 If no modifiers are provided then the colour will default to grey, the style to flat, the size to normal and the shape to rounded.
 
 ## SASS Implementation
-Instead of including the CSS file above, you can import theSASS file and create your own button styles. See an example below:
+Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:
 
 ```scss
 @import "buttonplate/build/sass/import";
