@@ -107,8 +107,8 @@ var buttons = Buttonplate.init();
 // The buttons and all methods
 for (var i = 0, len = buttons.length; i < len; i++) {
 	console.log(buttons[i].button);
-	myButton[i].open();
-	myButton[i].close();
+	myButton[i].open(); // Open the button drop down
+	myButton[i].close(); // Close the button drop down
 }
 ```
 
