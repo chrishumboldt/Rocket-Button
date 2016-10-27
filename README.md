@@ -121,7 +121,7 @@ var myButton = Buttonplate.init({
 ```
 
 #### Defaults
-You can also set or overwrite the Javascript options globally by altering the defaults. To do so reference the defaults object property. For example:
+You can also overwrite the Javascript selector option globally by altering the defaults. To do so reference the defaults object property. For example:
 
 ```js
 Buttonplate.defaults.selector = '.new-button-class';
