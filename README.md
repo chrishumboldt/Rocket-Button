@@ -1,6 +1,13 @@
 # Buttonplate
 A universal button library.
 
+* [Getting Started](#getting-started)
+* [CSS Implementation](#css-implementation)
+* [SASS Implementation](#sass-implementation)
+* [Javascript Call](#javascript-call)
+	* [Defaults](#defaults)
+	* [Close All Drop Downs](#close-all-drop-downs)
+
 ## Getting Started
 You can either download a copy of the source files or install Buttonplate via Bower.
 
@@ -31,13 +38,13 @@ There are a variety of options for the CSS modifiers.
 | _flat-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to flat and the colour to **x**. |
 | _gradient-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to gradient and the colour to **x**. |
 | _line-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to line and the colour to **x**. |
-| _(y) | small, normal, large, x-large | Set the size of the the button to **y** |
-| _(z) | round, pill, square | Set the shape of the the button to **z** |
+| _(y) | small, normal, large, x-large | Set the size of the the button to **y**. |
+| _(z) | rounded, pill, square | Set the shape of the the button to **z**. |
 
 If no modifiers are provided then the colour will default to grey, the style to flat, the size to normal and the shape to rounded.
 
 ## SASS Implementation
-Instead of including the CSS file above, you can import theSASS file and create your own button styles. See an example below:
+Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:
 
 ```scss
 @import "buttonplate/build/sass/import";
@@ -65,9 +72,10 @@ There are a variety of options for the SASS builds.
 | button-shape(x) | rounded | pill, rounded, square | Set the shape of the button. |
 | button-size(x) | normal | small, normal, large, x-large | Set the size of the button. |
 | button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour. |
+| buttonplate-css(x) | '.button' | | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
 
-## Javascript call
-If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.
+## Javascript Call
+If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the init selector is set to **.button**.
 
 ```html
 <body>
@@ -93,14 +101,14 @@ If you want to enable button drop downs then you will need to execute the follow
 Each initialisation will return an array of component objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
-var buttons = Buttonplate.init({
-	selector: '.button'
-});
+// By default the selector option is set to '.button'
+var buttons = Buttonplate.init();
+
 // The buttons and all methods
 for (var i = 0, len = buttons.length; i < len; i++) {
 	console.log(buttons[i].button);
-	myButton[i].open();
-	myButton[i].close();
+	myButton[i].open(); // Open the button drop down
+	myButton[i].close(); // Close the button drop down
 }
 ```
 
@@ -112,7 +120,14 @@ var myButton = Buttonplate.init({
 })[0]; // Reference the first item in the array right away.
 ```
 
-## Close All Drop Downs
+#### Defaults
+You can also overwrite the Javascript selector option globally by altering the defaults. To do so reference the defaults object property. For example:
+
+```js
+Buttonplate.defaults.selector = '.new-button-class';
+```
+
+#### Close All Drop Downs
 If you wish to close all open drop downs globally, for whatever reason, call the following Javascript method:
 
 ```javascript
