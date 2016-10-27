@@ -75,7 +75,7 @@ There are a variety of options for the SASS builds.
 | buttonplate-css(x) | '.button' | | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
 
 ## Javascript Call
-If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.
+If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the init selector is set to **.button**.
 
 ```html
 <body>
