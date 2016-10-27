@@ -32,7 +32,7 @@ There are a variety of options for the CSS modifiers.
 | _gradient-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to gradient and the colour to **x**. |
 | _line-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to line and the colour to **x**. |
 | _(y) | small, normal, large, x-large | Set the size of the the button to **y** |
-| _(z) | round, pill, square | Set the shape of the the button to **z** |
+| _(z) | rounded, pill, square | Set the shape of the the button to **z** |
 
 If no modifiers are provided then the colour will default to grey, the style to flat, the size to normal and the shape to rounded.
 
@@ -65,6 +65,7 @@ There are a variety of options for the SASS builds.
 | button-shape(x) | rounded | pill, rounded, square | Set the shape of the button. |
 | button-size(x) | normal | small, normal, large, x-large | Set the size of the button. |
 | button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour. |
+| buttonplate-css(x) | '.button' | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
 
 ## Javascript call
 If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.

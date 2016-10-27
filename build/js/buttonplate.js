@@ -16,7 +16,7 @@ var Web = (function (Web) {
 	if (!Web.has) {
 		var has = {
 			spaces: function (check) {
-			return /\s/.test(check);
+				return /\s/.test(check);
 			},
 			class: function (element, className) {
 				return (' ' + element.className + ' ').indexOf(' ' + className + ' ') > -1;
@@ -143,7 +143,7 @@ var Buttonplate = (function () {
 	var defaults = {
 		selector: '.button'
 	};
-	var buttonDropClassName = 'buttonplate-drop-down';
+	var buttonDropClassName = 'bp-drop-down';
 	var documentOnClick = false;
 
 	// Functions
