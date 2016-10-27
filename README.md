@@ -1,6 +1,13 @@
 # Buttonplate
 A universal button library.
 
+* [Getting Started](#getting-started)
+* [CSS Implementation](#css-implementation)
+* [SASS Implementation](#sass-implementation)
+* [Javascript Call](#javascript-call)
+	* [Defaults](#defaults)
+	* [Close All Drop Downs](#close-all-drop-downs)
+
 ## Getting Started
 You can either download a copy of the source files or install Buttonplate via Bower.
 
@@ -67,7 +74,7 @@ There are a variety of options for the SASS builds.
 | button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour. |
 | buttonplate-css(x) | '.button' | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
 
-## Javascript call
+## Javascript Call
 If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.
 
 ```html
@@ -113,7 +120,14 @@ var myButton = Buttonplate.init({
 })[0]; // Reference the first item in the array right away.
 ```
 
-## Close All Drop Downs
+#### Defaults
+You can also set or overwrite the Javascript options globally by altering the defaults. To do so reference the defaults object property. For example:
+
+```js
+Buttonplate.defaults.selector = '.new-button-class';
+```
+
+#### Close All Drop Downs
 If you wish to close all open drop downs globally, for whatever reason, call the following Javascript method:
 
 ```javascript
