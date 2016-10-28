@@ -80,7 +80,7 @@ If you want to enable button drop downs then you will need to execute the follow
 ```html
 <body>
 	<div id="btn-primary" class="button _blue">
-		Drop-Down Default<div class="arrow"></div>
+		Drop Down Default<div class="arrow"></div>
 		<ul>
 			<li><a href>Link 1</a></li>
 			<li><a href>Link 2</a></li>
