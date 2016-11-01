@@ -4,7 +4,10 @@
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A global button library.",
-	"main": ["build/sasss/buttonplate.scss", "build/js/buttonplate.js"],
+	"main": [
+		"build/sass/buttonplate.scss",
+		"build/js/buttonplate.js"
+	],
 	"keywords": [
 		"Webplate",
 		"Component",
