@@ -4,7 +4,7 @@
 		"Chris Humboldt <chrismodem@gmail.com>"
 	],
 	"description": "A global button library.",
-	"main": ["css/buttonplate.min.css", "js/buttonplate.min.js"],
+	"main": ["build/sasss/buttonplate.scss", "build/js/buttonplate.js"],
 	"keywords": [
 		"Webplate",
 		"Component",
@@ -16,8 +16,7 @@
 	"license": "Apache-2.0",
 	"ignore": [
 		"**/.*",
-		"index.html",
-		"bower.json"
+		"index.html"
 	],
 	"devDependencies": {
 		"blueplate": "^2.0.0",
