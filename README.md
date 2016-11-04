@@ -4,7 +4,7 @@ A universal button library.
 * [Getting Started](#getting-started)
 * [CSS Implementation](#css-implementation)
 * [SASS Implementation](#sass-implementation)
-* [Javascript Initialisation](#javascript-initialisation)
+* [Javascript Initialization](#javascript-initialization)
 	* [Defaults](#defaults)
 	* [Close All Drop Downs](#close-all-drop-downs)
 
@@ -74,7 +74,7 @@ There are a variety of options for the SASS builds.
 | button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour. |
 | buttonplate-css(x) | '.button' | | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
 
-## Javascript Initialisation
+## Javascript Initialization
 If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the init selector is set to **.button**.
 
 ```html
@@ -98,7 +98,7 @@ If you want to enable button drop downs then you will need to execute the follow
 </body>
 ```
 
-Each initialisation will return an array of component objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
+Each initialization will return an array of component objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
 // By default the selector option is set to '.button'
