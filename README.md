@@ -7,6 +7,7 @@ A universal button library.
 * [Javascript Initialization](#javascript-initialization)
 	* [Defaults](#defaults)
 	* [Close All Drop Downs](#close-all-drop-downs)
+* [Rocket Tools](#rocket-tools)
 
 ## Launching
 You can either download a copy of the source files or install via NPM.
@@ -126,6 +127,9 @@ You can also overwrite the component selector option globally by altering the Ro
 ```javascript
 Rocket.defaults.button.selector = '.new-button-class';
 ```
+
+#### Rocket Tools
+If you are using this component in conjunction with Rocket Tools, then **always** load the Rocket Tools library first. This component extends that library when detected.
 
 ## Author
 Created and maintained by Chris Humboldt<br>
