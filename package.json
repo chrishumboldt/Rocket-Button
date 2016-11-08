@@ -4,7 +4,7 @@
    "description": "A lightweight, universal button component.",
    "repository": {
       "type": "git",
-      "url": "git+https://github.com/chrishumboldt/Buttonplate.git"
+      "url": "git+https://github.com/chrishumboldt/Rocket-Button.git"
    },
    "keywords": [
       "Rocket",
@@ -18,9 +18,9 @@
    "author": "Chris Humboldt <chrismodem@gmail.com>",
    "license": "Apache-2.0",
    "bugs": {
-      "url": "https://github.com/chrishumboldt/Buttonplate/issues"
+      "url": "https://github.com/chrishumboldt/Rocket-Button/issues"
    },
-   "homepage": "https://github.com/chrishumboldt/Buttonplate#readme",
+   "homepage": "https://github.com/chrishumboldt/Rocket-Button#readme",
    "dependencies": {
       "rocket-propel": "^4.0.0"
    },
