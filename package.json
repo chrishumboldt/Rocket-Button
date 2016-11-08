@@ -1,7 +1,7 @@
 {
    "name": "rocket-button",
    "version": "1.0.0",
-   "description": "A lightweight, universal button library.",
+   "description": "A lightweight, universal button component.",
    "repository": {
       "type": "git",
       "url": "git+https://github.com/chrishumboldt/Buttonplate.git"

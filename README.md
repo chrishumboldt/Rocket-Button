@@ -1,5 +1,5 @@
 # Rocket Button
-A universal button library.
+A lightweight, universal button component.
 
 * [Launching](#launching)
 * [CSS Implementation](#css-implementation)
@@ -132,7 +132,7 @@ Rocket.defaults.button.selector = '.new-button-class';
 If you are using this component in conjunction with Rocket Tools, then **always** load the Rocket Tools library first. This component extends that library when detected.
 
 #### Buttonplate Deprecated
-The original library that this has been based on, Buttonplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Buttonplate will be maintained only with bug fixes under the **buttonplate** branch.
+The original library, Buttonplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Buttonplate will be maintained only with bug fixes under the **buttonplate** branch.
 
 ## Author
 Created and maintained by Chris Humboldt<br>
