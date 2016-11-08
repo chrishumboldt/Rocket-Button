@@ -6,17 +6,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Rocket Button Component</title>
-    <link href="bower_components/webplate-demo/css/demo.min.css" rel="stylesheet" type="text/css">
-    <link href="css/rocket-button.min.css" rel="stylesheet" type="text/css">
+    <link href="node_module/rocket-demo/css/demo.min.css" rel="stylesheet" type="text/css">
+    <link href="css/button.min.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
-	<div id="web-demo-message">
-		You need to run "bower install" and include the neccessary demo files in order to view this file.
+	<div id="rocket-demo-message">
+		You need to run "npm install" and include the neccessary demo files in order to view this file.
 	</div>
 
-	<div id="web-demo" style="display:none;">
+	<div id="rocket-demo" style="display:none;">
 	   <div class="heading">
 	      <div class="container"><h2>Rocket Button Component</h2></div>
 	   </div>
@@ -31,7 +31,7 @@ npm install rocket-button
 			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-    &lt;link href=&quot;css/rocket-button.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;rocket-button/css/button.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 </pre>
 	      <p>Now class your button with modifiers to gain the desired effect. For example:</p>
@@ -73,7 +73,7 @@ npm install rocket-button
    &lt;/div&gt;
 
    // Include the script
-   &lt;script src=&quot;js/rocket-button.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script src=&quot;rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
    Rocket.button({
       selector: '.btn-primary'
@@ -172,8 +172,8 @@ npm install rocket-button
 	</div>
 
    <!-- Scripts -->
-   <script src="bower_components/webplate-demo/js/demo.min.js"></script>
-   <script src="build/js/rocket-button.js"></script>
+   <script src="node_modules/rocket-demo/js/demo.min.js"></script>
+   <script src="build/js/button.js"></script>
 	<script>
 	Rocket.button({
 		selector: '#button-drop-1'

@@ -21,7 +21,7 @@ Start by including the necessary files.
 
 ```html
 <head>
-	<link href="css/rocket-button.min.css" rel="stylesheet" type="text/css">
+	<link href="rocket-button/css/button.min.css" rel="stylesheet" type="text/css">
 </head>
 ```
 
@@ -90,7 +90,7 @@ If you want to enable button drop downs then you will need to execute the follow
 	</div>
 
 	// Include the script
-	<script src="js/rocket-button.min.js"></script>
+	<script src="rocket-button/js/button.min.js"></script>
 	<script>
 	Rocket.button({
 	   selector: '#btn-primary'
