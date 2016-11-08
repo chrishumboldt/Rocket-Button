@@ -17,7 +17,7 @@ $away-from-button: 4px;
 
 // Drop-downs
 @mixin drop-down($colour: $default-colour) {
-	&.bp-drop-down {
+	&.rb-drop-down {
 		// List
 		ul {
 			@include position(absolute);
@@ -52,7 +52,7 @@ $away-from-button: 4px;
 					@include text-colour($black-base);
 					text-decoration: none;
 					vertical-align: middle;
-					.bp-no-touch &:hover {
+					.rocket-no-touch &:hover {
 						@include background-colour(darken($grey-x-light, 3%));
 					}
 				}
@@ -83,7 +83,7 @@ $away-from-button: 4px;
 	.arrow {
 		@include margin-left($spacing / 2);
 	}
-	&.bp-drop-down {
+	&.rb-drop-down {
 		ul {
 			@include margin-left(-$spacing);
 		}

@@ -32,7 +32,7 @@
 	&:visited {
 		@include text-colour(lighten(#000, 40%));
 	}
-	.bp-no-touch &:hover {
+	.rocket-no-touch &:hover {
 		@include cursor(pointer);
 		@include background-colour($grey-x-light);
 	}

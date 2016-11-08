@@ -292,7 +292,7 @@ var Rocket = (function (Rocket) {
 // Component container
 var RocketButtonComponent = (function () {
 	// Variables
-	var buttonDropClassName = 'bp-drop-down';
+	var buttonDropClassName = 'rb-drop-down';
 	var documentOnClick = false;
 
 	// Functions
@@ -304,7 +304,7 @@ var RocketButtonComponent = (function () {
 	};
 	var setup = function () {
 		if (!Rocket.is.touch()) {
-			Rocket.class.add(Rocket.dom.html, 'bp-no-touch');
+			Rocket.class.add(Rocket.dom.html, 'rocket-no-touch');
 		}
 		if (!documentOnClick) {
 			documentOnClick = true;
