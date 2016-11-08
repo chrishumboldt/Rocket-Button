@@ -1,18 +1,18 @@
-# Buttonplate
+# Rocket Button
 A universal button library.
 
-* [Getting Started](#getting-started)
+* [Launching](#launching)
 * [CSS Implementation](#css-implementation)
 * [SASS Implementation](#sass-implementation)
 * [Javascript Initialization](#javascript-initialization)
 	* [Defaults](#defaults)
 	* [Close All Drop Downs](#close-all-drop-downs)
 
-## Getting Started
-You can either download a copy of the source files or install Buttonplate via Bower.
+## Launching
+You can either download a copy of the source files or install via NPM.
 
 ```
-bower install buttonplate
+npm install rocket-button
 ```
 
 ## CSS Implementation
@@ -20,7 +20,7 @@ Start by including the necessary files.
 
 ```html
 <head>
-	<link href="css/buttonplate.min.css" rel="stylesheet" type="text/css">
+	<link href="css/rocket-button.min.css" rel="stylesheet" type="text/css">
 </head>
 ```
 
@@ -47,7 +47,7 @@ If no modifiers are provided then the colour will default to grey, the style to 
 Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:
 
 ```scss
-@import "buttonplate/build/sass/import";
+@import "rocket-button/build/sass/import";
 
 .btn-primary,
 .btn-secondary {
@@ -72,7 +72,7 @@ There are a variety of options for the SASS builds.
 | button-shape(x) | rounded | pill, rounded, square | Set the shape of the button. |
 | button-size(x) | normal | small, normal, large, x-large | Set the size of the button. |
 | button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour. |
-| buttonplate-css(x) | '.button' | | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
+| rocket-button-css(x) | '.button' | | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
 
 ## Javascript Initialization
 If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the init selector is set to **.button**.
@@ -89,9 +89,9 @@ If you want to enable button drop downs then you will need to execute the follow
 	</div>
 
 	// Include the script
-	<script src="js/buttonplate.min.js"></script>
+	<script src="js/rocket-button.min.js"></script>
 	<script>
-	Buttonplate.init({
+	Rocket.button({
 	   selector: '#btn-primary'
 	});
 	</script>
@@ -102,7 +102,7 @@ Each initialization will return an array of component objects (An array will alw
 
 ```javascript
 // By default the selector option is set to '.button'
-var buttons = Buttonplate.init();
+var buttons = Rocket.button();
 
 // The buttons and all methods
 for (var i = 0, len = buttons.length; i < len; i++) {
@@ -115,23 +115,16 @@ for (var i = 0, len = buttons.length; i < len; i++) {
 Alternatively if you know the button selector is unique you can reference the button right away with the 0 index. For example:
 
 ```javascript
-var myButton = Buttonplate.init({
+var myButton = Rocket.button({
 	selector: '#my-button'
 })[0]; // Reference the first item in the array right away.
 ```
 
 #### Defaults
-You can also overwrite the component selector option globally by altering the defaults. To do so reference the defaults object property. For example:
+You can also overwrite the component selector option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:
 
 ```javascript
-Buttonplate.defaults.selector = '.new-button-class';
-```
-
-#### Close All Drop Downs
-If you wish to close all open drop downs globally, for whatever reason, call the following Javascript method:
-
-```javascript
-Buttonplate.closeAll();
+Rocket.defaults.button.selector = '.new-button-class';
 ```
 
 ## Author
@@ -141,7 +134,7 @@ Twitter: <a href="https://twitter.com/chrishumboldt">twitter.com/chrishumboldt</
 GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><br>
 
 ## Copyright and License
-Copyright 2016 Webplate Project
+Copyright 2016 Rocket Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
