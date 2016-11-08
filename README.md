@@ -7,6 +7,7 @@ A universal button library.
 * [Javascript Initialization](#javascript-initialization)
 	* [Defaults](#defaults)
 * [Rocket Tools](#rocket-tools)
+* [Buttonplate Deprecated](#buttonplate-deprecated)
 
 ## Launching
 You can either download a copy of the source files or install via NPM.
@@ -129,6 +130,9 @@ Rocket.defaults.button.selector = '.new-button-class';
 
 #### Rocket Tools
 If you are using this component in conjunction with Rocket Tools, then **always** load the Rocket Tools library first. This component extends that library when detected.
+
+#### Buttonplate Deprecated
+The original library that this has been based on, Buttonplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Buttonplate will be maintained only with bug fixes under the **buttonplate** branch.
 
 ## Author
 Created and maintained by Chris Humboldt<br>
