@@ -27,14 +27,14 @@
    "devDependencies": {
       "rocket-demo": "^4.0.0"
    },
-	"rocket": {
-		"build": [
-			"build/js/rocket-button.js",
-			"build/sass/_import.scss"
-		],
-		"production": [
-			"css/rocket-button.min.css",
-			"js/rocket-button.min.js"
-		]
-	}
+   "rocket": {
+      "build": [
+         "build/js/rocket-button.js",
+         "build/sass/_import.scss"
+      ],
+      "production": [
+         "css/rocket-button.min.css",
+         "js/rocket-button.min.js"
+      ]
+   }
 }
