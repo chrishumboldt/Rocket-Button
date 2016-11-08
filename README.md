@@ -1,7 +1,7 @@
 # Rocket Button
 A lightweight, universal button component.
 
-* [Launching](#launching)
+* [Getting Started](#getting-started)
 * [CSS Implementation](#css-implementation)
 * [SASS Implementation](#sass-implementation)
 * [Javascript Initialization](#javascript-initialization)
@@ -9,7 +9,7 @@ A lightweight, universal button component.
 * [Rocket Tools](#rocket-tools)
 * [Buttonplate Deprecated](#buttonplate-deprecated)
 
-## Launching
+## Getting Started
 You can either download a copy of the source files or install via NPM.
 
 ```
