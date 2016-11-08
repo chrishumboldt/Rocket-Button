@@ -6,7 +6,6 @@ A universal button library.
 * [SASS Implementation](#sass-implementation)
 * [Javascript Initialization](#javascript-initialization)
 	* [Defaults](#defaults)
-	* [Close All Drop Downs](#close-all-drop-downs)
 * [Rocket Tools](#rocket-tools)
 
 ## Launching
