@@ -5,9 +5,9 @@
     <!-- Meta setup -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Buttonplate Component</title>
+    <title>Rocket Button Component</title>
     <link href="bower_components/webplate-demo/css/demo.min.css" rel="stylesheet" type="text/css">
-    <link href="css/buttonplate.min.css" rel="stylesheet" type="text/css">
+    <link href="css/rocket-button.min.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
@@ -18,20 +18,20 @@
 
 	<div id="web-demo" style="display:none;">
 	   <div class="heading">
-	      <div class="container"><h2>Buttonplate Component</h2></div>
+	      <div class="container"><h2>Rocket Button Component</h2></div>
 	   </div>
 		<div class="container">
 	      <h4>Getting Started</h4>
-			<p>You can either download a copy of the source files or install Buttonplate via Bower.</p>
+			<p>You can either download a copy of the source files or install via NPM.</p>
 <pre class="prettyprint linenums">
-bower install buttonplate
+npm install rocket-button
 </pre>
 	      <br>
 	      <h4>CSS Implementation</h4>
 			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-    &lt;link href=&quot;css/buttonplate.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;css/rocket-button.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 </pre>
 	      <p>Now class your button with modifiers to gain the desired effect. For example:</p>
@@ -42,7 +42,7 @@ bower install buttonplate
 	      <h4>SASS Implementation</h4>
 	      <p>Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:</p>
 <pre class="prettyprint linenums">
-@import "buttonplate/build/sass/import";
+@import "rocket-button/build/sass/import";
 
 .btn-primary,
 .btn-secondary {
@@ -73,12 +73,12 @@ bower install buttonplate
    &lt;/div&gt;
 
    // Include the script
-   &lt;script src=&quot;js/buttonplate.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script src=&quot;js/rocket-button.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
-   Buttonplate.init({
+   Rocket.button({
       selector: '.btn-primary'
    });
-   Buttonplate.init({
+   Rocket.button({
       selector: '.btn-secondary'
    });
    &lt;/script&gt;
@@ -157,28 +157,28 @@ bower install buttonplate
 			<a href class="button _red _square">Squared Button</a>
 	      <br><br><br>
 	      <h4>Detailed Documentation</h4>
-	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Buttonplate" class="link">https://github.com/chrishumboldt/Buttonplate</a></p>
+	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Rocket-Button" class="link">https://github.com/chrishumboldt/Rocket-Button</a></p>
 		</div>
 
 	   <footer><div class="container"><div class="col-double">
 			<div class="left">
 				Made by <a href="http://chrishumboldt.com" target="_blank">Chris Humboldt</a>
 			</div>
-			<div class="right">
+			<!-- <div class="right">
 				A <a href="http://getwebplate.com" target="_blank">Webplate Project</a>&nbsp;&nbsp;
 				Want updates? <a href="http://twitter.com/webplatetweets" target="_blank">@webplatetweets</a>
-			</div>
+			</div> -->
 		</div></div></footer>
 	</div>
 
    <!-- Scripts -->
    <script src="bower_components/webplate-demo/js/demo.min.js"></script>
-   <script src="js/buttonplate.min.js"></script>
+   <script src="build/js/rocket-button.js"></script>
 	<script>
-	Buttonplate.init({
+	Rocket.button({
 		selector: '#button-drop-1'
 	});
-	Buttonplate.init({
+	Rocket.button({
 		selector: '#button-drop-2'
 	});
    // Stop all button events

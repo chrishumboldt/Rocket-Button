@@ -1,0 +1,40 @@
+{
+   "name": "rocket-button",
+   "version": "1.0.0",
+   "description": "A lightweight, universal button library.",
+   "repository": {
+      "type": "git",
+      "url": "git+https://github.com/chrishumboldt/Buttonplate.git"
+   },
+   "keywords": [
+      "Rocket",
+      "Component",
+      "Part",
+      "Button",
+      "Javascript",
+      "SASS",
+      "CSS"
+   ],
+   "author": "Chris Humboldt <chrismodem@gmail.com>",
+   "license": "Apache-2.0",
+   "bugs": {
+      "url": "https://github.com/chrishumboldt/Buttonplate/issues"
+   },
+   "homepage": "https://github.com/chrishumboldt/Buttonplate#readme",
+   "dependencies": {
+      "rocket-propel": "^1.0.0"
+   },
+   "devDependencies": {
+      "rocket-demo": "^1.0.0"
+   },
+	"rocket": {
+		"build": [
+			"build/js/rocket-button.js",
+			"build/sass/_import.scss"
+		],
+		"production": [
+			"css/rocket-button.min.css",
+			"js/rocket-button.min.js"
+		]
+	}
+}

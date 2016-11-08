@@ -4,8 +4,8 @@
  * Author: Chris Humboldt
 **/
 
-// Buttonplate CSS
-@mixin buttonplate-css($selector: '.button') {
+// CSS
+@mixin rocket-button-css($selector: '.button') {
 	#{$selector} {
 		@include button-setup();
 		// Sizes
