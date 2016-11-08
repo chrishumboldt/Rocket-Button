@@ -129,7 +129,7 @@ Rocket.defaults.button.selector = '.new-button-class';
 ```
 
 #### Rocket Tools
-If you are using this component in conjunction with Rocket Tools, then **always** load the Rocket Tools library first. This component extends that library when detected.
+If you are using this component in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This component extends that library when detected.
 
 #### Buttonplate Deprecated
 The original library, Buttonplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Buttonplate will be maintained only with bug fixes under the **buttonplate** branch.
