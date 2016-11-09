@@ -35,12 +35,12 @@ There are a variety of options for the CSS modifiers.
 
 Class | Options | Description
 ---- |  ---- | ----
-`_(x)` | `x`: `white` `grey` `black` `aqua` `blue` `green` `orange` `pink` `purple` `red` `yellow` | Set the colour of the button.
-`_flat-(x)` | `x`: `white` `grey` `black` `aqua` `blue` `green` `orange` `pink` `purple` `red` `yellow` | Set the colour and style to flat.
-`_gradient-(x)` | `x`: `white` `grey` `black` `aqua` `blue` `green` `orange` `pink` `purple` `red` `yellow` | Set the colour and style to gradient.
-`_line-(x)` | `x`: `white` `grey` `black` `aqua` `blue` `green` `orange` `pink` `purple` `red` `yellow` | Set the colour and style to line.
-`_(x)` | `x`: `small` `normal` `large` `x-large` | Set the size of the the button.
-`_(x)` | `x`: `rounded` `pill` `square` | Set the shape of the the button.
+`_(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour of the button.
+`_flat-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to flat.
+`_gradient-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to gradient.
+`_line-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to line.
+`_(x)` | `small` `normal` `large` `x-large` | Set the size of the the button.
+`_(x)` | `rounded` `pill` `square` | Set the shape of the the button.
 
 If no modifiers are provided then the colour will default to grey, the style to flat, the size to normal and the shape to rounded.
 
