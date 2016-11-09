@@ -69,11 +69,11 @@ There are a variety of options for the SASS builds.
 
 SASS | Default | Options | Description
 ---- | ---- | ---- | ----
-`button-setup()` | | | This is a required function that needs to be made on all buttons.
+`button-setup()` | | | Apply to all buttons.
 `button-shape(x)` | `rounded` | `pill` `rounded` `square` | Set the shape of the button.
 `button-size(x)` | `normal` | `small` `normal` `large` `x-large` | Set the size of the button.
 `button-style(x, y)` | `flat`, `white` | `flat` `gradient` `line` | Set `x` to the style of button you want and `y` to the colour.
-`rocket-button-css(x)` | `.button` | | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation.
+`rocket-button-css(x)` | `.button` | | Create the styles for buttons with a selector of `x`.<br>This is called to create the default CSS implementation.
 
 ## Javascript Initialization
 If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the selector option is set to **.button**.
