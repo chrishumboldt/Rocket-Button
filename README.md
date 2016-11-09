@@ -33,14 +33,14 @@ Now class your button with a modifier to gain the desired effect. For example:
 
 There are a variety of options for the CSS modifiers.
 
-| Class | Options | Description |
-| ---- |  ---- | ---- |
-| _(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the colour of the button to **x** |
-| _flat-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to flat and the colour to **x**. |
-| _gradient-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to gradient and the colour to **x**. |
-| _line-(x) | white, grey, black, aqua, blue, green, orange, pink, purple, red, yellow | Set the style of the button to line and the colour to **x**. |
-| _(y) | small, normal, large, x-large | Set the size of the the button to **y**. |
-| _(z) | rounded, pill, square | Set the shape of the the button to **z**. |
+Class | Options | Description
+---- |  ---- | ----
+`_(x)` | `x`: `white` `grey` `black` `aqua` `blue` `green` `orange` `pink` `purple` `red` `yellow` | Set the colour of the button.
+`_flat-(x)` | `x`: `white` `grey` `black` `aqua` `blue` `green` `orange` `pink` `purple` `red` `yellow` | Set the colour and style to flat.
+`_gradient-(x)` | `x`: `white` `grey` `black` `aqua` `blue` `green` `orange` `pink` `purple` `red` `yellow` | Set the colour and style to gradient.
+`_line-(x)` | `x`: `white` `grey` `black` `aqua` `blue` `green` `orange` `pink` `purple` `red` `yellow` | Set the colour and style to line.
+`_(x)` | `x`: `small` `normal` `large` `x-large` | Set the size of the the button.
+`_(x)` | `x`: `rounded` `pill` `square` | Set the shape of the the button.
 
 If no modifiers are provided then the colour will default to grey, the style to flat, the size to normal and the shape to rounded.
 
@@ -67,13 +67,13 @@ Instead of including the CSS file above, you can import the SASS file and create
 
 There are a variety of options for the SASS builds.
 
-| SASS | Default | Options | Description |
-| ---- | ---- | ---- | ---- |
-| button-setup() | | | This is a required function that needs to be made on all buttons. |
-| button-shape(x) | rounded | pill, rounded, square | Set the shape of the button. |
-| button-size(x) | normal | small, normal, large, x-large | Set the size of the button. |
-| button-style(x, y) | flat, white | flat, gradient, line | Set x to the style of button you want and y to the colour. |
-| rocket-button-css(x) | '.button' | | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation. |
+SASS | Default | Options | Description
+---- | ---- | ---- | ----
+`button-setup()` | | | This is a required function that needs to be made on all buttons.
+`button-shape(x)` | `rounded` | `pill` `rounded` `square` | Set the shape of the button.
+`button-size(x)` | `normal` | `small` `normal` `large` `x-large` | Set the size of the button.
+`button-style(x, y)` | `flat`, `white` | `flat` `gradient` `line` | Set `x` to the style of button you want and `y` to the colour.
+`rocket-button-css(x)` | `.button` | | Create all the styles and modifiers for buttons with a selector of **x**. This is what is called to create the default CSS implementation.
 
 ## Javascript Initialization
 If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the selector option is set to **.button**.
