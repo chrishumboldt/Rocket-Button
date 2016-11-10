@@ -1,6 +1,6 @@
 {
    "name": "rocket-button",
-   "version": "4.0.4",
+   "version": "4.0.5",
    "description": "A lightweight, universal button component.",
    "repository": {
       "type": "git",
@@ -22,7 +22,7 @@
    },
    "homepage": "https://github.com/chrishumboldt/Rocket-Button#readme",
    "engines": {
-      "npm": "~3.0.0"
+      "npm": "^3.0.0"
    },
    "dependencies": {
       "rocket-propel": "^3.0.0"

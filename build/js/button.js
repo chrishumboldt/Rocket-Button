@@ -376,5 +376,5 @@ var RocketButtonComponent = (function () {
 
 // Bind to Rocket object
 Rocket.button = function (uOptions) {
-	RocketButtonComponent.init(uOptions);
+	return RocketButtonComponent.init(uOptions);
 };
