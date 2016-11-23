@@ -1,5 +1,5 @@
 # Rocket Button
-A lightweight, universal button component.
+A lightweight, universal button module.
 
 * [Getting Started](#getting-started)
 * [CSS Implementation](#css-implementation)
@@ -10,7 +10,7 @@ A lightweight, universal button component.
 * [Buttonplate Deprecated](#buttonplate-deprecated)
 
 ## Getting Started
-You can either download a copy of the source files or install via NPM.
+You can either download a copy of the [source files](https://github.com/chrishumboldt/Rocket-Button/archive/master.zip) or install via NPM.
 
 ```
 npm install rocket-button
