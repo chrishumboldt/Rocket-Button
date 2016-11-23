@@ -29,15 +29,5 @@
    },
    "devDependencies": {
       "rocket-demo": "^2.0.0"
-   },
-   "rocket": {
-      "build": [
-         "build/js/button.js",
-         "build/sass/_import.scss"
-      ],
-      "production": [
-         "css/button.min.css",
-         "js/button.min.js"
-      ]
    }
 }
