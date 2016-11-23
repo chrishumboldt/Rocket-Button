@@ -1,6 +1,6 @@
 {
    "name": "rocket-button",
-   "version": "4.0.5",
+   "version": "4.0.6",
    "description": "A lightweight, universal button module.",
    "repository": {
       "type": "git",
@@ -8,8 +8,8 @@
    },
    "keywords": [
       "Rocket",
-      "Component",
       "Part",
+      "Module",
       "Button",
       "Javascript",
       "SASS",
