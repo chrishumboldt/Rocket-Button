@@ -1,11 +1,12 @@
 /**
- * File: buttonplate.scss
- * Type: SASS execute
- * Author: Chris Humboldt
+* File: build/sass/button.scss
+* Type: SASS file
+* Author: --Your Name Here--
 **/
 
-// Imports
-@import "development";
+@import "import";
 
-// Call styles
-@include rocket-button-css();
+// DELETE THIS
+html, body {
+	background-colour: white;
+}
