@@ -1,3 +1,4 @@
+"use strict";
 var Rocket = (typeof Rocket === 'object') ? Rocket : {};
 if (!Rocket.defaults) {
     Rocket.defaults = {};
@@ -42,6 +43,38 @@ var RockMod_Button;
 (function (RockMod_Button) {
     var buttonDropClassName = 'rb-drop-down';
     var documentOnClick = false;
+    function buttonDropApply(button) {
+        var buttonUL = button.querySelector('ul');
+        if (!buttonUL) {
+            return false;
+        }
+        function applyDrop() {
+            classAdd(button, buttonDropClassName);
+            button.onclick = function () {
+                buttonOpen();
+            };
+        }
+        ;
+        function buttonClose() {
+            classRemove(buttonUL, '_open');
+        }
+        ;
+        function buttonOpen() {
+            closeAll();
+            buttonUL.style.width = button.clientWidth + 'px';
+            setTimeout(function () {
+                classAdd(buttonUL, '_open');
+            });
+        }
+        ;
+        applyDrop();
+        return {
+            button: button,
+            close: buttonClose,
+            open: buttonOpen
+        };
+    }
+    ;
     function classAdd(element, className) {
         var listClassNames = element.className.split(' ');
         listClassNames.push(className);
@@ -79,69 +112,72 @@ var RockMod_Button;
         }
     }
     ;
-    function setup() {
-        if (('ontouchstart' in window || 'onmsgesturechange' in window) === false) {
-            classAdd(document.getElementsByTagName('html')[0], 'rocket-no-touch');
-        }
-        if (!documentOnClick) {
-            documentOnClick = true;
-            Rocket.event.add(document, 'click', function () {
-                closeAll();
-            });
-        }
+    function hasClass(element, thisClass) {
+        return (' ' + element.className + ' ').indexOf(' ' + thisClass + ' ') > -1;
+    }
+    function isElement(element) {
+        return (element.nodeType && element.nodeType === 1) ? true : false;
     }
     ;
-    function buttonDropApply(button) {
-        var buttonUL = button.querySelector('ul');
-        if (!buttonUL) {
-            return false;
-        }
-        function applyDrop() {
-            classAdd(button, buttonDropClassName);
-            button.onclick = function () {
-                buttonOpen();
+    var init = {
+        buttonDropDown: function (userOptions) {
+            if (typeof userOptions !== 'object') {
+                userOptions = false;
+            }
+            var options = {
+                selector: (typeof userOptions.selector === 'string') ? userOptions.selector : Rocket.defaults.button.selector
             };
+            var buttons = document.querySelectorAll(options.selector);
+            var objReturn = [];
+            if (buttons.length < 1) {
+                return false;
+            }
+            for (var _i = 0, buttons_1 = buttons; _i < buttons_1.length; _i++) {
+                var button = buttons_1[_i];
+                objReturn.push(buttonDropApply(button));
+            }
+            return objReturn;
+        },
+        buttonLoader: function (uOptions) {
+            if (typeof uOptions !== 'object') {
+                return false;
+            }
+            var options = {
+                element: (isElement(uOptions.element)) ? uOptions.element : false,
+                parseEvent: (typeof uOptions.parseEvent !== 'undefined') ? uOptions.parseEvent : false,
+                reveal: (typeof uOptions.reveal === 'string') ? uOptions.reveal : 'appear',
+                selector: (typeof uOptions.selector === 'string') ? uOptions.selector : false,
+                timeout: (typeof uOptions.timeout === 'number') ? uOptions.timeout : false
+            };
+            if (!options.element && !options.selector) {
+                return false;
+            }
+            if (options.parseEvent !== false) {
+                options.parseEvent.preventDefault();
+            }
+            setup.buttonLoader(options);
         }
-        ;
-        function buttonClose() {
-            classRemove(buttonUL, '_open');
+    };
+    var setup = {
+        buttonLoader: function (options) {
+            var elm = (options.element) ? options.element : document.querySelector(options.selector);
+            if (hasClass(elm, 'rb-loader')) {
+            }
+        },
+        global: function () {
+            if (('ontouchstart' in window || 'onmsgesturechange' in window) === false) {
+                classAdd(document.getElementsByTagName('html')[0], 'rocket-no-touch');
+            }
+            if (!documentOnClick) {
+                documentOnClick = true;
+                Rocket.event.add(document, 'click', function () {
+                    closeAll();
+                });
+            }
         }
-        ;
-        function buttonOpen() {
-            closeAll();
-            buttonUL.style.width = button.clientWidth + 'px';
-            setTimeout(function () {
-                classAdd(buttonUL, '_open');
-            });
-        }
-        ;
-        applyDrop();
-        return {
-            button: button,
-            close: buttonClose,
-            open: buttonOpen
-        };
-    }
-    ;
-    function buttonDropDownInit(userOptions) {
-        if (typeof userOptions !== 'object') {
-            userOptions = false;
-        }
-        var options = {
-            selector: (typeof userOptions.selector === 'string') ? userOptions.selector : Rocket.defaults.button.selector
-        };
-        var buttons = document.querySelectorAll(options.selector);
-        var objReturn = [];
-        if (buttons.length < 1) {
-            return false;
-        }
-        for (var _i = 0, buttons_1 = buttons; _i < buttons_1.length; _i++) {
-            var button = buttons_1[_i];
-            objReturn.push(buttonDropApply(button));
-        }
-        return objReturn;
-    }
-    setup();
-    RockMod_Button.dropdown = buttonDropDownInit;
+    };
+    setup.global();
+    RockMod_Button.dropdown = init.buttonDropDown;
+    RockMod_Button.loader = init.buttonLoader;
 })(RockMod_Button || (RockMod_Button = {}));
 Rocket.button = RockMod_Button;

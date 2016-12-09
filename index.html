@@ -155,6 +155,9 @@ npm install rocket-button
 			<a href class="button _red">Rounded (default)</a>
 			<a href class="button _red _pill">Pill Button</a>
 			<a href class="button _red _square">Squared Button</a>
+         <br><br>
+			<h5>Button Loader</h5>
+         <a href class="button _blue" id="loader-example">Loader Example</a>
 	      <br><br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Rocket-Button" class="link">https://github.com/chrishumboldt/Rocket-Button</a></p>
@@ -184,10 +187,17 @@ npm install rocket-button
    // Stop all button events
    var $buttons = document.querySelectorAll('a.button');
    for (var $i = $buttons.length - 1; $i >= 0; $i--) {
-      $buttons[$i].onclick = function(event) {
-         event.preventDefault();
+      $buttons[$i].onclick = function(ev) {
+         ev.preventDefault();
       };
    }
+   // Loader example
+   document.getElementById('loader-example').onclick = function (ev) {
+      var btnLoader = Rocket.button.loader({
+         element: ev.target,
+         parseEvent: ev
+      });
+   };
 	</script>
 
 </body>
