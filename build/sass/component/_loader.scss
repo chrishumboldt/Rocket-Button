@@ -1,0 +1,87 @@
+/**
+ * Author: Chris Humboldt
+**/
+
+$loader-size: 28px;
+$loader-size-small: $loader-size - 10px;
+$loader-size-large: $loader-size + 8px;
+$loader-size-half: -$loader-size / 2;
+$loader-size-half-small: -$loader-size-small / 2;
+$loader-size-half-large: -$loader-size-large / 2;
+
+@mixin button-loader() {
+   &.rb-loader {
+      @include overflow(hidden);
+      .loader {
+         @include position(absolute, top 50% left 50% margin-left $loader-size-half margin-top $loader-size-half);
+         @include square($loader-size);
+         @include animate(all);
+         .circle-one,
+         .circle-two {
+            @include position(absolute);
+            @include square($loader-size);
+            @include border-radius(50%);
+            @include border(3px, $white);
+            @include opacity(0);
+            @include transform-scale-3d(0, 0, 0);
+         }
+      }
+      &._small .loader {
+         @include position-set(margin-left $loader-size-half-small margin-top $loader-size-half-small);
+         @include square($loader-size-small);
+         .circle-one,
+         .circle-two {
+            @include square($loader-size-small);
+            @include border(2px, $white);
+         }
+      }
+      &._x-large .loader {
+         @include position-set(margin-left $loader-size-half-large margin-top $loader-size-half-large);
+         @include square($loader-size-large);
+         .circle-one,
+         .circle-two {
+            @include square($loader-size-large);
+            @include border(4px, $white);
+         }
+      }
+      span {
+         @include opacity(1);
+         @include transform-scale-3d(1, 1, 1);
+         @include animate(all);
+      }
+      // Active
+      &._active {
+         .circle-one,
+         .circle-two {
+            @include animation(pulse, 1.2s, infinite);
+         }
+         .circle-two {
+            @include animation-delay(0.4s);
+         }
+      }
+      // Reveals
+      &._reveal-appear {
+         &._active {
+            span {
+               @include opacity(0);
+               @include transform-scale-3d(0, 0, 0);
+            }
+         }
+      }
+   }
+}
+
+// Animation
+@include keyframes(pulse) {
+   0% {
+      @include opacity(0);
+      @include transform-scale-3d(0, 0, 0);
+   }
+   25% {
+      @include opacity(1);
+   }
+   100% {
+      @include opacity(0);
+      @include transform-scale-3d(1, 1, 1);
+   }
+}

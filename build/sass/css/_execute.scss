@@ -1,6 +1,4 @@
 /**
- * File: build/sass/css/_execute.scss
- * Type: SASS execute file
  * Author: Chris Humboldt
 **/
 
@@ -45,5 +43,9 @@
 				@include button-style(line, $colour);
 			}
 		}
+      // Loader
+      @include button-loader();
+      // Drop down
+   	@include drop-down();
 	}
 }

@@ -157,7 +157,10 @@ npm install rocket-button
 			<a href class="button _red _square">Squared Button</a>
          <br><br>
 			<h5>Button Loader</h5>
-         <a href class="button _blue" id="loader-example">Loader Example</a>
+         <a href class="button _blue _small" id="loader-example-1">Loader Example</a>
+         <a href class="button _blue" id="loader-example-2">Loader Example</a>
+         <a href class="button _blue _large" id="loader-example-3">Loader Example</a>
+         <a href class="button _blue _x-large" id="loader-example-4">Loader Example</a>
 	      <br><br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Rocket-Button" class="link">https://github.com/chrishumboldt/Rocket-Button</a></p>
@@ -192,10 +195,33 @@ npm install rocket-button
       };
    }
    // Loader example
-   document.getElementById('loader-example').onclick = function (ev) {
+   var loaderTimeout = 4000;
+   document.getElementById('loader-example-1').onclick = function (ev) {
       var btnLoader = Rocket.button.loader({
-         element: ev.target,
-         parseEvent: ev
+         element: ev.currentTarget,
+         parseEvent: ev,
+         timeout: loaderTimeout
+      });
+   };
+   document.getElementById('loader-example-2').onclick = function (ev) {
+      var btnLoader = Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev,
+         timeout: loaderTimeout
+      });
+   };
+   document.getElementById('loader-example-3').onclick = function (ev) {
+      var btnLoader = Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev,
+         timeout: loaderTimeout
+      });
+   };
+   document.getElementById('loader-example-4').onclick = function (ev) {
+      var btnLoader = Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev,
+         timeout: loaderTimeout
       });
    };
 	</script>

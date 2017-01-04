@@ -75,6 +75,30 @@ var RockMod_Button;
         };
     }
     ;
+    function buttonLoaderApply(button, options) {
+        function add() {
+            setTimeout(function () {
+                classAdd(button, '_active');
+            }, 50);
+        }
+        ;
+        function remove() {
+            classRemove(button, '_active');
+        }
+        ;
+        add();
+        if (options.timeout > 0) {
+            setTimeout(function () {
+                remove();
+            }, options.timeout + 50);
+        }
+        return {
+            add: add,
+            button: button,
+            remove: remove
+        };
+    }
+    ;
     function classAdd(element, className) {
         var listClassNames = element.className.split(' ');
         listClassNames.push(className);
@@ -146,8 +170,8 @@ var RockMod_Button;
                 element: (isElement(uOptions.element)) ? uOptions.element : false,
                 parseEvent: (typeof uOptions.parseEvent !== 'undefined') ? uOptions.parseEvent : false,
                 reveal: (typeof uOptions.reveal === 'string') ? uOptions.reveal : 'appear',
-                selector: (typeof uOptions.selector === 'string') ? uOptions.selector : false,
-                timeout: (typeof uOptions.timeout === 'number') ? uOptions.timeout : false
+                selector: (typeof uOptions.selector === 'string') ? uOptions.selector : '',
+                timeout: (typeof uOptions.timeout === 'number') ? uOptions.timeout : 0
             };
             if (!options.element && !options.selector) {
                 return false;
@@ -155,13 +179,21 @@ var RockMod_Button;
             if (options.parseEvent !== false) {
                 options.parseEvent.preventDefault();
             }
-            setup.buttonLoader(options);
+            var elm = (options.element) ? options.element : document.querySelector(options.selector);
+            setup.buttonLoader(elm, options);
+            if (!hasClass(elm, '_active')) {
+                return buttonLoaderApply(elm, options);
+            }
         }
     };
     var setup = {
-        buttonLoader: function (options) {
-            var elm = (options.element) ? options.element : document.querySelector(options.selector);
-            if (hasClass(elm, 'rb-loader')) {
+        buttonLoader: function (elm, options) {
+            if (!hasClass(elm, 'rb-loader') && !hasClass(elm, 'rb-drop-down')) {
+                var newInnerHTML = '';
+                newInnerHTML += '<div class="loader"><div class="circle-one"></div><div class="circle-two"></div></div>';
+                newInnerHTML += '<span>' + elm.innerHTML + '</span>';
+                classAdd(elm, 'rb-loader _reveal-' + options.reveal);
+                elm.innerHTML = newInnerHTML;
             }
         },
         global: function () {
