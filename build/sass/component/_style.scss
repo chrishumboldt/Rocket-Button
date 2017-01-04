@@ -35,6 +35,20 @@ $lightness-threshold-line: 98%;
 		background: transparent;
 		@include border($colour, $border-size);
 
+      // Loader
+      &.rb-loader .loader {
+         .circle-one,
+         .circle-two {
+            border-color: $colour;
+         }
+      }
+      &.rb-loader:hover .loader {
+         .circle-one,
+         .circle-two {
+            border-color: $white;
+         }
+      }
+
 		// States
 		@if $colour != #fff {
 			@if $colour != #EBEBEB {

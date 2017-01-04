@@ -59,7 +59,26 @@ npm install rocket-button
 }
 </pre>
 	      <br>
-	      <h4>Javascript Call</h4>
+	      <h4>Button Loaders</h4>
+	      <p>If you want to enable a button loader then you will need to execute the following Javascript. Start by including the necessary files.</p>
+<pre class="prettyprint linenums">
+&lt;body&gt;
+   &lt;button id="button-loader" class="button _blue"&gt;Button Loader&lt;/button&gt;
+
+   // Include the script
+   &lt;script src=&quot;rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script&gt;
+   document.getElementById('button-loader').onclick = function (ev) {
+      Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev
+      });
+   };
+   &lt;/script&gt;
+&lt;/body&gt;
+</pre>
+	      <br>
+	      <h4>Drop Down Buttons</h4>
 	      <p>If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;body&gt;
@@ -84,6 +103,7 @@ npm install rocket-button
    &lt;/script&gt;
 &lt;/body&gt;
 </pre>
+
 	      <br>
 	      <h4>Working Examples</h4>
 			<p>Flat Buttons</p>
@@ -125,6 +145,23 @@ npm install rocket-button
 			<a href class="button _line-red">Red</a>
 			<a href class="button _line-yellow">Yellow</a>
 	      <br><br>
+			<h5>Button Sizes</h5>
+			<a href class="button _green _small">Small</a>
+			<a href class="button _green">Normal</a>
+			<a href class="button _green _large">Large</a>
+			<a href class="button _green _x-large">Extra Large</a>
+	      <br><br>
+			<h5>Button Shapes</h5>
+			<a href class="button _red">Rounded (default)</a>
+			<a href class="button _red _pill">Pill Button</a>
+			<a href class="button _red _square">Squared Button</a>
+         <br><br>
+			<h5>Button Loaders</h5>
+         <a href class="button _blue _small" id="loader-example-1">Loader Example</a>
+         <a href class="button _blue" id="loader-example-2">Loader Example</a>
+         <a href class="button _blue _large" id="loader-example-3">Loader Example</a>
+         <a href class="button _blue _x-large" id="loader-example-4">Loader Example</a>
+	      <br><br>
 			<h5>Drop Down Button</h5>
 			<div id="button-drop-1" class="button">
 				Drop Down Default<div class="arrow"></div>
@@ -144,23 +181,6 @@ npm install rocket-button
 					<li class="line-top"><a href>Link 5</a></li>
 				</ul>
 			</div>
-	      <br><br>
-			<h5>Button Sizes</h5>
-			<a href class="button _green _small">Small</a>
-			<a href class="button _green">Normal</a>
-			<a href class="button _green _large">Large</a>
-			<a href class="button _green _x-large">Extra Large</a>
-	      <br><br>
-			<h5>Button Shapes</h5>
-			<a href class="button _red">Rounded (default)</a>
-			<a href class="button _red _pill">Pill Button</a>
-			<a href class="button _red _square">Squared Button</a>
-         <br><br>
-			<h5>Button Loader</h5>
-         <a href class="button _blue _small" id="loader-example-1">Loader Example</a>
-         <a href class="button _blue" id="loader-example-2">Loader Example</a>
-         <a href class="button _blue _large" id="loader-example-3">Loader Example</a>
-         <a href class="button _blue _x-large" id="loader-example-4">Loader Example</a>
 	      <br><br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Rocket-Button" class="link">https://github.com/chrishumboldt/Rocket-Button</a></p>
@@ -195,33 +215,30 @@ npm install rocket-button
       };
    }
    // Loader example
-   var loaderTimeout = 4000;
+   Rocket.defaults.button.loader.timeout = 4000;
+   Rocket.defaults.button.loader.reveal = 'appear';
    document.getElementById('loader-example-1').onclick = function (ev) {
-      var btnLoader = Rocket.button.loader({
+      Rocket.button.loader({
          element: ev.currentTarget,
-         parseEvent: ev,
-         timeout: loaderTimeout
+         parseEvent: ev
       });
    };
    document.getElementById('loader-example-2').onclick = function (ev) {
-      var btnLoader = Rocket.button.loader({
+      button = Rocket.button.loader({
          element: ev.currentTarget,
-         parseEvent: ev,
-         timeout: loaderTimeout
+         parseEvent: ev
       });
    };
    document.getElementById('loader-example-3').onclick = function (ev) {
-      var btnLoader = Rocket.button.loader({
+      Rocket.button.loader({
          element: ev.currentTarget,
-         parseEvent: ev,
-         timeout: loaderTimeout
+         parseEvent: ev
       });
    };
    document.getElementById('loader-example-4').onclick = function (ev) {
-      var btnLoader = Rocket.button.loader({
+      Rocket.button.loader({
          element: ev.currentTarget,
-         parseEvent: ev,
-         timeout: loaderTimeout
+         parseEvent: ev
       });
    };
 	</script>

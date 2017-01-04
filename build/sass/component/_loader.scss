@@ -21,9 +21,8 @@ $loader-size-half-large: -$loader-size-large / 2;
             @include position(absolute);
             @include square($loader-size);
             @include border-radius(50%);
-            @include border(3px, $white);
+            @include border($white, 3px);
             @include opacity(0);
-            @include transform-scale-3d(0, 0, 0);
          }
       }
       &._small .loader {
@@ -32,7 +31,7 @@ $loader-size-half-large: -$loader-size-large / 2;
          .circle-one,
          .circle-two {
             @include square($loader-size-small);
-            @include border(2px, $white);
+            @include border($white, 2px);
          }
       }
       &._x-large .loader {
@@ -41,12 +40,12 @@ $loader-size-half-large: -$loader-size-large / 2;
          .circle-one,
          .circle-two {
             @include square($loader-size-large);
-            @include border(4px, $white);
+            @include border($white, 4px);
          }
       }
       span {
+         @include position(relative);
          @include opacity(1);
-         @include transform-scale-3d(1, 1, 1);
          @include animate(all);
       }
       // Active
@@ -65,6 +64,38 @@ $loader-size-half-large: -$loader-size-large / 2;
             span {
                @include opacity(0);
                @include transform-scale-3d(0, 0, 0);
+            }
+         }
+      }
+      &._reveal-slide-up {
+         .loader {
+            @include transform-translate-y(50px);
+         }
+         span {
+            @include position-set(top 0px);
+         }
+         &._active {
+            span {
+               @include position-set(top -50px);
+            }
+            .loader {
+               @include transform-translate-y(0px);
+            }
+         }
+      }
+      &._reveal-slide-down {
+         .loader {
+            @include transform-translate-y(-50px);
+         }
+         span {
+            @include position-set(top 0px);
+         }
+         &._active {
+            span {
+               @include position-set(top 50px);
+            }
+            .loader {
+               @include transform-translate-y(0px);
             }
          }
       }

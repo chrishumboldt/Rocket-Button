@@ -6,6 +6,10 @@ if (!Rocket.defaults) {
 Rocket.defaults.button = {
     dropdown: {
         selector: '.button'
+    },
+    loader: {
+        reveal: 'appear',
+        timeout: 0
     }
 };
 if (!Rocket.event) {
@@ -79,11 +83,13 @@ var RockMod_Button;
         function add() {
             setTimeout(function () {
                 classAdd(button, '_active');
+                button.setAttribute('disabled', '');
             }, 50);
         }
         ;
         function remove() {
             classRemove(button, '_active');
+            button.removeAttribute('disabled');
         }
         ;
         add();
@@ -169,9 +175,9 @@ var RockMod_Button;
             var options = {
                 element: (isElement(uOptions.element)) ? uOptions.element : false,
                 parseEvent: (typeof uOptions.parseEvent !== 'undefined') ? uOptions.parseEvent : false,
-                reveal: (typeof uOptions.reveal === 'string') ? uOptions.reveal : 'appear',
+                reveal: (typeof uOptions.reveal === 'string') ? uOptions.reveal : Rocket.defaults.button.loader.reveal,
                 selector: (typeof uOptions.selector === 'string') ? uOptions.selector : '',
-                timeout: (typeof uOptions.timeout === 'number') ? uOptions.timeout : 0
+                timeout: (typeof uOptions.timeout === 'number') ? uOptions.timeout : Rocket.defaults.button.loader.timeout
             };
             if (!options.element && !options.selector) {
                 return false;
