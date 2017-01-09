@@ -1,6 +1,4 @@
 /**
- * File: build/sass/component/_drop-down.scss
- * Type: SASS component file
  * Author: Chris Humboldt
 **/
 
@@ -18,6 +16,7 @@ $away-from-button: 4px;
 // Drop-downs
 @mixin drop-down($colour: $default-colour) {
 	&.rb-drop-down {
+      @include level(2);
 		// List
 		ul {
 			@include position(absolute);

@@ -1,6 +1,4 @@
 /**
- * File: build/sass/component/_setup.scss
- * Type: SASS component file
  * Author: Chris Humboldt
 **/
 
@@ -26,6 +24,8 @@
 	@include vertical-align(middle);
 	@include border-no();
 	@include background-colour($grey-light);
+   @include transform-scale-3d(1, 1, 1);
+   @include animate(all);
 	outline: none;
 	-webkit-appearance: none;
 
@@ -36,10 +36,11 @@
 		@include cursor(pointer);
 		@include background-colour($grey-x-light);
 	}
-	&:active {
-		@include drop-shadow-inset(fade-out(#000, 0.85), 5px, 2px, 0px);
-		text-shadow: fade-out($white, 0.75) 0px 1px 0;
-		@include background-colour($grey-light);
+   .rocket-no-touch &._active:hover {
+      @include cursor(not-allowed);
+	}
+	&:active:not(.rb-drop-down):not([disabled]) {
+      @include transform-scale-3d(0.9, 0.9, 0.9);
 	}
 	.arrow {
 		@include display(inline-block);
@@ -59,14 +60,7 @@
 		}
 	}
 
-	-webkit-transition: border 0.2s ease-out, background 0.2s ease-out;
-	-moz-transition: border 0.2s ease-out, background 0.2s ease-out;
-	-ms-transition: border 0.2s ease-out, background 0.2s ease-out;
-	-o-transition: border 0.2s ease-out, background 0.2s ease-out;
-	transition: border 0.2s ease-out, background 0.2s ease-out;
-
 	> ul {
 		@include opacity(0);
 	}
-	@include drop-down();
 }

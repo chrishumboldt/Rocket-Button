@@ -5,6 +5,7 @@ A lightweight, universal button module.
 * [CSS Implementation](#css-implementation)
 * [SASS Implementation](#sass-implementation)
 * [Javascript Initialization](#javascript-initialization)
+   * [Loader Options](#loader-options)
 	* [Defaults](#defaults)
 * [Rocket Tools](#rocket-tools)
 * [Buttonplate Deprecated](#buttonplate-deprecated)
@@ -34,7 +35,7 @@ Now class your button with a modifier to gain the desired effect. For example:
 There are a variety of options for the CSS modifiers.
 
 Class | Options | Description
----- |  ---- | ----
+---- | ---- | ----
 `_(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour of the button.
 `_flat-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to flat.
 `_gradient-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to gradient.
@@ -76,30 +77,57 @@ SASS | Default | Options | Description
 `rocket-button-css(x)` | `.button` | | Create styles for selector `x`.
 
 ## Javascript Initialization
-If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the selector option is set to **.button**.
+If you want to enable button loaders or drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the drop down selector option is set to **.button**.
 
 ```html
 <body>
-	<div id="btn-primary" class="button _blue">
-		Drop Down Default<div class="arrow"></div>
-		<ul>
-			<li><a href>Link 1</a></li>
-			<li><a href>Link 2</a></li>
-			<li class="line-top"><a href>Link 3</a></li>
-		</ul>
-	</div>
+   <button id="button-loader" class="button _blue">Button Loader</button>
 
-	// Include the script
-	<script src="rocket-button/js/button.min.js"></script>
-	<script>
-	Rocket.button.dropdown({
-	   selector: '#btn-primary'
-	});
-	</script>
+   <div id="btn-primary" class="button _blue">
+      Drop Down Default<div class="arrow"></div>
+      <ul>
+         <li><a href>Link 1</a></li>
+         <li><a href>Link 2</a></li>
+         <li class="line-top"><a href>Link 3</a></li>
+      </ul>
+   </div>
+
+   <!-- Include the script -->
+   <script src="rocket-button/js/button.min.js"></script>
+   <script>
+   // Loader
+   document.getElementById('button-loader').onclick = function (ev) {
+      var btnLoader = Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev
+      });
+   };
+   // Drop down
+   Rocket.button.dropdown({
+      selector: '#btn-primary'
+   });
+   </script>
 </body>
 ```
 
-Each initialization will return an array of component objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
+The button loader returns the element instance. You can modify the loader after that.
+
+```javascript
+// Start the button loader
+var btnLoader = Rocket.button.loader({
+   element: document.getElementById('button-loader')
+});
+
+// The button element
+console.log(btnLoader.button);
+
+// Remove the loader
+setTimeout(function () {
+   btnLoader.remove();
+}, 4000);
+```
+
+Each drop down initialization will return an array of module objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
 // By default the selector option is set to '.button'
@@ -121,15 +149,24 @@ var myButton = Rocket.button.dropdown({
 })[0]; // Reference the first item in the array right away.
 ```
 
+#### Loader Options
+Name | Default | Options | Description
+---- | ---- | ---- | ----
+`element` | | | Provide the button element to attach the loader to.
+`parseEvent` | | | Parse a click event to prevent the default action.
+`reveal` | `appear` | `appear` `slide-down` `slide-up` | Set the loader reveal.
+`timeout` | `0` | | Set the timeout of the loader (in seconds). `0` is infinite.
+
 #### Defaults
-You can also overwrite the component selector option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:
+You can also overwrite the module selector option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:
 
 ```javascript
+Rocket.defaults.button.loader.reveal = 'slide-up';
 Rocket.defaults.button.dropdown.selector = '.new-button-class';
 ```
 
 ## Rocket Tools
-If you are using this component in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This component extends that library when detected.
+If you are using this module in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This module extends that library when detected.
 
 ## Buttonplate Deprecated
 The original library, Buttonplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Buttonplate will be maintained only with bug fixes under the **buttonplate** branch.

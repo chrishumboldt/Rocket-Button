@@ -1,6 +1,4 @@
 /**
- * File: _import.scss
- * Type: SASS import
  * Author: Chris Humboldt
 **/
 
@@ -11,6 +9,7 @@ $font-face-rocket-button: "icon-font-rocket-button" !default;
 @import "../../../rocket-propel/build/sass/import";
 
 @import "component/drop-down";
+@import "component/loader";
 @import "component/setup";
 @import "component/shape";
 @import "component/size";

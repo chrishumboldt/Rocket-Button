@@ -1,11 +1,8 @@
 /**
- * File: _shape.scss
- * Type: SASS module
  * Author: Chris Humboldt
  */
 
 // Button shape
-// ---------------------------------------------------------------------------------------
 @mixin button-shape($shape) {
 	@if $shape == pill {
 		@include border-radius(100px);

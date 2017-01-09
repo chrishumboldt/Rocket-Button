@@ -5,7 +5,7 @@
     <!-- Meta setup -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Rocket Button Component</title>
+    <title>Rocket Button Module</title>
     <link href="node_modules/rocket-demo/css/demo.min.css" rel="stylesheet" type="text/css">
     <link href="css/button.min.css" rel="stylesheet" type="text/css">
 
@@ -18,11 +18,11 @@
 
 	<div id="rocket-demo" style="display:none;">
 	   <div class="heading">
-	      <div class="container"><h2>Rocket Button Component</h2></div>
+	      <div class="container"><h2>Rocket Button Module</h2></div>
 	   </div>
 		<div class="container">
 	      <h4>Getting Started</h4>
-			<p>You can either download a copy of the <a href="https://github.com/chrishumboldt/Rocket-Button/archive/master.zip" class="link">source files<a/> or install via NPM.</p>
+			<p>You can either download a copy of the <a href="https://github.com/chrishumboldt/Rocket-Button/archive/master.zip" class="link">source files</a> or install via NPM.</p>
 <pre class="prettyprint linenums">
 npm install rocket-button
 </pre>
@@ -31,7 +31,7 @@ npm install rocket-button
 			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-    &lt;link href=&quot;rocket-button/css/button.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+   &lt;link href=&quot;rocket-button/css/button.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 </pre>
 	      <p>Now class your button with modifiers to gain the desired effect. For example:</p>
@@ -59,7 +59,26 @@ npm install rocket-button
 }
 </pre>
 	      <br>
-	      <h4>Javascript Call</h4>
+	      <h4>Button Loaders</h4>
+	      <p>If you want to enable a button loader then you will need to execute the following Javascript. Start by including the necessary files.</p>
+<pre class="prettyprint linenums">
+&lt;body&gt;
+   &lt;button id="button-loader" class="button _blue"&gt;Button Loader&lt;/button&gt;
+
+   // Include the script
+   &lt;script src=&quot;rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script&gt;
+   document.getElementById('button-loader').onclick = function (ev) {
+      Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev
+      });
+   };
+   &lt;/script&gt;
+&lt;/body&gt;
+</pre>
+	      <br>
+	      <h4>Drop Down Buttons</h4>
 	      <p>If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;body&gt;
@@ -84,6 +103,7 @@ npm install rocket-button
    &lt;/script&gt;
 &lt;/body&gt;
 </pre>
+
 	      <br>
 	      <h4>Working Examples</h4>
 			<p>Flat Buttons</p>
@@ -125,6 +145,23 @@ npm install rocket-button
 			<a href class="button _line-red">Red</a>
 			<a href class="button _line-yellow">Yellow</a>
 	      <br><br>
+			<h5>Button Sizes</h5>
+			<a href class="button _green _small">Small</a>
+			<a href class="button _green">Normal</a>
+			<a href class="button _green _large">Large</a>
+			<a href class="button _green _x-large">Extra Large</a>
+	      <br><br>
+			<h5>Button Shapes</h5>
+			<a href class="button _red">Rounded (default)</a>
+			<a href class="button _red _pill">Pill Button</a>
+			<a href class="button _red _square">Squared Button</a>
+         <br><br>
+			<h5>Button Loaders</h5>
+         <a href class="button _blue _small" id="loader-example-1">Loader Example</a>
+         <a href class="button _blue" id="loader-example-2">Loader Example</a>
+         <a href class="button _blue _large" id="loader-example-3">Loader Example</a>
+         <a href class="button _blue _x-large" id="loader-example-4">Loader Example</a>
+	      <br><br>
 			<h5>Drop Down Button</h5>
 			<div id="button-drop-1" class="button">
 				Drop Down Default<div class="arrow"></div>
@@ -144,17 +181,6 @@ npm install rocket-button
 					<li class="line-top"><a href>Link 5</a></li>
 				</ul>
 			</div>
-	      <br><br>
-			<h5>Button Sizes</h5>
-			<a href class="button _green _small">Small</a>
-			<a href class="button _green">Normal</a>
-			<a href class="button _green _large">Large</a>
-			<a href class="button _green _x-large">Extra Large</a>
-	      <br><br>
-			<h5>Button Shapes</h5>
-			<a href class="button _red">Rounded (default)</a>
-			<a href class="button _red _pill">Pill Button</a>
-			<a href class="button _red _square">Squared Button</a>
 	      <br><br><br>
 	      <h4>Detailed Documentation</h4>
 	      <p>For a more detailed look into the available options, you can read the documentation at <a target="_blank" href="https://github.com/chrishumboldt/Rocket-Button" class="link">https://github.com/chrishumboldt/Rocket-Button</a></p>
@@ -184,10 +210,37 @@ npm install rocket-button
    // Stop all button events
    var $buttons = document.querySelectorAll('a.button');
    for (var $i = $buttons.length - 1; $i >= 0; $i--) {
-      $buttons[$i].onclick = function(event) {
-         event.preventDefault();
+      $buttons[$i].onclick = function(ev) {
+         ev.preventDefault();
       };
    }
+   // Loader example
+   Rocket.defaults.button.loader.timeout = 4;
+   Rocket.defaults.button.loader.reveal = 'appear';
+   document.getElementById('loader-example-1').onclick = function (ev) {
+      Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev
+      });
+   };
+   document.getElementById('loader-example-2').onclick = function (ev) {
+      button = Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev
+      });
+   };
+   document.getElementById('loader-example-3').onclick = function (ev) {
+      Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev
+      });
+   };
+   document.getElementById('loader-example-4').onclick = function (ev) {
+      Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev
+      });
+   };
 	</script>
 
 </body>
