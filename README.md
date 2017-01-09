@@ -110,6 +110,23 @@ If you want to enable button loaders or drop downs then you will need to execute
 </body>
 ```
 
+The button loader returns the element instance. You can modify the loader after that.
+
+```javascript
+// Start the button loader
+var btnLoader = Rocket.button.loader({
+   element: document.getElementById('button-loader')
+});
+
+// The button element
+console.log(btnLoader.button);
+
+// Remove the loader
+setTimeout(function () {
+   btnLoader.remove();
+}, 4000);
+```
+
 Each drop down initialization will return an array of module objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
