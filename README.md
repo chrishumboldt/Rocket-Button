@@ -5,6 +5,7 @@ A lightweight, universal button module.
 * [CSS Implementation](#css-implementation)
 * [SASS Implementation](#sass-implementation)
 * [Javascript Initialization](#javascript-initialization)
+   * [Loader Options](#loader-options)
 	* [Defaults](#defaults)
 * [Rocket Tools](#rocket-tools)
 * [Buttonplate Deprecated](#buttonplate-deprecated)
