@@ -82,18 +82,18 @@ If you want to enable button loaders or drop downs then you will need to execute
 <body>
    <button id="button-loader" class="button _blue">Button Loader</button>
 
-	<div id="btn-primary" class="button _blue">
-		Drop Down Default<div class="arrow"></div>
-		<ul>
-			<li><a href>Link 1</a></li>
-			<li><a href>Link 2</a></li>
-			<li class="line-top"><a href>Link 3</a></li>
-		</ul>
-	</div>
+   <div id="btn-primary" class="button _blue">
+      Drop Down Default<div class="arrow"></div>
+      <ul>
+         <li><a href>Link 1</a></li>
+         <li><a href>Link 2</a></li>
+         <li class="line-top"><a href>Link 3</a></li>
+      </ul>
+   </div>
 
-	// Include the script
-	<script src="rocket-button/js/button.min.js"></script>
-	<script>
+   // Include the script
+   <script src="rocket-button/js/button.min.js"></script>
+   <script>
    // Loader
    document.getElementById('button-loader').onclick = function (ev) {
       var btnLoader = Rocket.button.loader({
@@ -102,10 +102,10 @@ If you want to enable button loaders or drop downs then you will need to execute
       });
    };
    // Drop down
-	Rocket.button.dropdown({
-	   selector: '#btn-primary'
-	});
-	</script>
+   Rocket.button.dropdown({
+      selector: '#btn-primary'
+   });
+   </script>
 </body>
 ```
 
