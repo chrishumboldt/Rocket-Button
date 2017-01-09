@@ -109,7 +109,7 @@ If you want to enable button loaders or drop downs then you will need to execute
 </body>
 ```
 
-Each initialization will return an array of module objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
+Each drop down initialization will return an array of module objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
 // By default the selector option is set to '.button'
