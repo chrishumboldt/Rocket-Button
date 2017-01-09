@@ -99,7 +99,7 @@ If you want to enable button drop downs then you will need to execute the follow
 </body>
 ```
 
-Each initialization will return an array of component objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
+Each initialization will return an array of module objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
 // By default the selector option is set to '.button'
@@ -122,14 +122,14 @@ var myButton = Rocket.button.dropdown({
 ```
 
 #### Defaults
-You can also overwrite the component selector option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:
+You can also overwrite the module selector option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:
 
 ```javascript
 Rocket.defaults.button.dropdown.selector = '.new-button-class';
 ```
 
 ## Rocket Tools
-If you are using this component in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This component extends that library when detected.
+If you are using this module in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This module extends that library when detected.
 
 ## Buttonplate Deprecated
 The original library, Buttonplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Buttonplate will be maintained only with bug fixes under the **buttonplate** branch.
