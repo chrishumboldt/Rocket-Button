@@ -96,7 +96,7 @@ var RockMod_Button;
         if (options.timeout > 0) {
             setTimeout(function () {
                 remove();
-            }, options.timeout + 50);
+            }, (options.timeout * 1000) + 50);
         }
         return {
             add: add,
