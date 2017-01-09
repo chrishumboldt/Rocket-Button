@@ -142,6 +142,7 @@ Name | Default | Options | Description
 You can also overwrite the module selector option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:
 
 ```javascript
+Rocket.defaults.button.loader.reveal = 'slide-up';
 Rocket.defaults.button.dropdown.selector = '.new-button-class';
 ```
 
