@@ -131,6 +131,13 @@ var myButton = Rocket.button.dropdown({
 })[0]; // Reference the first item in the array right away.
 ```
 
+#### Loader Options
+Name | Default | Options | Description
+`element` | | | Provide the button element to attach the laoder to.
+`parseEvent` | | | Parse a click event to prevent the default action.
+`reveal` | `appear` | `appear` `slide-down` `slide-up` | Set the loader reveal.
+`timeout` | `0` | | Set the timeout of the loader (in milliseconds). `0` is infinite.
+
 #### Defaults
 You can also overwrite the module selector option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:
 
