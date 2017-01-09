@@ -35,7 +35,7 @@ Now class your button with a modifier to gain the desired effect. For example:
 There are a variety of options for the CSS modifiers.
 
 Class | Options | Description
----- |  ---- | ----
+---- | ---- | ----
 `_(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour of the button.
 `_flat-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to flat.
 `_gradient-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to gradient.
@@ -134,6 +134,7 @@ var myButton = Rocket.button.dropdown({
 
 #### Loader Options
 Name | Default | Options | Description
+---- | ---- | ---- | ----
 `element` | | | Provide the button element to attach the laoder to.
 `parseEvent` | | | Parse a click event to prevent the default action.
 `reveal` | `appear` | `appear` `slide-down` `slide-up` | Set the loader reveal.
