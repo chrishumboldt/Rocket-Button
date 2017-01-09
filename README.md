@@ -76,10 +76,12 @@ SASS | Default | Options | Description
 `rocket-button-css(x)` | `.button` | | Create styles for selector `x`.
 
 ## Javascript Initialization
-If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the selector option is set to **.button**.
+If you want to enable button loaders or drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the drop down selector option is set to **.button**.
 
 ```html
 <body>
+   <button id="button-loader" class="button _blue">Button Loader</button>
+
 	<div id="btn-primary" class="button _blue">
 		Drop Down Default<div class="arrow"></div>
 		<ul>
@@ -92,6 +94,14 @@ If you want to enable button drop downs then you will need to execute the follow
 	// Include the script
 	<script src="rocket-button/js/button.min.js"></script>
 	<script>
+   // Loader
+   document.getElementById('button-loader').onclick = function (ev) {
+      var btnLoader = Rocket.button.loader({
+         element: ev.currentTarget,
+         parseEvent: ev
+      });
+   };
+   // Drop down
 	Rocket.button.dropdown({
 	   selector: '#btn-primary'
 	});
