@@ -5,12 +5,6 @@
 import { optionsLoader } from './interfaces';
 
 // Rocket module extension
-// NOTE: You do not need Rocket for this module to be used.
-// This allows you to extend Rocket or use independently. Both will work.
-var Rocket = (typeof Rocket === 'object') ? Rocket : {};
-if (!Rocket.defaults) {
-	Rocket.defaults = {};
-}
 Rocket.defaults.button = {
 	dropdown: {
 		selector: '.button'
@@ -20,31 +14,6 @@ Rocket.defaults.button = {
       timeout: 0
    }
 };
-if (!Rocket.event) {
-	var eventMethods = {
-		add: function (elem, type, eventHandle) {
-			if (elem == null || typeof (elem) == 'undefined') return;
-			if (elem.addEventListener) {
-				elem.addEventListener(type, eventHandle, false);
-			} else if (elem.attachEvent) {
-				elem.attachEvent('on' + type, eventHandle);
-			} else {
-				elem['on' + type] = eventHandle;
-			}
-		},
-		remove: function (elem, type, eventHandle) {
-			if (elem == null || typeof (elem) == 'undefined') return;
-			if (elem.removeEventListener) {
-				elem.removeEventListener(type, eventHandle, false);
-			} else if (elem.detachEvent) {
-				elem.detachEvent('on' + type, eventHandle);
-			} else {
-				elem['on' + type] = eventHandle;
-			}
-		}
-	};
-	Rocket.event = eventMethods;
-}
 
 // Module container
 module RockMod_Button {
@@ -60,21 +29,22 @@ module RockMod_Button {
 		if (!buttonUL) {
 			return false;
 		}
+
 		// Functions
 		function applyDrop() {
-			classAdd(button, buttonDropClassName);
+			Rocket.classes.add(button, buttonDropClassName);
 			button.onclick = function () {
 				buttonOpen();
 			};
 		};
 		function buttonClose() {
-			classRemove(buttonUL, '_open');
+			Rocket.classes.remove(buttonUL, '_open');
 		};
 		function buttonOpen() {
 			closeAll();
 			buttonUL.style.width = button.clientWidth + 'px';
 			setTimeout(function () {
-				classAdd(buttonUL, '_open');
+				Rocket.classes.add(buttonUL, '_open');
 			});
 		};
 		// Execute and return
@@ -89,12 +59,12 @@ module RockMod_Button {
    function buttonLoaderApply(button: any, options: any) {
       function add() {
          setTimeout(function () {
-            classAdd(button, '_active');
+            Rocket.classes.add(button, '_active');
             button.setAttribute('disabled', '');
          }, 50);
       };
       function remove() {
-         classRemove(button, '_active');
+         Rocket.classes.remove(button, '_active');
          button.removeAttribute('disabled');
       };
 
@@ -111,51 +81,12 @@ module RockMod_Button {
       };
    };
 
-   function classAdd(element: any, className: string) {
-		let listClassNames = element.className.split(' ');
-		listClassNames.push(className);
-		listClassNames = listClassNames.filter(function (value, index, self) {
-			return self.indexOf(value) === index && value !== '';
-		});
-		// Apply the class again
-		classApply(element, listClassNames);
-	};
-
-	function classApply(element: any, listClassNames: string[]) {
-		if (listClassNames.length === 0) {
-			element.removeAttribute('class');
-		}
-		else if (listClassNames.length === 1) {
-			element.className = listClassNames[0];
-		}
-		else {
-			element.className = listClassNames.join(' ');
-		}
-	};
-
-	function classRemove(element: any, className :any) {
-		let listClassNames = element.className.split(' ');
-		listClassNames = listClassNames.filter(function (value, index, self) {
-			return value !== className;
-		});
-		// Apply the class again
-		classApply(element, listClassNames);
-	};
-
 	function closeAll() {
 		let openDropDowns: any = document.querySelectorAll('.' + buttonDropClassName + ' ul._open');
 		for (let dropDown of openDropDowns) {
-			classRemove(dropDown, '_open');
+			Rocket.classes.remove(dropDown, '_open');
 		}
 	};
-
-   function hasClass(element, thisClass) {
-      return (' ' + element.className + ' ').indexOf(' ' + thisClass + ' ') > -1;
-   }
-
-   function isElement(element: any) {
-      return (element.nodeType && element.nodeType === 1) ? true : false;
-   };
 
    // Initialiser
    const init = {
@@ -186,7 +117,7 @@ module RockMod_Button {
             return false;
          }
          const options = {
-            element: (isElement(uOptions.element)) ? uOptions.element : false,
+            element: (Rocket.is.element(uOptions.element)) ? uOptions.element : false,
             parseEvent: (typeof uOptions.parseEvent !== 'undefined') ? uOptions.parseEvent : false,
             reveal: (typeof uOptions.reveal === 'string') ? uOptions.reveal : Rocket.defaults.button.loader.reveal,
             selector: (typeof uOptions.selector === 'string') ? uOptions.selector : '',
@@ -205,7 +136,7 @@ module RockMod_Button {
 
          // Check
          setup.buttonLoader(elm, options);
-         if (!hasClass(elm, '_active')) {
+         if (!Rocket.has.class(elm, '_active')) {
             return buttonLoaderApply(elm, options);
          }
       }
@@ -213,20 +144,20 @@ module RockMod_Button {
    const setup = {
       buttonLoader: function (elm: any, options: optionsLoader) {
          // Catch
-         if (!hasClass(elm, 'rb-loader') && !hasClass(elm, 'rb-drop-down')) {
+         if (!Rocket.has.class(elm, 'rb-loader') && !Rocket.has.class(elm, 'rb-drop-down')) {
             var newInnerHTML = '';
             newInnerHTML += '<div class="loader"><div class="circle-one"></div><div class="circle-two"></div></div>';
             newInnerHTML += '<span>' + elm.innerHTML + '</span>';
 
-            classAdd(elm, 'rb-loader _reveal-' + options.reveal);
+            Rocket.classes.add(elm, 'rb-loader _reveal-' + options.reveal);
             elm.innerHTML = newInnerHTML;
          }
       },
       global: function () {
          var htmlElm = document.getElementsByTagName('html')[0];
-         if (!hasClass(htmlElm, 'rocket-no-touch')) {
+         if (!Rocket.has.class(htmlElm, 'rocket-no-touch')) {
             if (('ontouchstart' in window || 'onmsgesturechange' in window) === false) {
-      			classAdd(htmlElm, 'rocket-no-touch');
+      			Rocket.classes.add(htmlElm, 'rocket-no-touch');
       		}
          }
    		if (!documentOnClick) {

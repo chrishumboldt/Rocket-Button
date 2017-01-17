@@ -22,16 +22,16 @@
 	   </div>
 		<div class="container">
 	      <h4>Getting Started</h4>
-			<p>You can either download a copy of the <a href="https://github.com/chrishumboldt/Rocket-Button/archive/master.zip" class="link">source files</a> or install via NPM.</p>
+			<p>Install via NPM.</p>
 <pre class="prettyprint linenums">
 npm install rocket-button
 </pre>
-	      <br>
+	      <p class="note">Note that this module has a dependency <a href="https://github.com/chrishumboldt/Rocket-Tools" class="link" target="_blank">Rocket Tools (20kb)</a> which will automatically be installed as well.</p>
 	      <h4>CSS Implementation</h4>
 			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;head&gt;
-   &lt;link href=&quot;rocket-button/css/button.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+   &lt;link href=&quot;node_modules/rocket-button/css/button.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
 &lt;/head&gt;
 </pre>
 	      <p>Now class your button with modifiers to gain the desired effect. For example:</p>
@@ -66,7 +66,8 @@ npm install rocket-button
    &lt;button id="button-loader" class="button _blue"&gt;Button Loader&lt;/button&gt;
 
    // Include the script
-   &lt;script src=&quot;rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script src=&quot;node_modules/rocket-tools/js/tools.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script src=&quot;node_modules/rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
    document.getElementById('button-loader').onclick = function (ev) {
       Rocket.button.loader({
@@ -92,7 +93,8 @@ npm install rocket-button
    &lt;/div&gt;
 
    // Include the script
-   &lt;script src=&quot;rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script src=&quot;node_modules/rocket-tools/js/tools.min.js&quot;&gt;&lt;/script&gt;
+   &lt;script src=&quot;node_modules/rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
    Rocket.button.dropdown({
       selector: '.btn-primary'
@@ -198,6 +200,7 @@ npm install rocket-button
 	</div>
 
    <!-- Scripts -->
+   <script src="node_modules/rocket-tools/js/tools.min.js"></script>
    <script src="node_modules/rocket-demo/js/demo.min.js"></script>
    <script src="build/js/button.js"></script>
 	<script>
@@ -224,7 +227,7 @@ npm install rocket-button
       });
    };
    document.getElementById('loader-example-2').onclick = function (ev) {
-      button = Rocket.button.loader({
+      var button = Rocket.button.loader({
          element: ev.currentTarget,
          parseEvent: ev
       });
