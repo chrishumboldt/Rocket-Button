@@ -94,9 +94,10 @@ If you want to enable button loaders or drop downs then you will need to execute
       </ul>
    </div>
 
-   <!-- Include the script -->
+   <!-- Include the scripts -->
    <script src="node_modules/rocket-tools/js/tools.min.js"></script>
    <script src="node_modules/rocket-button/js/button.min.js"></script>
+   
    <script>
    // Loader
    document.getElementById('button-loader').onclick = function (ev) {
