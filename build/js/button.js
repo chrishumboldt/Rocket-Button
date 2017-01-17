@@ -203,8 +203,11 @@ var RockMod_Button;
             }
         },
         global: function () {
-            if (('ontouchstart' in window || 'onmsgesturechange' in window) === false) {
-                classAdd(document.getElementsByTagName('html')[0], 'rocket-no-touch');
+            var htmlElm = document.getElementsByTagName('html')[0];
+            if (!hasClass(htmlElm, 'rocket-no-touch')) {
+                if (('ontouchstart' in window || 'onmsgesturechange' in window) === false) {
+                    classAdd(htmlElm, 'rocket-no-touch');
+                }
             }
             if (!documentOnClick) {
                 documentOnClick = true;
