@@ -7,22 +7,23 @@ A lightweight, universal button module.
 * [Javascript Initialization](#javascript-initialization)
    * [Loader Options](#loader-options)
 	* [Defaults](#defaults)
-* [Rocket Tools](#rocket-tools)
 * [Buttonplate Deprecated](#buttonplate-deprecated)
 
 ## Getting Started
-You can either download a copy of the [source files](https://github.com/chrishumboldt/Rocket-Button/archive/master.zip) or install via NPM.
+Install via NPM.
 
 ```
 npm install rocket-button
 ```
+
+**NOTE** that this module has a dependency [Rocket Tools (20kb)](https://github.com/chrishumboldt/Rocket-Tools) which will automatically be installed as well.
 
 ## CSS Implementation
 Start by including the necessary files.
 
 ```html
 <head>
-	<link href="rocket-button/css/button.min.css" rel="stylesheet" type="text/css">
+	<link href="node_modules/rocket-button/css/button.min.css" rel="stylesheet" type="text/css">
 </head>
 ```
 
@@ -92,8 +93,10 @@ If you want to enable button loaders or drop downs then you will need to execute
       </ul>
    </div>
 
-   <!-- Include the script -->
-   <script src="rocket-button/js/button.min.js"></script>
+   <!-- Include the scripts -->
+   <script src="node_modules/rocket-tools/js/tools.min.js"></script>
+   <script src="node_modules/rocket-button/js/button.min.js"></script>
+
    <script>
    // Loader
    document.getElementById('button-loader').onclick = function (ev) {
@@ -164,9 +167,6 @@ You can also overwrite the module selector option globally by altering the Rocke
 Rocket.defaults.button.loader.reveal = 'slide-up';
 Rocket.defaults.button.dropdown.selector = '.new-button-class';
 ```
-
-## Rocket Tools
-If you are using this module in conjunction with [Rocket Tools](https://github.com/chrishumboldt/Rocket-Tools), then **always** load the Rocket Tools library first. This module extends that library when detected.
 
 ## Buttonplate Deprecated
 The original library, Buttonplate, has been deprecated. The entire Webplate project is being refactored and rebranded with a new development philosophy. Buttonplate will be maintained only with bug fixes under the **buttonplate** branch.
