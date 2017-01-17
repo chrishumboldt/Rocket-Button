@@ -61,11 +61,13 @@ module RockMod_Button {
          setTimeout(function () {
             Rocket.classes.add(button, '_active');
             button.setAttribute('disabled', '');
-         }, 50);
+         }, 10);
       };
       function remove() {
-         Rocket.classes.remove(button, '_active');
-         button.removeAttribute('disabled');
+         setTimeout(function () {
+            Rocket.classes.remove(button, '_active');
+            button.removeAttribute('disabled');
+         }, 20);
       };
 
       add();
