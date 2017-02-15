@@ -16,7 +16,7 @@ Install via NPM.
 npm install rocket-button
 ```
 
-**NOTE** that this module has a dependency [Rocket Tools (20kb)](https://github.com/chrishumboldt/Rocket-Tools) which will automatically be installed as well.
+**NOTE** that this module has a dependency [Rocket Tools (21kb)](https://github.com/chrishumboldt/Rocket-Tools) which will automatically be installed as well.
 
 ## CSS Implementation
 Start by including the necessary files.
