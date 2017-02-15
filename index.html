@@ -42,11 +42,11 @@ npm install rocket-button
 	      <h4>SASS Implementation</h4>
 	      <p>Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:</p>
 <pre class="prettyprint linenums">
-@import "rocket-button/build/sass/import";
+@import "node_modules/rocket-button/build/sass/import";
 
 .btn-primary,
 .btn-secondary {
-   @include button-setup();
+   @include button-setup;
    @include button-shape(rounded);
 }
 .btn-primary {
@@ -98,9 +98,6 @@ npm install rocket-button
    &lt;script&gt;
    Rocket.button.dropdown({
       selector: '.btn-primary'
-   });
-   Rocket.button.dropdown({
-      selector: '.btn-secondary'
    });
    &lt;/script&gt;
 &lt;/body&gt;
