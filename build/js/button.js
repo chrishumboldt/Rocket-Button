@@ -1,5 +1,4 @@
 "use strict";
-require("../../node_modules/rocket-tools/index");
 Rocket.defaults.button = {
     dropdown: {
         target: '.button'
