@@ -105,6 +105,7 @@ If you want to enable button loaders or drop downs then you will need to execute
          parseEvent: ev
       });
    };
+
    // Drop down
    Rocket.button.dropdown({
       selector: '#btn-primary'
@@ -158,7 +159,7 @@ Name | Default | Options | Description
 `element` | | | Provide the button element to attach the loader to.
 `parseEvent` | | | Parse a click event to prevent the default action.
 `reveal` | `appear` | `appear` `slide-down` `slide-up` | Set the loader reveal.
-`timeout` | `0` | | Set the timeout of the loader (in seconds). `0` is infinite.
+`timeout` | `0` | | Set the timeout of the loader (in seconds).<br>`0` is infinite.
 
 #### Defaults
 You can also overwrite the module selector option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:

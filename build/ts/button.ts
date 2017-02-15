@@ -17,6 +17,7 @@ Rocket.defaults.button = {
 
 // Module container
 module RockMod_Button {
+   
 	// Variables
 	const buttonDropClassName = 'rb-drop-down';
 	let documentOnClick = false;
