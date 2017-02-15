@@ -50,11 +50,11 @@ If no modifiers are provided then the colour will default to grey, the style to 
 Instead of including the CSS file above, you can import the SASS file and create your own button styles. See an example below:
 
 ```scss
-@import "rocket-button/build/sass/import";
+@import "node_modules/rocket-button/build/sass/import";
 
 .btn-primary,
 .btn-secondary {
-   @include button-setup();
+   @include button-setup;
    @include button-shape(rounded);
 }
 .btn-primary {
@@ -71,7 +71,7 @@ There are a variety of options for the SASS builds.
 
 SASS | Default | Options | Description
 ---- | ---- | ---- | ----
-`button-setup()` | | | Apply to all buttons.
+`button-setup` | | | Apply to all buttons.
 `button-shape(x)` | `rounded` | `pill` `rounded` `square` | Set the shape of the button.
 `button-size(x)` | `normal` | `small` `normal` `large` `x-large` | Set the size of the button.
 `button-style(x, y)` | `flat`, `white` | `flat` `gradient` `line` | Set `x` to the style of button.<br>Set `y` to the colour.
@@ -179,7 +179,7 @@ Twitter: <a href="https://twitter.com/chrishumboldt">twitter.com/chrishumboldt</
 GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><br>
 
 ## Copyright and License
-Copyright 2016 Rocket Project
+Copyright 2017 Rocket Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
