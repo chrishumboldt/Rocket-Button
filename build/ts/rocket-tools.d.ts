@@ -1,68 +1,118 @@
-/**
- * Author: Chris Humboldt
-**/
+/*
+Author: Chris Humboldt
+*/
 
 declare namespace Rocket {
-   var defaults: any;
+   const defaults: any;
 
    // Basic checks
-   function exists(check: any);
+   function exists(check: any): any;
 
    interface has {
-      class(element: any, className: any);
+      class(element: any, className: any): any;
    }
-   var has: has;
+   const has: has;
 
    interface is {
       element(check: any): boolean;
+      email(check: any): boolean;
       function(check: any): boolean;
+      number(check: any): boolean;
       object(check: any): boolean;
+      password(check: any): boolean;
       string(check: any): boolean;
       touch(): boolean;
    }
-   var is: is;
+   const is: is;
+
+   // Button
+   interface buttonLoaderOptions {
+      element?: any;
+      parseEvent?: any;
+      reveal?: string;
+      selector?: string;
+      timeout?: number;
+   }
+   interface button {
+      loader(options: buttonLoaderOptions): any;
+   }
+   let button: button;
 
    // Classes
    interface classes {
-      add(elements: any, classes: any);
-      remove(elements: any, classes: any);
+      add(elements: any, classes: any): any;
+      remove(elements: any, classes: any): any;
    }
-   var classes: classes;
+   const classes: classes;
 
    // Development
-   function log(text: any);
+   function log(text: any): any;
 
    // DOM
    interface dom {
       body: any;
       html: any;
-      remove(target: any);
-      select(target: string);
+      select(target: string): any;
    }
-   var dom: dom;
+   const dom: dom;
 
    // Events
    interface event {
-      add(element: any, type: string, eventHandle: any);
-      remove(element: any, type: string, eventHandle: any);
+      add(element: any, type: string, eventHandle: any): any;
+      remove(element: any, type: string, eventHandle: any): any;
    }
-   var event: event;
+   const event: event;
+
+   // Gets
+   interface get {
+      extension(ext: string): string;
+      index(elm: any): number;
+   }
+   const get: get
 
    // Helpers
    interface helper {
-      setDefault(set: any, defauit: any);
+      setDefault(set: any, defauit: any): any;
    }
-   var helper: helper;
+   const helper: helper;
 
-   // Overlays
-   interface overlay {
-      hide();
-      show();
+   // Request
+   interface requestOptions {
+      url: string;
+      asynch?: boolean;
+      data?: any;
+      dataForce?: string;
+      dataType?: string;
+      headers?: string;
+      onComplete?: any;
+      onError?: any;
+      onLoading?: any;
+      onStart?: any;
+      onSuccess?: any;
+      timeout?: number;
+      type?: string;
+      withCredentials?: boolean;
    }
-   var overlay: overlay;
+   interface request {
+      delete(options: requestOptions): any;
+      get(options: requestOptions): any;
+      post(options: requestOptions): any;
+      put(options: requestOptions): any;
+      run(options: requestOptions): any;
+   }
+   const request: request;
+
+   // Storage
+   interface storage {
+      add(key: string, value: any): any;
+      clear(): any;
+      get(key: string): string;
+      remove(key: string): any;
+   }
+   const storage: storage;
 
    // Modules
-   var button: any;
-   var form: any;
-   var message: any;
+   const flicker: any;
+   const form: any;
+   const message: any;
 }

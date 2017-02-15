@@ -1,7 +1,7 @@
 "use strict";
 Rocket.defaults.button = {
     dropdown: {
-        selector: '.button'
+        target: '.button'
     },
     loader: {
         reveal: 'appear',
@@ -73,7 +73,7 @@ var RockMod_Button;
     }
     ;
     function closeAll() {
-        var openDropDowns = document.querySelectorAll('.' + buttonDropClassName + ' ul._open');
+        var openDropDowns = Rocket.dom.select('.' + buttonDropClassName + ' ul._open');
         for (var _i = 0, openDropDowns_1 = openDropDowns; _i < openDropDowns_1.length; _i++) {
             var dropDown = openDropDowns_1[_i];
             Rocket.classes.remove(dropDown, '_open');
@@ -82,13 +82,13 @@ var RockMod_Button;
     ;
     var init = {
         buttonDropDown: function (userOptions) {
-            if (typeof userOptions !== 'object') {
+            if (!Rocket.is.object(userOptions)) {
                 userOptions = false;
             }
             var options = {
-                selector: (typeof userOptions.selector === 'string') ? userOptions.selector : Rocket.defaults.button.selector
+                target: (Rocket.is.string(userOptions.target)) ? userOptions.target : Rocket.defaults.button.target
             };
-            var buttons = document.querySelectorAll(options.selector);
+            var buttons = Rocket.dom.select(options.target);
             var objReturn = [];
             if (buttons.length < 1) {
                 return false;
@@ -100,23 +100,23 @@ var RockMod_Button;
             return objReturn;
         },
         buttonLoader: function (uOptions) {
-            if (typeof uOptions !== 'object') {
+            if (!Rocket.is.object(uOptions)) {
                 return false;
             }
             var options = {
                 element: (Rocket.is.element(uOptions.element)) ? uOptions.element : false,
                 parseEvent: (typeof uOptions.parseEvent !== 'undefined') ? uOptions.parseEvent : false,
-                reveal: (typeof uOptions.reveal === 'string') ? uOptions.reveal : Rocket.defaults.button.loader.reveal,
-                selector: (typeof uOptions.selector === 'string') ? uOptions.selector : '',
-                timeout: (typeof uOptions.timeout === 'number') ? uOptions.timeout : Rocket.defaults.button.loader.timeout
+                reveal: (Rocket.is.string(uOptions.reveal)) ? uOptions.reveal : Rocket.defaults.button.loader.reveal,
+                target: (Rocket.is.string(uOptions.target)) ? uOptions.target : '',
+                timeout: (Rocket.is.number(uOptions.timeout)) ? uOptions.timeout : Rocket.defaults.button.loader.timeout
             };
-            if (!options.element && !options.selector) {
+            if (!options.element && !options.target) {
                 return false;
             }
             if (options.parseEvent !== false) {
                 options.parseEvent.preventDefault();
             }
-            var elm = (options.element) ? options.element : document.querySelector(options.selector);
+            var elm = (options.element) ? options.element : Rocket.dom.select(options.target)[0];
             setup.buttonLoader(elm, options);
             if (!Rocket.has.class(elm, '_active')) {
                 return buttonLoaderApply(elm, options);
@@ -134,17 +134,11 @@ var RockMod_Button;
             }
         },
         global: function () {
-            var htmlElm = document.getElementsByTagName('html')[0];
-            if (!Rocket.has.class(htmlElm, 'rocket-no-touch')) {
-                if (('ontouchstart' in window || 'onmsgesturechange' in window) === false) {
-                    Rocket.classes.add(htmlElm, 'rocket-no-touch');
-                }
-            }
             if (!documentOnClick) {
-                documentOnClick = true;
                 Rocket.event.add(document, 'click', function () {
                     closeAll();
                 });
+                documentOnClick = true;
             }
         }
     };
