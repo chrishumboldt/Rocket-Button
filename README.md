@@ -78,7 +78,7 @@ SASS | Default | Options | Description
 `rocket-button-css(x)` | `.button` | | Create styles for selector `x`.
 
 ## Javascript Initialization
-If you want to enable button loaders or drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the drop down selector option is set to **.button**.
+If you want to enable button loaders or drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the drop down target option is set to **.button**.
 
 ```html
 <body>
@@ -108,7 +108,7 @@ If you want to enable button loaders or drop downs then you will need to execute
 
    // Drop down
    Rocket.button.dropdown({
-      selector: '#btn-primary'
+      target: '#btn-primary'
    });
    </script>
 </body>
@@ -131,10 +131,10 @@ setTimeout(function () {
 }, 4000);
 ```
 
-Each drop down initialization will return an array of module objects (An array will always be returned even if the selector is an id). This includes the button element itself as well as relevant methods. For example:
+Each drop down initialization will return an array of module objects (An array will always be returned even if the target is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
-// By default the selector option is set to '.button'
+// By default the target option is set to '.button'
 var buttons = Rocket.button.dropdown();
 
 // The buttons and all methods
@@ -145,11 +145,11 @@ for (var i = 0, len = buttons.length; i < len; i++) {
 }
 ```
 
-Alternatively if you know the button selector is unique you can reference the button right away with the 0 index. For example:
+Alternatively if you know the button target is unique you can reference the button right away with the 0 index. For example:
 
 ```javascript
 var myButton = Rocket.button.dropdown({
-	selector: '#my-button'
+	target: '#my-button'
 })[0]; // Reference the first item in the array right away.
 ```
 
@@ -162,11 +162,11 @@ Name | Default | Options | Description
 `timeout` | `0` | | Set the timeout of the loader (in seconds).<br>`0` is infinite.
 
 #### Defaults
-You can also overwrite the module selector option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:
+You can also overwrite the module target option globally by altering the Rocket defaults. To do so reference the defaults object property, for example:
 
 ```javascript
 Rocket.defaults.button.loader.reveal = 'slide-up';
-Rocket.defaults.button.dropdown.selector = '.new-button-class';
+Rocket.defaults.button.dropdown.target = '.new-button-class';
 ```
 
 ## Buttonplate Deprecated
