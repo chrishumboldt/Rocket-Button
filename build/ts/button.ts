@@ -2,7 +2,7 @@
 Author: Chris Humboldt
 */
 
-import '../../node_modules/rocket-tools/index';
+///<reference path="../../node_modules/rocket-tools/index.d.ts" />
 import { optionsDropDown, optionsLoader } from './interfaces';
 
 // Rocket module extension
