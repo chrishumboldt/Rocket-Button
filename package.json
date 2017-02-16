@@ -1,6 +1,6 @@
 {
   "name": "rocket-button",
-  "version": "5.1.7",
+  "version": "5.1.8",
   "description": "A lightweight, universal button module.",
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "rocket-propel": "^3.0.0",
-    "rocket-tools": "^1.12.5"
+    "rocket-tools": "^1.12.6"
   },
   "devDependencies": {
     "rocket-demo": "^2.0.0"
