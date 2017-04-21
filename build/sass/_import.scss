@@ -1,5 +1,5 @@
 /**
- * Author: Chris Humboldt
+@author Chris Humboldt
 **/
 
 // Variables
@@ -8,11 +8,11 @@ $font-face-rocket-button: "icon-font-rocket-button" !default;
 // Import
 @import "../../../rocket-propel/build/sass/import";
 
-@import "component/drop-down";
-@import "component/loader";
-@import "component/setup";
-@import "component/shape";
-@import "component/size";
-@import "component/style";
+@import "module/drop-down";
+@import "module/loader";
+@import "module/setup";
+@import "module/shape";
+@import "module/size";
+@import "module/style";
 
 @import "css/execute";

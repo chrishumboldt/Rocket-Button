@@ -1,9 +1,6 @@
-/*
-Author: Chris Humboldt
-*/
-
-///<reference path="../../node_modules/rocket-tools/index.d.ts" />
-import { optionsDropDown, optionsLoader } from './interfaces';
+/**
+@author Chris Humboldt
+**/
 
 // Rocket module extension
 Rocket.defaults.button = {
@@ -161,7 +158,7 @@ module RockMod_Button {
          // Catch
          if (!Rocket.has.class(elm, 'rb-loader') && !Rocket.has.class(elm, 'rb-drop-down')) {
             var newInnerHTML = '';
-            newInnerHTML += '<div class="loader"><div class="circle-one"></div><div class="circle-two"></div></div>';
+            newInnerHTML += '<div class="rb-loader-elm"><div class="circle-one"></div><div class="circle-two"></div></div>';
             newInnerHTML += '<span>' + elm.innerHTML + '</span>';
 
             Rocket.classes.add(elm, 'rb-loader _reveal-' + options.reveal);
