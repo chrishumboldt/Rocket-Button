@@ -1,12 +1,12 @@
-/*
-Author: Chris Humboldt
-*/
+/**
+@author Chris Humboldt
+**/
 
-export interface optionsDropDown {
+declare interface optionsDropDown {
    target: string;
 }
 
-export interface optionsLoader {
+declare interface optionsLoader {
    element: any;
    parseEvent: any;
    reveal: string;

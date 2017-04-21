@@ -1,5 +1,5 @@
 /**
- * Author: Chris Humboldt
+@author Chris Humboldt
 **/
 
 $loader-size: 28px;
@@ -12,7 +12,7 @@ $loader-size-half-large: -$loader-size-large / 2;
 @mixin button-loader() {
    &.rb-loader {
       @include overflow(hidden);
-      .loader {
+      .rb-loader-elm {
          @include position(absolute, top 50% left 50% margin-left $loader-size-half margin-top $loader-size-half);
          @include square($loader-size);
          @include animate(all);
@@ -25,7 +25,7 @@ $loader-size-half-large: -$loader-size-large / 2;
             @include opacity(0);
          }
       }
-      &._small .loader {
+      &._small .rb-loader-elm {
          @include position-set(margin-left $loader-size-half-small margin-top $loader-size-half-small);
          @include square($loader-size-small);
          .circle-one,
@@ -34,7 +34,7 @@ $loader-size-half-large: -$loader-size-large / 2;
             @include border($white, 2px);
          }
       }
-      &._x-large .loader {
+      &._x-large .rb-loader-elm {
          @include position-set(margin-left $loader-size-half-large margin-top $loader-size-half-large);
          @include square($loader-size-large);
          .circle-one,
@@ -52,7 +52,7 @@ $loader-size-half-large: -$loader-size-large / 2;
       &._active {
          .circle-one,
          .circle-two {
-            @include animation(pulse, 1.2s, infinite);
+            @include animation(rbloaderpulse, 1.2s, infinite);
          }
          .circle-two {
             @include animation-delay(0.4s);
@@ -68,7 +68,7 @@ $loader-size-half-large: -$loader-size-large / 2;
          }
       }
       &._reveal-slide-up {
-         .loader {
+         .rb-loader-elm {
             @include transform-translate-y(50px);
          }
          span {
@@ -78,13 +78,13 @@ $loader-size-half-large: -$loader-size-large / 2;
             span {
                @include position-set(top -50px);
             }
-            .loader {
+            .rb-loader-elm {
                @include transform-translate-y(0px);
             }
          }
       }
       &._reveal-slide-down {
-         .loader {
+         .rb-loader-elm {
             @include transform-translate-y(-50px);
          }
          span {
@@ -94,7 +94,7 @@ $loader-size-half-large: -$loader-size-large / 2;
             span {
                @include position-set(top 50px);
             }
-            .loader {
+            .rb-loader-elm {
                @include transform-translate-y(0px);
             }
          }
@@ -103,7 +103,7 @@ $loader-size-half-large: -$loader-size-large / 2;
 }
 
 // Animation
-@include keyframes(pulse) {
+@include keyframes(rbloaderpulse) {
    0% {
       @include opacity(0);
       @include transform-scale-3d(0, 0, 0);

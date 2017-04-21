@@ -1,9 +1,10 @@
 {
+   "compileOnSave": true,
 	"compilerOptions": {
 		"outDir": "../js",
 		"target": "es5"
 	},
-   "exclude": [
-      "./interfaces.ts"
+   "filesGlob": [
+      "./**/*.ts"
    ]
 }
