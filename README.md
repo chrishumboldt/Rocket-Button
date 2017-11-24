@@ -27,7 +27,7 @@ Start by including the necessary files.
 </head>
 ```
 
-Now class your button with a modifier to gain the desired effect. For example:
+Now class your button and add a modifier to gain the desired effect. For example:
 
 ```html
 <button class="mod-button _style-line-red _size-large">Example Button</button>
