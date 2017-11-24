@@ -5,8 +5,8 @@ A lightweight, universal button module.
 * [CSS Implementation](#css-implementation)
 * [SASS Implementation](#sass-implementation)
 * [Javascript Initialization](#javascript-initialization)
-   * [Loader Options](#loader-options)
-	* [Defaults](#defaults)
+* [Loader Options](#loader-options)
+* [Defaults](#defaults)
 * [Buttonplate Deprecated](#buttonplate-deprecated)
 
 ## Getting Started
@@ -23,7 +23,7 @@ Start by including the necessary files.
 
 ```html
 <head>
-	<link href="node_modules/rocket-button/css/button.min.css" rel="stylesheet" type="text/css">
+   <link href="node_modules/rocket-button/css/button.min.css" rel="stylesheet" type="text/css">
 </head>
 ```
 
@@ -108,7 +108,7 @@ If you want to enable button loaders or drop downs then you will need to execute
    Rocket.button.dropdown({
       target: '#btn-primary'
    });
-   </script>
+</script>
 </body>
 ```
 
@@ -137,9 +137,9 @@ const buttons = Rocket.button.dropdown();
 
 // The buttons and all methods
 for (let i = 0, len = buttons.length; i < len; i++) {
-	console.log(buttons[i].button);
-	buttons[i].open(); // Open the button drop down
-	buttons[i].close(); // Close the button drop down
+   console.log(buttons[i].button);
+   buttons[i].open(); // Open the button drop down
+   buttons[i].close(); // Close the button drop down
 }
 ```
 
@@ -147,7 +147,7 @@ Alternatively if you know the button target is unique you can reference the butt
 
 ```javascript
 const myButton = Rocket.button.dropdown({
-	target: '#my-button'
+   target: '#my-button'
 })[0]; // Reference the first item in the array right away.
 ```
 
@@ -183,7 +183,7 @@ Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+http://www.apache.org/licenses/LICENSE-2.0
 
 Unless required by applicable law or agreed to in writing, software
 distributed under the License is distributed on an "AS IS" BASIS,
