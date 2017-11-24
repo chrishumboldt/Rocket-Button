@@ -74,7 +74,7 @@ SASS | Default | Options | Description
 `mod-button-shape(x)` | `rounded` | `pill` `rounded` `square` | Set the shape of the button.
 `mod-button-size(x)` | `normal` | `small` `normal` `large` `x-large` | Set the size of the button.
 `mod-button-style(x, y)` | `flat`, `white` | `flat` `gradient` `line` | Set `x` to the style of button.<br>Set `y` to the colour.
-`rocket-button-css(x)` | `.button` | | Create styles for selector `x`.
+`rocket-button-css(x)` | `.mod-button` | | Create styles for selector `x`.
 
 ## Javascript Initialisation
 If you want to enable button loaders or drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the drop down target option is set to **.button**.
