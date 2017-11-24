@@ -106,7 +106,7 @@ If you want to enable button loaders or drop downs then you will need to execute
 
    // Drop down
    Rocket.button.dropdown({
-      target: '#btn-primary'
+      targets: '#btn-primary'
    });
 </script>
 </body>
@@ -132,7 +132,7 @@ setTimeout(function () {
 Each drop down initialisation will return an array of module objects (An array will always be returned even if the target is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
-// By default the target option is set to '.mod-button'
+// By default the targets option is set to '.mod-button'
 const buttons = Rocket.button.dropdown();
 
 // The buttons and all methods

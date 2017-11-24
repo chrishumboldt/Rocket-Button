@@ -97,7 +97,7 @@ npm install rocket-button
    &lt;script src=&quot;node_modules/rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
    Rocket.button.dropdown({
-      target: '.btn-primary'
+      targets: '#btn-primary'
    });
    &lt;/script&gt;
 &lt;/body&gt;
@@ -162,7 +162,7 @@ npm install rocket-button
          <a href class="mod-button _style-flat-blue _size-x-large" id="loader-example-4">Loader Example</a>
 	      <br><br>
 			<h5>Drop Down Button</h5>
-			<div id="button-drop-1" class="mod-button _size-large">
+			<div class="button-dropdowns mod-button _size-large">
 				Drop Down Default<div class="mod-button-arrow"></div>
 				<ul>
 					<li><a href>Link 1</a></li>
@@ -170,7 +170,7 @@ npm install rocket-button
 					<li class="mod-button-line-top"><a href>Link 3</a></li>
 				</ul>
 			</div>
-			<div id="button-drop-2" class="mod-button _style-flat-blue">
+			<div class="button-dropdowns mod-button _style-flat-blue">
 				Drop Down Blue<div class="mod-button-arrow"></div>
 				<ul>
 					<li><a href>Link 1</a></li>
@@ -202,10 +202,7 @@ npm install rocket-button
    <script src="build/js/button.js"></script>
 	<script>
 	Rocket.button.dropdown({
-		target: '#button-drop-1'
-	});
-	Rocket.button.dropdown({
-		target: '#button-drop-2'
+		targets: '.button-dropdowns'
 	});
 
    // Stop all button events
