@@ -2,7 +2,6 @@
 @author Chris Humboldt
 **/
 
-// Table of contents
 // Variables
 // Drop-downs
 // Set line
@@ -14,84 +13,83 @@ $default-colour: $blue;
 $away-from-button: 4px;
 
 // Drop-downs
-@mixin drop-down($colour: $default-colour) {
-	&.rb-drop-down {
+@mixin mod-button-dropdown($colour: $default-colour) {
+	&.has-dropdown {
       @include level(2);
-		// List
-		ul {
-			@include position(absolute);
-			@include padding(0px);
-			@include margin-top($away-from-button);
-			@include list-style(none);
-			@include background-colour($white);
-			@include border-radius();
-			@include drop-shadow(fade-out($black, 0.85), 3px, 1px);
-			@include level(2);
-			@include opacity(0);
-			@include visibility(hidden);
-			li {
-				@include spacing-no();
+   }
 
-				&:first-child a {
-					@include border-radius-top();
-				}
-				&:last-child a {
-					@include border-radius-bottom();
-				}
-				&.line-top {
-					@include set-line(top);
-				}
-				&.line-bottom {
-					@include set-line(bottom);
-				}
-				// Links
-				a {
-					@include display(block);
-					@include text-align(left);
-					@include text-colour($black-base);
-					text-decoration: none;
-					vertical-align: middle;
-					.rocket-no-touch &:hover {
-						@include background-colour(darken($grey-x-light, 3%));
-					}
-				}
-			}
-			// Show state
-			&._open {
-				@include opacity(1);
-				@include visibility(visible);
-				@include animate(all, 0.4s);
-			}
-		}
-	}
+   // List
+   ul {
+      @include position(absolute);
+      @include padding(0px);
+      @include margin-t($away-from-button);
+      @include list-style(none);
+      @include background-colour($white);
+      @include border-radius();
+      @include drop-shadow(fade-out($black, 0.85), 3px, 1px);
+      @include level(2);
+      @include opacity(0);
+      @include visibility(hidden);
+   }
+
+   // Open state
+   ul.is-open {
+      @include opacity(1);
+      @include visibility(visible);
+      @include animate(all, 0.4s);
+   }
+
+   li {
+      @include spacing-no();
+   }
+   li:first-child a {
+      @include border-radius-t();
+   }
+   li:last-child a {
+      @include border-radius-b();
+   }
+   li.mod-button-line-top {
+      @include mod-button-set-line(top);
+   }
+   li.mod-button-line-bottom {
+      @include mod-button-set-line(bottom);
+   }
+   li a {
+      @include display(block);
+      @include text-align(left);
+      @include text-colour($black-base);
+      text-decoration: none;
+      vertical-align: middle;
+      .rocket-no-touch &:hover {
+         @include background-colour(darken($grey-x-light, 3%));
+      }
+   }
 }
 
 // Set line
-@mixin set-line($position: top) {
+@mixin mod-button-set-line($position: top) {
 	// Determine where the line goes
 	@if $position == top {
-		@include border-top($grey-light);
+		@include border-t($grey-light);
 	}
 	@else if $position == bottom {
-		@include border-bottom($grey-light);
+		@include border-b($grey-light);
 	}
 }
 
 // Drop-down position
 @mixin drop-down-position($spacing, $link-height, $font-size) {
-	.arrow {
-		@include margin-left($spacing / 2);
+	.mod-button-arrow {
+		@include margin-l($spacing / 2);
 	}
-	&.rb-drop-down {
-		ul {
-			@include margin-left(-$spacing);
-		}
-		li a {
-			@include padding-horizontal($spacing);
-			@include height($link-height);
-			@include text-line-height($link-height);
-			@include text-size($font-size);
-		}
+	ul {
+		@include margin-l(-$spacing);
+	}
+	li a {
+		@include padding-h($spacing);
+		@include height($link-height);
+		@include text-line-height($link-height);
+		@include text-size($font-size);
 	}
 }
 

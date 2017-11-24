@@ -3,49 +3,48 @@
 **/
 
 // CSS
-@mixin rocket-button-css($selector: '.button') {
-	#{$selector} {
-		@include button-setup();
-		// Sizes
-		@include button-size(normal); // Default
-		&._small {
-			@include button-size(small);
-		}
-		&._large {
-			@include button-size(large);
-		}
-		&._x-large {
-			@include button-size(x-large);
-		}
-		// Shapes
-		@include button-shape(rounded); // Default
-		&._square {
-			@include button-shape(square);
-		}
-		&._pill {
-			@include button-shape(pill);
-		}
-		// Flat buttons (shorthand = colour reference only)
-		@each $colour-name, $colour in $ar-colours-primary {
-			&._#{$colour-name}, &._flat-#{$colour-name} {
-				@include button-style(flat, $colour);
-			}
-		}
-		// Gradient buttons
-		@each $colour-name, $colour in $ar-colours-primary {
-			&._gradient-#{$colour-name} {
-				@include button-style(gradient, $colour);
-			}
-		}
-		// Line buttons
-		@each $colour-name, $colour in $ar-colours-primary {
-			&._line-#{$colour-name} {
-				@include button-style(line, $colour);
-			}
-		}
-      // Loader
-      @include button-loader();
-      // Drop down
-   	@include drop-down();
-	}
+@mixin rocket-button-css($selector: '.mod-button') {
+   #{$selector} {
+      @include mod-button-setup();
+      @include mod-button-size(normal);
+      @include mod-button-shape;
+      @include mod-button-loader;
+      @include mod-button-dropdown;
+   }
+
+   // Size
+   #{$selector}._size-small {
+      @include mod-button-size(small);
+   }
+   #{$selector}._size-large {
+      @include mod-button-size(large);
+   }
+   #{$selector}._size-x-large {
+      @include mod-button-size(x-large);
+   }
+
+   // Shapes
+   #{$selector}._shape-square {
+      @include mod-button-shape(square);
+   }
+   #{$selector}._shape-pill {
+      @include mod-button-shape(pill);
+   }
+
+   // Styles
+   @each $colour-name, $colour in $ar-colours-primary {
+      #{$selector}._style-flat-#{$colour-name} {
+         @include mod-button-style(flat, $colour);
+      }
+   }
+   @each $colour-name, $colour in $ar-colours-primary {
+      #{$selector}._style-gradient-#{$colour-name} {
+         @include mod-button-style(gradient, $colour);
+      }
+   }
+   @each $colour-name, $colour in $ar-colours-primary {
+      #{$selector}._style-line-#{$colour-name} {
+         @include mod-button-style(line, $colour);
+      }
+   }
 }

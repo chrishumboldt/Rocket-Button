@@ -26,7 +26,7 @@
 <pre class="prettyprint linenums">
 npm install rocket-button
 </pre>
-	      <p class="note">Note that this module has a dependency <a href="https://github.com/chrishumboldt/Rocket-Tools" class="link" target="_blank">Rocket Tools (21kb)</a> which will automatically be installed as well.</p>
+	      <p class="note">Note that this module has a dependency <a href="https://github.com/chrishumboldt/Rocket-Tools" class="link" target="_blank">Rocket Tools (28kb)</a> which will automatically be installed as well.</p>
 	      <h4>CSS Implementation</h4>
 			<p>Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
@@ -36,7 +36,7 @@ npm install rocket-button
 </pre>
 	      <p>Now class your button with modifiers to gain the desired effect. For example:</p>
 <pre class="prettyprint linenums">
-&lt;button class=&quot;button _line-red _large&quot;&gt;Example Button&lt;/button&gt;
+&lt;button class=&quot;mod-button _style-line-red _size-large&quot;&gt;Example Button&lt;/button&gt;
 </pre>
 			<br>
 	      <h4>SASS Implementation</h4>
@@ -46,16 +46,16 @@ npm install rocket-button
 
 .btn-primary,
 .btn-secondary {
-   @include button-setup;
-   @include button-shape(rounded);
+   @include mod-button-setup;
+   @include mod-button-shape(rounded);
+   @include mod-button-size(normal);
 }
 .btn-primary {
-   @include button-style(line, black);
-   @include button-size(large);
+   @include mod-button-style(line, black);
+   @include mod-button-size(large);
 }
 .btn-secondary {
-   @include button-style(flat, white);
-   @include button-size(normal);
+   @include mod-button-style(flat, white);
 }
 </pre>
 	      <br>
@@ -63,18 +63,18 @@ npm install rocket-button
 	      <p>If you want to enable a button loader then you will need to execute the following Javascript. Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;body&gt;
-   &lt;button id="button-loader" class="button _blue"&gt;Button Loader&lt;/button&gt;
+   &lt;button id="button-loader" class="mod-button _style-flat-blue"&gt;Button Loader&lt;/button&gt;
 
-   // Include the script
+   // Include the scripts
    &lt;script src=&quot;node_modules/rocket-tools/js/tools.min.js&quot;&gt;&lt;/script&gt;
    &lt;script src=&quot;node_modules/rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
-   document.getElementById('button-loader').onclick = function (ev) {
+   Rocket.event.add('#button-loader', 'click', (event) => {
       Rocket.button.loader({
-         element: ev.currentTarget,
-         parseEvent: ev
+         element: event.currentTarget,
+         parseEvent: event
       });
-   };
+   });
    &lt;/script&gt;
 &lt;/body&gt;
 </pre>
@@ -83,21 +83,21 @@ npm install rocket-button
 	      <p>If you want to enable button drop downs then you will need to execute the following Javascript. Start by including the necessary files.</p>
 <pre class="prettyprint linenums">
 &lt;body&gt;
-   &lt;div id="btn-primary" class="button _blue"&gt;
-      Drop-Down Default&lt;div class="arrow"&gt;&lt;/div&gt;
+   &lt;div id="btn-primary" class="mod-button _style-flat-blue"&gt;
+      Drop-Down Default&lt;div class="mod-button-arrow"&gt;&lt;/div&gt;
       &lt;ul&gt;
          &lt;li&gt;&lt;a href&gt;Link 1&lt;/a&gt;&lt;/li&gt;
          &lt;li&gt;&lt;a href&gt;Link 2&lt;/a&gt;&lt;/li&gt;
-         &lt;li class="line-top"&gt;&lt;a href&gt;Link 3&lt;/a&gt;&lt;/li&gt;
+         &lt;li class="mod-button-line-top"&gt;&lt;a href&gt;Link 3&lt;/a&gt;&lt;/li&gt;
       &lt;/ul&gt;
    &lt;/div&gt;
 
-   // Include the script
+   // Include the scripts
    &lt;script src=&quot;node_modules/rocket-tools/js/tools.min.js&quot;&gt;&lt;/script&gt;
    &lt;script src=&quot;node_modules/rocket-button/js/button.min.js&quot;&gt;&lt;/script&gt;
    &lt;script&gt;
    Rocket.button.dropdown({
-      target: '.btn-primary'
+      targets: '#btn-primary'
    });
    &lt;/script&gt;
 &lt;/body&gt;
@@ -106,78 +106,78 @@ npm install rocket-button
 	      <br>
 	      <h4>Working Examples</h4>
 			<p>Flat Buttons</p>
-			<a href class="button _white">White</a>
-			<a href class="button _grey">Grey</a>
-			<a href class="button _black">Black</a>
-			<a href class="button _aqua">Aqua</a>
-			<a href class="button _blue">Blue</a>
-			<a href class="button _green">Green</a>
-			<a href class="button _orange">Orange</a>
-			<a href class="button _pink">Pink</a>
-			<a href class="button _purple">Purple</a>
-			<a href class="button _red">Red</a>
-			<a href class="button _yellow">Yellow</a>
+			<a href class="mod-button _style-flat-white">White</a>
+			<a href class="mod-button _style-flat-grey">Grey</a>
+			<a href class="mod-button _style-flat-black">Black</a>
+			<a href class="mod-button _style-flat-aqua">Aqua</a>
+			<a href class="mod-button _style-flat-blue">Blue</a>
+			<a href class="mod-button _style-flat-green">Green</a>
+			<a href class="mod-button _style-flat-orange">Orange</a>
+			<a href class="mod-button _style-flat-pink">Pink</a>
+			<a href class="mod-button _style-flat-purple">Purple</a>
+			<a href class="mod-button _style-flat-red">Red</a>
+			<a href class="mod-button _style-flat-yellow">Yellow</a>
 	      <br><br>
 			<p>Gradient Buttons</p>
-			<a href class="button _gradient-white">White</a>
-			<a href class="button _gradient-grey">Grey</a>
-			<a href class="button _gradient-black">Black</a>
-			<a href class="button _gradient-aqua">Aqua</a>
-			<a href class="button _gradient-blue">Blue</a>
-			<a href class="button _gradient-green">Green</a>
-			<a href class="button _gradient-orange">Orange</a>
-			<a href class="button _gradient-pink">Pink</a>
-			<a href class="button _gradient-purple">Purple</a>
-			<a href class="button _gradient-red">Red</a>
-			<a href class="button _gradient-yellow">Yellow</a>
+			<a href class="mod-button _style-gradient-white">White</a>
+			<a href class="mod-button _style-gradient-grey">Grey</a>
+			<a href class="mod-button _style-gradient-black">Black</a>
+			<a href class="mod-button _style-gradient-aqua">Aqua</a>
+			<a href class="mod-button _style-gradient-blue">Blue</a>
+			<a href class="mod-button _style-gradient-green">Green</a>
+			<a href class="mod-button _style-gradient-orange">Orange</a>
+			<a href class="mod-button _style-gradient-pink">Pink</a>
+			<a href class="mod-button _style-gradient-purple">Purple</a>
+			<a href class="mod-button _style-gradient-red">Red</a>
+			<a href class="mod-button _style-gradient-yellow">Yellow</a>
 	      <br><br>
 			<p>Line Buttons</p>
-			<a href class="button _line-white">White</a>
-			<a href class="button _line-grey">Grey</a>
-			<a href class="button _line-black">Black</a>
-			<a href class="button _line-aqua">Aqua</a>
-			<a href class="button _line-blue">Blue</a>
-			<a href class="button _line-green">Green</a>
-			<a href class="button _line-orange">Orange</a>
-			<a href class="button _line-pink">Pink</a>
-			<a href class="button _line-purple">Purple</a>
-			<a href class="button _line-red">Red</a>
-			<a href class="button _line-yellow">Yellow</a>
+			<a href class="mod-button _style-line-white">White</a>
+			<a href class="mod-button _style-line-grey">Grey</a>
+			<a href class="mod-button _style-line-black">Black</a>
+			<a href class="mod-button _style-line-aqua">Aqua</a>
+			<a href class="mod-button _style-line-blue">Blue</a>
+			<a href class="mod-button _style-line-green">Green</a>
+			<a href class="mod-button _style-line-orange">Orange</a>
+			<a href class="mod-button _style-line-pink">Pink</a>
+			<a href class="mod-button _style-line-purple">Purple</a>
+			<a href class="mod-button _style-line-red">Red</a>
+			<a href class="mod-button _style-line-yellow">Yellow</a>
 	      <br><br>
 			<h5>Button Sizes</h5>
-			<a href class="button _green _small">Small</a>
-			<a href class="button _green">Normal</a>
-			<a href class="button _green _large">Large</a>
-			<a href class="button _green _x-large">Extra Large</a>
+			<a href class="mod-button _green _size-small">Small</a>
+			<a href class="mod-button _green">Normal</a>
+			<a href class="mod-button _green _size-large">Large</a>
+			<a href class="mod-button _green _size-x-large">Extra Large</a>
 	      <br><br>
 			<h5>Button Shapes</h5>
-			<a href class="button _red">Rounded (default)</a>
-			<a href class="button _red _pill">Pill Button</a>
-			<a href class="button _red _square">Squared Button</a>
+			<a href class="mod-button _style-flat-red">Rounded (default)</a>
+			<a href class="mod-button _style-flat-red _shape-pill">Pill Button</a>
+			<a href class="mod-button _style-flat-red _shape-square">Squared Button</a>
          <br><br>
 			<h5>Button Loaders</h5>
-         <a href class="button _blue _small" id="loader-example-1">Loader Example</a>
-         <a href class="button _blue" id="loader-example-2">Loader Example</a>
-         <a href class="button _blue _large" id="loader-example-3">Loader Example</a>
-         <a href class="button _blue _x-large" id="loader-example-4">Loader Example</a>
+         <a href class="mod-button _style-flat-blue _size-small" id="loader-example-1">Loader Example</a>
+         <a href class="mod-button _style-flat-blue" id="loader-example-2">Loader Example</a>
+         <a href class="mod-button _style-flat-blue _size-large" id="loader-example-3">Loader Example</a>
+         <a href class="mod-button _style-flat-blue _size-x-large" id="loader-example-4">Loader Example</a>
 	      <br><br>
 			<h5>Drop Down Button</h5>
-			<div id="button-drop-1" class="button">
-				Drop Down Default<div class="arrow"></div>
+			<div class="button-dropdowns mod-button _size-large">
+				Drop Down Default<div class="mod-button-arrow"></div>
 				<ul>
 					<li><a href>Link 1</a></li>
 					<li><a href>Link 2</a></li>
-					<li class="line-top"><a href>Link 3</a></li>
+					<li class="mod-button-line-top"><a href>Link 3</a></li>
 				</ul>
 			</div>
-			<div id="button-drop-2" class="button _blue">
-				Drop Down Blue<div class="arrow"></div>
+			<div class="button-dropdowns mod-button _style-flat-blue">
+				Drop Down Blue<div class="mod-button-arrow"></div>
 				<ul>
 					<li><a href>Link 1</a></li>
 					<li><a href>Link 2</a></li>
 					<li><a href>Link 3</a></li>
 					<li><a href>Link 4</a></li>
-					<li class="line-top"><a href>Link 5</a></li>
+					<li class="mod-button-line-top"><a href>Link 5</a></li>
 				</ul>
 			</div>
 	      <br><br><br>
@@ -202,45 +202,48 @@ npm install rocket-button
    <script src="build/js/button.js"></script>
 	<script>
 	Rocket.button.dropdown({
-		target: '#button-drop-1'
+		targets: '.button-dropdowns'
 	});
-	Rocket.button.dropdown({
-		target: '#button-drop-2'
-	});
+
    // Stop all button events
-   var $buttons = document.querySelectorAll('a.button');
-   for (var $i = $buttons.length - 1; $i >= 0; $i--) {
-      $buttons[$i].onclick = function(ev) {
-         ev.preventDefault();
+   const buttons = document.querySelectorAll('a.mod-button');
+
+   for (let i = buttons.length - 1; i >= 0; i--) {
+      buttons[i].onclick = (event) => {
+         event.preventDefault();
       };
    }
+
    // Loader example
    Rocket.defaults.button.loader.timeout = 4;
-   Rocket.defaults.button.loader.reveal = 'appear';
-   document.getElementById('loader-example-1').onclick = function (ev) {
+
+   Rocket.event.add('#loader-example-1', 'click', (event) => {
       Rocket.button.loader({
-         element: ev.currentTarget,
-         parseEvent: ev
+         element: event.currentTarget,
+         parseEvent: event
       });
-   };
-   document.getElementById('loader-example-2').onclick = function (ev) {
-      var button = Rocket.button.loader({
-         element: ev.currentTarget,
-         parseEvent: ev
-      });
-   };
-   document.getElementById('loader-example-3').onclick = function (ev) {
+   });
+
+   Rocket.event.add('#loader-example-2', 'click', (event) => {
       Rocket.button.loader({
-         element: ev.currentTarget,
-         parseEvent: ev
+         element: event.currentTarget,
+         parseEvent: event
       });
-   };
-   document.getElementById('loader-example-4').onclick = function (ev) {
+   });
+
+   Rocket.event.add('#loader-example-3', 'click', (event) => {
       Rocket.button.loader({
-         element: ev.currentTarget,
-         parseEvent: ev
+         element: event.currentTarget,
+         parseEvent: event
       });
-   };
+   });
+
+   Rocket.event.add('#loader-example-4', 'click', (event) => {
+      Rocket.button.loader({
+         element: event.currentTarget,
+         parseEvent: event
+      });
+   });
 	</script>
 
 </body>

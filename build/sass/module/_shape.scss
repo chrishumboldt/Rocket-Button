@@ -3,7 +3,7 @@
 **/
 
 // Button shape
-@mixin button-shape($shape) {
+@mixin mod-button-shape($shape: rounded) {
 	@if $shape == pill {
 		@include border-radius(100px);
 	}

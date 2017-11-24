@@ -1,174 +1,138 @@
 /**
 @author Chris Humboldt
 **/
-// Rocket module extension
+
+// Set the defaults
 Rocket.defaults.button = {
-    dropdown: {
-        target: '.button'
-    },
-    loader: {
-        reveal: 'appear',
-        timeout: 0
-    }
+   dropdown: {targets: '.mod-button'},
+   loader: {reveal: 'appear', timeout: 0}
 };
-// Module container
-var RockMod_Button;
-(function (RockMod_Button) {
-    // Variables
-    var buttonDropClassName = 'rb-drop-down';
-    var documentOnClick = false;
-    // Functions
-    function buttonDropApply(button) {
-        // Variables
-        var buttonUL = button.querySelector('ul');
-        // Check
-        if (!buttonUL) {
-            return false;
-        }
-        // Functions
-        function applyDrop() {
-            Rocket.classes.add(button, buttonDropClassName);
-            button.onclick = function () {
-                buttonOpen();
-            };
-        }
-        ;
-        function buttonClose() {
-            Rocket.classes.remove(buttonUL, '_open');
-        }
-        ;
-        function buttonOpen() {
+
+// Module
+Rocket.button = (() => {
+   const store = {
+      dropDownClassName: 'has-dropdown',
+      docClick: false
+   };
+
+   // Methods
+   const apply = {
+      dropdown(button) {
+         const buttonUL = button.querySelector('ul');
+
+         if (!buttonUL) return;
+
+         function close() {
+            Rocket.state.clear(buttonUL);
+         };
+
+         function open() {
             closeAll();
-            buttonUL.style.width = button.clientWidth + 'px';
+            buttonUL.style.width = `${button.clientWidth}px`;
             setTimeout(function () {
-                Rocket.classes.add(buttonUL, '_open');
+               Rocket.state.add(buttonUL, 'open');
             });
-        }
-        ;
-        // Execute and return
-        applyDrop();
-        return {
-            button: button,
-            close: buttonClose,
-            open: buttonOpen
-        };
-    }
-    ;
-    function buttonLoaderApply(button, options) {
-        // Functions
-        function add() {
-            setTimeout(function () {
-                Rocket.classes.add(button, '_active');
-                button.setAttribute('disabled', '');
-            }, 10);
-        }
-        ;
-        function remove() {
-            setTimeout(function () {
-                Rocket.classes.remove(button, '_active');
-                button.removeAttribute('disabled');
-            }, 20);
-        }
-        ;
-        // Execute
-        add();
-        if (options.timeout > 0) {
-            setTimeout(function () {
-                remove();
-            }, (options.timeout * 1000) + 50);
-        }
-        return {
-            add: add,
-            button: button,
-            remove: remove
-        };
-    }
-    ;
-    function closeAll() {
-        var openDropDowns = Rocket.dom.select('.' + buttonDropClassName + ' ul._open');
-        for (var _i = 0, openDropDowns_1 = openDropDowns; _i < openDropDowns_1.length; _i++) {
-            var dropDown = openDropDowns_1[_i];
-            Rocket.classes.remove(dropDown, '_open');
-        }
-    }
-    ;
-    // Initialiser
-    var init = {
-        buttonDropDown: function (userOptions) {
-            // Options
-            if (!Rocket.is.object(userOptions)) {
-                userOptions = false;
+         };
+
+         // Expose and execute
+         Rocket.classes.add(button, store.dropDownClassName);
+         Rocket.event.add(button, 'click', () => {
+            open(button, buttonUL);
+         });
+         return {button, close, open};
+      },
+      loader({ button, timeout }) {
+         function add() {
+            if (!button.getAttribute('disabled')) {
+               setTimeout(() => {
+                  Rocket.classes.add(button, 'is-loading');
+                  button.setAttribute('disabled', '');
+               });
             }
-            var options = {
-                target: (Rocket.is.string(userOptions.target)) ? userOptions.target : Rocket.defaults.button.target
-            };
-            // Initialise drop down
-            var buttons = Rocket.dom.select(options.target);
-            var objReturn = [];
-            // Catch
-            if (buttons.length < 1) {
-                return false;
-            }
-            // Continue
-            for (var _i = 0, buttons_1 = buttons; _i < buttons_1.length; _i++) {
-                var button = buttons_1[_i];
-                objReturn.push(buttonDropApply(button));
-            }
-            return objReturn;
-        },
-        buttonLoader: function (uOptions) {
-            // Options
-            if (!Rocket.is.object(uOptions)) {
-                return false;
-            }
-            var options = {
-                element: (Rocket.is.element(uOptions.element)) ? uOptions.element : false,
-                parseEvent: (typeof uOptions.parseEvent !== 'undefined') ? uOptions.parseEvent : false,
-                reveal: (Rocket.is.string(uOptions.reveal)) ? uOptions.reveal : Rocket.defaults.button.loader.reveal,
-                target: (Rocket.is.string(uOptions.target)) ? uOptions.target : '',
-                timeout: (Rocket.is.number(uOptions.timeout)) ? uOptions.timeout : Rocket.defaults.button.loader.timeout
-            };
-            // Catch
-            if (!options.element && !options.target) {
-                return false;
-            }
-            // Continue
-            if (options.parseEvent !== false) {
-                options.parseEvent.preventDefault();
-            }
-            var elm = (options.element) ? options.element : Rocket.dom.select(options.target)[0];
-            // Check
-            setup.buttonLoader(elm, options);
-            if (!Rocket.has.class(elm, '_active')) {
-                return buttonLoaderApply(elm, options);
-            }
-        }
-    };
-    var setup = {
-        buttonLoader: function (elm, options) {
-            // Catch
-            if (!Rocket.has.class(elm, 'rb-loader') && !Rocket.has.class(elm, 'rb-drop-down')) {
-                var newInnerHTML = '';
-                newInnerHTML += '<div class="rb-loader-elm"><div class="circle-one"></div><div class="circle-two"></div></div>';
-                newInnerHTML += '<span>' + elm.innerHTML + '</span>';
-                Rocket.classes.add(elm, 'rb-loader _reveal-' + options.reveal);
-                elm.innerHTML = newInnerHTML;
-            }
-        },
-        global: function () {
-            if (!documentOnClick) {
-                Rocket.event.add(document, 'click', function () {
-                    closeAll();
-                });
-                documentOnClick = true;
-            }
-        }
-    };
-    // Execute
-    setup.global();
-    // Exports
-    RockMod_Button.dropdown = init.buttonDropDown;
-    RockMod_Button.loader = init.buttonLoader;
-})(RockMod_Button || (RockMod_Button = {}));
-// Bind to Rocket
-Rocket.button = RockMod_Button;
+         }
+
+         function remove() {
+            setTimeout(() => {
+               Rocket.classes.remove(button, 'is-loading');
+               button.removeAttribute('disabled');
+            });
+         }
+
+         // Expose and execute
+         add();
+         if (timeout > 0) { setTimeout(() => { remove(); }, timeout * 1000) }
+         return {add, button, remove};
+      }
+   };
+
+   function closeAll() {
+      const openDropDowns = Rocket.dom.select(`.${store.dropDownClassName} ul.is-open`);
+      for (let i = 0, len = openDropDowns.length; i < len; i++) {
+         Rocket.classes.remove(openDropDowns[i], 'is-open');
+      }
+   };
+
+   const init = {
+      dropdown({ targets = Rocket.defaults.button.dropdown.targets } = {}) {
+         const objReturn = new Array;
+         const buttons = Rocket.dom.select(targets);
+
+         if (buttons.length <= 0) return;
+
+         buttons.forEach((button) => {
+            objReturn.push(apply.dropdown(button));
+         });
+
+         return objReturn;
+      },
+      loader({
+         element = null,
+         parseEvent = null,
+         reveal = Rocket.defaults.button.loader.reveal,
+         target = null,
+         timeout = Rocket.defaults.button.loader.timeout
+      } = {}) {
+         if (parseEvent) { parseEvent.preventDefault(); }
+         if (!element && !target) { return; }
+
+         const button = (element) ? element : Rocket.dom.element(target);
+
+         if (!Rocket.has.class(button, 'is-loading')) {
+            setup.buttonLoader({ button, reveal });
+            return apply.loader({ button, timeout });
+         }
+      }
+   };
+
+   const setup = {
+      buttonLoader: function ({ button, reveal }) {
+         if (!button.querySelector('.mod-button-loader')) {
+            let newInnerHTML = '';
+            newInnerHTML += `
+            <div class="mod-button-loader">
+               <div class="mod-button-loader-circle"></div>
+               <div class="mod-button-loader-circle"></div>
+            </div>
+            `;
+            newInnerHTML += '<span>' + button.innerHTML + '</span>';
+            button.innerHTML = newInnerHTML;
+         }
+         Rocket.classes.add(button, '_reveal-' + reveal);
+      },
+      global() {
+         if (!store.docClick) {
+            Rocket.event.add(document, 'click', function () {
+               closeAll();
+            });
+            store.docClick = true;
+         }
+      }
+   };
+
+   // Expose and execute
+   setup.global();
+   return {
+      dropdown: init.dropdown,
+      loader: init.loader
+   }
+})();
