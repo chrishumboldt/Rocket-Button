@@ -117,7 +117,7 @@ The button loader returns the element instance. You can modify the loader after 
 ```javascript
 // Start the button loader
 const btnLoader = Rocket.button.loader({
-   element: Rocket.dom.element('#button-loader')
+   target: '#button-loader'
 });
 
 // The button element
@@ -147,7 +147,7 @@ Alternatively if you know the button target is unique you can reference the butt
 
 ```javascript
 const myButton = Rocket.button.dropdown({
-   target: '#my-button'
+   targets: '#my-button'
 })[0]; // Reference the first item in the array right away.
 ```
 

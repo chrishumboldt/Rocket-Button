@@ -46,7 +46,7 @@ Rocket.button = (() => {
             if (!button.getAttribute('disabled')) {
                setTimeout(() => {
                   Rocket.classes.add(button, 'is-loading');
-                  button.setAttribute('disabled', 'disabled');
+                  button.setAttribute('disabled', '');
                });
             }
          }
@@ -106,8 +106,8 @@ Rocket.button = (() => {
 
    const setup = {
       buttonLoader: function ({ button, reveal }) {
-         if (!Rocket.has.class(button, 'rb-loader') && !Rocket.has.class(button, 'rb-drop-down')) {
-            var newInnerHTML = '';
+         if (!button.querySelector('.mod-button-loader')) {
+            let newInnerHTML = '';
             newInnerHTML += `
             <div class="mod-button-loader">
                <div class="mod-button-loader-circle"></div>
@@ -115,9 +115,9 @@ Rocket.button = (() => {
             </div>
             `;
             newInnerHTML += '<span>' + button.innerHTML + '</span>';
-            Rocket.classes.add(button, '_reveal-' + reveal);
             button.innerHTML = newInnerHTML;
          }
+         Rocket.classes.add(button, '_reveal-' + reveal);
       },
       global() {
          if (!store.docClick) {
