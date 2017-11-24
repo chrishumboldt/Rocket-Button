@@ -30,7 +30,7 @@ Start by including the necessary files.
 Now class your button with a modifier to gain the desired effect. For example:
 
 ```html
-<button class="button _style-line-red _size-large">Example Button</button>
+<button class="mod-button _style-line-red _size-large">Example Button</button>
 ```
 
 There are a variety of options for the CSS modifiers.
