@@ -15,7 +15,7 @@
 }
 
 // Button setup
-@mixin button-setup() {
+@mixin mod-button-setup {
 	@include position(relative);
 	@include display(inline-block);
 	@include text-align(center);
@@ -36,13 +36,13 @@
 		@include cursor(pointer);
 		@include background-colour($grey-x-light);
 	}
-   .rocket-no-touch &._active:hover {
+   .rocket-no-touch &.is-loading:hover {
       @include cursor(not-allowed);
 	}
-	&:active:not(.rb-drop-down):not([disabled]) {
+	&:active:not(.has-dropdown):not([disabled]) {
       @include transform-scale-3d(0.9, 0.9, 0.9);
 	}
-	.arrow {
+	.mod-button-arrow {
 		@include display(inline-block);
 		@include height(10px);
 		@include width(12px);

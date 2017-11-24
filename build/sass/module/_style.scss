@@ -7,7 +7,7 @@ $lightness-threshold: 68%;
 $lightness-threshold-line: 98%;
 
 // Button style
-@mixin button-style($style, $colour, $border-size: 1px, $lighten: 5%) {
+@mixin mod-button-style($style, $colour, $border-size: 1px, $lighten: 5%) {
 	@if $style == gradient {
 		// Setup
 		@if lightness($colour) < $lightness-threshold {
@@ -17,10 +17,10 @@ $lightness-threshold-line: 98%;
 		// Gradient
 		$top-colour: lighten($colour, 6%);
 		$bottom-colour: darken($colour, 4%);
-		@include gradient-vertical($top-colour, $bottom-colour);
+		@include gradient-v($top-colour, $bottom-colour);
 
 		// Drop-down link hover
-		.rocket-no-touch &.button-drop-down ul li a:hover {
+		.rocket-no-touch &.has-dropdown ul li a:hover {
 			@include drop-down-link-hover($colour);
 		}
 	}
@@ -36,17 +36,11 @@ $lightness-threshold-line: 98%;
 		@include border($colour, $border-size);
 
       // Loader
-      &.rb-loader .loader {
-         .circle-one,
-         .circle-two {
-            border-color: $colour;
-         }
+      .mod-button-loader-circle {
+         @include border($colour);
       }
-      &.rb-loader:hover .loader {
-         .circle-one,
-         .circle-two {
-            border-color: $white;
-         }
+      &.is-loading:hover .mod-button-loader-circle {
+         @include border($white);
       }
 
 		// States
@@ -72,8 +66,8 @@ $lightness-threshold-line: 98%;
 					@include border(lighten(saturate($colour, 8%), $lighten), $border-size);
 				}
 				@else{
-					@include background-colour(lighten(saturate($colour, 30%), $lighten));
-					@include border(lighten(saturate($colour, 30%), $lighten), $border-size);
+					@include background-colour(lighten($colour, $lighten));
+					@include border(lighten($colour, $lighten), $border-size);
 				}
 			}
 			@else {
@@ -83,7 +77,7 @@ $lightness-threshold-line: 98%;
 		}
 
 		// Drop-down link hover
-		.rocket-no-touch &.button-drop-down ul li a:hover {
+		.rocket-no-touch &.has-dropdown ul li a:hover {
 			@include drop-down-link-hover($colour, $lighten);
 		}
 	}
@@ -110,7 +104,7 @@ $lightness-threshold-line: 98%;
 					@include background-colour(lighten(saturate($colour, 8%), $lighten));
 				}
 				@else{
-					@include background-colour(lighten(saturate($colour, 30%), $lighten));
+					@include background-colour(lighten($colour, $lighten));
 				}
 			}
 			@else {
@@ -119,7 +113,7 @@ $lightness-threshold-line: 98%;
 		}
 
 		// Drop-down link hover
-		.rocket-no-touch &.button-drop-down ul li a:hover {
+		.rocket-no-touch &.has-dropdown ul li a:hover {
 			@include drop-down-link-hover($colour, $lighten);
 		}
 	}

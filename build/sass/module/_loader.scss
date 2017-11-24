@@ -9,101 +9,103 @@ $loader-size-half: -$loader-size / 2;
 $loader-size-half-small: -$loader-size-small / 2;
 $loader-size-half-large: -$loader-size-large / 2;
 
-@mixin button-loader() {
-   &.rb-loader {
-      @include overflow(hidden);
-      .rb-loader-elm {
-         @include position(absolute, top 50% left 50% margin-left $loader-size-half margin-top $loader-size-half);
-         @include square($loader-size);
-         @include animate(all);
-         .circle-one,
-         .circle-two {
-            @include position(absolute);
-            @include square($loader-size);
-            @include border-radius(50%);
-            @include border($white, 3px);
-            @include opacity(0);
-         }
-      }
-      &._small .rb-loader-elm {
+@mixin mod-button-loader() {
+   span {
+      @include position(relative);
+      @include opacity(1);
+      @include animate(all);
+   }
+   .mod-button-loader {
+      @include position(absolute, top 50% left 50% margin-left $loader-size-half margin-top $loader-size-half);
+      @include square($loader-size);
+      @include animate(all);
+   }
+   .mod-button-loader-circle {
+      @include position(absolute);
+      @include square($loader-size);
+      @include border-radius(50%);
+      @include border($white, 3px);
+      @include opacity(0);
+   }
+
+   // Sizes
+   &._size-small {
+      .mod-button-loader {
          @include position-set(margin-left $loader-size-half-small margin-top $loader-size-half-small);
          @include square($loader-size-small);
-         .circle-one,
-         .circle-two {
-            @include square($loader-size-small);
-            @include border($white, 2px);
-         }
       }
-      &._x-large .rb-loader-elm {
+      .mod-button-loader-circle {
+         @include square($loader-size-small);
+         @include border($white, 2px);
+      }
+   }
+   &._size-large,
+   &._size-x-large  {
+      .mod-button-loader {
          @include position-set(margin-left $loader-size-half-large margin-top $loader-size-half-large);
          @include square($loader-size-large);
-         .circle-one,
-         .circle-two {
-            @include square($loader-size-large);
-            @include border($white, 4px);
-         }
+      }
+      .mod-button-loader-circle {
+         @include square($loader-size-large);
+         @include border($white, 4px);
+      }
+   }
+
+   // Main states
+   &.is-loading {
+      @include overflow(hidden);
+
+      .mod-button-loader-circle {
+         @include animation(modloaderpulse, 1.2s, infinite);
+      }
+      .mod-button-loader-circle:first-child {
+         @include animation-delay(0.4s);
+      }
+   }
+
+   // Reveals
+   &._reveal-appear.is-loading span {
+      @include opacity(0);
+      @include transform-scale-3d(0, 0, 0);
+   }
+
+   &._reveal-slide-up {
+      .mod-button-loader {
+         @include transform-translate-y(50px);
       }
       span {
-         @include position(relative);
-         @include opacity(1);
-         @include animate(all);
+         @include position-set(top 0px);
       }
-      // Active
-      &._active {
-         .circle-one,
-         .circle-two {
-            @include animation(rbloaderpulse, 1.2s, infinite);
-         }
-         .circle-two {
-            @include animation-delay(0.4s);
-         }
+   }
+   &._reveal-slide-up.is-loading {
+      .mod-button-loader {
+         @include transform-translate-y(0px);
       }
-      // Reveals
-      &._reveal-appear {
-         &._active {
-            span {
-               @include opacity(0);
-               @include transform-scale-3d(0, 0, 0);
-            }
-         }
+      span {
+         @include position-set(top -50px);
       }
-      &._reveal-slide-up {
-         .rb-loader-elm {
-            @include transform-translate-y(50px);
-         }
-         span {
-            @include position-set(top 0px);
-         }
-         &._active {
-            span {
-               @include position-set(top -50px);
-            }
-            .rb-loader-elm {
-               @include transform-translate-y(0px);
-            }
-         }
+   }
+
+   &._reveal-slide-down {
+      .mod-button-loader {
+         @include transform-translate-y(-50px);
       }
-      &._reveal-slide-down {
-         .rb-loader-elm {
-            @include transform-translate-y(-50px);
-         }
-         span {
-            @include position-set(top 0px);
-         }
-         &._active {
-            span {
-               @include position-set(top 50px);
-            }
-            .rb-loader-elm {
-               @include transform-translate-y(0px);
-            }
-         }
+      span {
+         @include position-set(top 0px);
+      }
+   }
+   &._reveal-slide-down.is-loading {
+      .mod-button-loader {
+         @include transform-translate-y(0px);
+      }
+      span {
+         @include position-set(top 50px);
       }
    }
 }
 
 // Animation
-@include keyframes(rbloaderpulse) {
+@include keyframes(modloaderpulse) {
    0% {
       @include opacity(0);
       @include transform-scale-3d(0, 0, 0);

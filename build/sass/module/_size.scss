@@ -19,28 +19,29 @@ $drp-height: 34px;
 $drp-height-xl: 40px;
 
 // Button size
-@mixin button-size-custom($height: $btn-size-n, $padding: $btn-padding-n, $font-size: $btn-text-n) {
-	@include padding-horizontal($padding);
-	@include padding-vertical(0px);
+@mixin mod-button-size-custom($height: $btn-size-n, $padding: $btn-padding-n, $font-size: $btn-text-n) {
+	@include padding-h($padding);
+	@include padding-v(0px);
 	@include height($height);
 	@include text-line-height($height);
 	@include text-size($font-size);
 }
-@mixin button-size($size) {
+
+@mixin mod-button-size($size) {
 	@if $size == small {
-		@include button-size-custom($btn-size-s, $btn-padding-s, $btn-text-s);
+		@include mod-button-size-custom($btn-size-s, $btn-padding-s, $btn-text-s);
 		@include drop-down-position($btn-padding-s, $drp-height, 11px);
 	}
 	@else if $size == large {
-		@include button-size-custom($btn-size-l, $btn-padding-l, $btn-text-l);
+		@include mod-button-size-custom($btn-size-l, $btn-padding-l, $btn-text-l);
 		@include drop-down-position($btn-padding-l, $drp-height, 15px);
 	}
 	@else if $size == x-large {
-		@include button-size-custom($btn-size-xl, $btn-padding-xl, $btn-text-xl);
+		@include mod-button-size-custom($btn-size-xl, $btn-padding-xl, $btn-text-xl);
 		@include drop-down-position($btn-padding-xl, $drp-height-xl, 15px);
 	}
 	@else {
-		@include button-size-custom();
+		@include mod-button-size-custom();
 		@include drop-down-position($btn-padding-n, $drp-height, 13px);
 	}
 }
