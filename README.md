@@ -5,8 +5,8 @@ A lightweight, universal button module.
 * [CSS Implementation](#css-implementation)
 * [SASS Implementation](#sass-implementation)
 * [Javascript Initialization](#javascript-initialization)
-* [Loader Options](#loader-options)
-* [Defaults](#defaults)
+   * [Loader Options](#loader-options)
+   * [Defaults](#defaults)
 * [Buttonplate Deprecated](#buttonplate-deprecated)
 
 ## Getting Started
