@@ -77,7 +77,7 @@ SASS | Default | Options | Description
 `rocket-button-css(x)` | `.mod-button` | | Create styles for selector `x`.
 
 ## Javascript Initialisation
-If you want to enable button loaders or drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the drop down target option is set to **.button**.
+If you want to enable button loaders or drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the drop down target option is set to **.mod-button**.
 
 ```html
 <body>
