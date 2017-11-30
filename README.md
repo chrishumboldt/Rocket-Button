@@ -1,6 +1,8 @@
 # Rocket Button
 A lightweight, universal button module.
 
+#### Version: 6.1.0
+
 * [Getting Started](#getting-started)
 * [CSS Implementation](#css-implementation)
 * [SASS Implementation](#sass-implementation)
@@ -74,10 +76,10 @@ SASS | Default | Options | Description
 `mod-button-shape(x)` | `rounded` | `pill` `rounded` `square` | Set the shape of the button.
 `mod-button-size(x)` | `normal` | `small` `normal` `large` `x-large` | Set the size of the button.
 `mod-button-style(x, y)` | `flat`, `white` | `flat` `gradient` `line` | Set `x` to the style of button.<br>Set `y` to the colour.
-`rocket-button-css(x)` | `.mod-button` | | Create styles for selector `x`.
+`mod-button-css(x)` | `.mod-button` | | Create styles for selector `x`.
 
 ## Javascript Initialisation
-If you want to enable button loaders or drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the drop down target option is set to **.mod-button**.
+If you want to enable button loaders or dropdowns then you will need to execute the following Javascript. Start by including the necessary files. By default the dropdown target option is set to **.mod-button**.
 
 ```html
 <body>
@@ -123,13 +125,13 @@ const btnLoader = Rocket.button.loader({
 // The button element
 Rocket.log(btnLoader.button);
 
-// Remove the loader
+// Hide the loader
 setTimeout(function () {
-   btnLoader.remove();
+   btnLoader.hide();
 }, 4000);
 ```
 
-Each drop down initialisation will return an array of module objects (An array will always be returned even if the target is an id). This includes the button element itself as well as relevant methods. For example:
+Each dropdown initialisation will return an array of module objects (An array will always be returned even if the target is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
 // By default the targets option is set to '.mod-button'
@@ -138,8 +140,8 @@ const buttons = Rocket.button.dropdown();
 // The buttons and all methods
 for (let i = 0, len = buttons.length; i < len; i++) {
    console.log(buttons[i].button);
-   buttons[i].open(); // Open the button drop down
-   buttons[i].close(); // Close the button drop down
+   buttons[i].show(); // Show the button dropdown
+   buttons[i].hide(); // Hide the button dropdown
 }
 ```
 
