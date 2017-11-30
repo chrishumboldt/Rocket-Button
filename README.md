@@ -1,5 +1,4 @@
-# Rocket Button
-#### Version 6.1.0
+# Rocket Button (v6.1.0)
 A lightweight, universal button module.
 
 * [Getting Started](#getting-started)
