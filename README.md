@@ -79,7 +79,7 @@ SASS | Default | Options | Description
 `mod-button-css(x)` | `.mod-button` | | Create styles for selector `x`.
 
 ## Javascript Initialisation
-If you want to enable button loaders or drop downs then you will need to execute the following Javascript. Start by including the necessary files. By default the drop down target option is set to **.mod-button**.
+If you want to enable button loaders or dropdowns then you will need to execute the following Javascript. Start by including the necessary files. By default the dropdown target option is set to **.mod-button**.
 
 ```html
 <body>
@@ -131,7 +131,7 @@ setTimeout(function () {
 }, 4000);
 ```
 
-Each drop down initialisation will return an array of module objects (An array will always be returned even if the target is an id). This includes the button element itself as well as relevant methods. For example:
+Each dropdown initialisation will return an array of module objects (An array will always be returned even if the target is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
 // By default the targets option is set to '.mod-button'
@@ -140,8 +140,8 @@ const buttons = Rocket.button.dropdown();
 // The buttons and all methods
 for (let i = 0, len = buttons.length; i < len; i++) {
    console.log(buttons[i].button);
-   buttons[i].show(); // Show the button drop down
-   buttons[i].hide(); // Hide the button drop down
+   buttons[i].show(); // Show the button dropdown
+   buttons[i].hide(); // Hide the button dropdown
 }
 ```
 
