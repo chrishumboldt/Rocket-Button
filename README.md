@@ -1,5 +1,7 @@
-# Rocket Button (v6.1.0)
+# Rocket Button
 A lightweight, universal button module.
+
+#### Version: 6.1.0
 
 * [Getting Started](#getting-started)
 * [CSS Implementation](#css-implementation)
