@@ -3,7 +3,7 @@
 **/
 
 // CSS
-@mixin rocket-button-css($selector: '.mod-button') {
+@mixin mod-button-css($selector: '.mod-button') {
    #{$selector} {
       @include mod-button-setup();
       @include mod-button-size(normal);

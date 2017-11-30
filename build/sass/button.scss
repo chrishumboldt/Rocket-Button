@@ -2,8 +2,5 @@
 @author Chris Humboldt
 **/
 
-// Imports
 @import "development";
-
-// Call styles
-@include rocket-button-css();
+@include mod-button-css();

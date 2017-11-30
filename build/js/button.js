@@ -16,59 +16,70 @@ Rocket.button = (() => {
    };
 
    // Methods
-   const apply = {
-      dropdown(button) {
-         const buttonUL = button.querySelector('ul');
+   const action = {
+      hide: {
+         allDropDowns() {
+            const openDropDowns = Rocket.dom.select(`.${store.dropDownClassName} ul.is-open`);
+            for (let i = 0, len = openDropDowns.length; i < len; i++) {
+               Rocket.classes.remove(openDropDowns[i], 'is-open');
+            }
+         },
+         dropdown() {
+            Rocket.state.clear(this);
+         },
+         loader() {
+            setTimeout(() => {
+               Rocket.classes.remove(this, 'is-loading');
+               this.removeAttribute('disabled');
+            });
+         }
+      },
+      show: {
+         dropdown() {
+            const { button, buttonUL } = this;
 
-         if (!buttonUL) return;
-
-         function close() {
-            Rocket.state.clear(buttonUL);
-         };
-
-         function open() {
-            closeAll();
+            action.hide.allDropDowns();
             buttonUL.style.width = `${button.clientWidth}px`;
             setTimeout(function () {
                Rocket.state.add(buttonUL, 'open');
             });
-         };
-
-         // Expose and execute
-         Rocket.classes.add(button, store.dropDownClassName);
-         Rocket.event.add(button, 'click', () => {
-            open(button, buttonUL);
-         });
-         return {button, close, open};
-      },
-      loader({ button, timeout }) {
-         function add() {
-            if (!button.getAttribute('disabled')) {
+         },
+         loader() {
+            if (!this.getAttribute('disabled')) {
                setTimeout(() => {
-                  Rocket.classes.add(button, 'is-loading');
-                  button.setAttribute('disabled', '');
+                  Rocket.classes.add(this, 'is-loading');
+                  this.setAttribute('disabled', '');
                });
             }
          }
-
-         function remove() {
-            setTimeout(() => {
-               Rocket.classes.remove(button, 'is-loading');
-               button.removeAttribute('disabled');
-            });
-         }
-
-         // Expose and execute
-         add();
-         if (timeout > 0) { setTimeout(() => { remove(); }, timeout * 1000) }
-         return {add, button, remove};
       }
    };
 
-   function closeAll() {
-      const openDropDowns = Rocket.dom.select(`.${store.dropDownClassName} ul.is-open`);
-      for (let i = 0, len = openDropDowns.length; i < len; i++) {
-         Rocket.classes.remove(openDropDowns[i], 'is-open');
+   const apply = {
+      dropdown(button) {
+         const buttonUL = button.querySelector('ul');
+         if (!buttonUL) return;
+
+         Rocket.classes.add(button, store.dropDownClassName);
+         Rocket.event.add(button, 'click', () => {
+            action.show.dropdown.call({ button, buttonUL });
+         });
+
+         return {
+            button,
+            hide: action.hide.dropdown.bind(buttonUL),
+            show: action.show.dropdown.bind({ button, buttonUL })
+         };
+      },
+      loader({ button, timeout }) {
+         action.show.loader.call(button);
+         if (timeout > 0) { setTimeout(() => { action.hide.loader.call(button); }, timeout * 1000) }
+
+         return {
+            button,
+            hide: action.hide.loader.bind(button),
+            show: action.show.loader.bind(button)
+         };
       }
    };
 
@@ -98,31 +109,26 @@ Rocket.button = (() => {
          const button = (element) ? element : Rocket.dom.element(target);
 
          if (!Rocket.has.class(button, 'is-loading')) {
-            setup.buttonLoader({ button, reveal });
+            if (!button.querySelector('.mod-button-loader')) {
+               let newInnerHTML = '';
+               newInnerHTML += `
+               <div class="mod-button-loader">
+                  <div class="mod-button-loader-circle"></div>
+                  <div class="mod-button-loader-circle"></div>
+               </div>
+               `;
+               newInnerHTML += '<span>' + button.innerHTML + '</span>';
+               button.innerHTML = newInnerHTML;
+            }
+            Rocket.classes.add(button, '_reveal-' + reveal);
+
             return apply.loader({ button, timeout });
          }
-      }
-   };
-
-   const setup = {
-      buttonLoader: function ({ button, reveal }) {
-         if (!button.querySelector('.mod-button-loader')) {
-            let newInnerHTML = '';
-            newInnerHTML += `
-            <div class="mod-button-loader">
-               <div class="mod-button-loader-circle"></div>
-               <div class="mod-button-loader-circle"></div>
-            </div>
-            `;
-            newInnerHTML += '<span>' + button.innerHTML + '</span>';
-            button.innerHTML = newInnerHTML;
-         }
-         Rocket.classes.add(button, '_reveal-' + reveal);
       },
-      global() {
+      setup() {
          if (!store.docClick) {
             Rocket.event.add(document, 'click', function () {
-               closeAll();
+               action.hide.allDropDowns();
             });
             store.docClick = true;
          }
@@ -130,7 +136,7 @@ Rocket.button = (() => {
    };
 
    // Expose and execute
-   setup.global();
+   init.setup();
    return {
       dropdown: init.dropdown,
       loader: init.loader
