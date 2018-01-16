@@ -120,7 +120,7 @@ Rocket.button = (() => {
                newInnerHTML += '<span>' + button.innerHTML + '</span>';
                button.innerHTML = newInnerHTML;
             }
-            Rocket.classes.add(button, '_reveal-' + reveal);
+            Rocket.classes.add(button, '_mod-reveal-' + reveal);
 
             return apply.loader({ button, timeout });
          }

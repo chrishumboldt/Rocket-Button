@@ -32,18 +32,18 @@ Start by including the necessary files.
 Now class your button and add a modifier to gain the desired effect. For example:
 
 ```html
-<button class="mod-button _style-line-red _size-large">Example Button</button>
+<button class="mod-button _mod-style-line-red _mod-size-large">Example Button</button>
 ```
 
 There are a variety of options for the CSS modifiers.
 
 Class | Options | Description
 ---- | ---- | ----
-`_style-flat-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to flat.
-`_style-gradient-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to gradient.
-`_style-line-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to line.
-`_size-(x)` | `small` `normal` `large` `x-large` | Set the size of the the button.
-`_shape-(x)` | `rounded` `pill` `square` | Set the shape of the the button.
+`_mod-style-flat-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to flat.
+`_mod-style-gradient-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to gradient.
+`_mod-style-line-(x)` | `white` `grey` `black` `aqua` `blue` `green`<br>`orange` `pink` `purple` `red` `yellow` | Set the colour and style to line.
+`_mod-size-(x)` | `small` `normal` `large` `x-large` | Set the size of the the button.
+`_mod-shape-(x)` | `rounded` `pill` `square` | Set the shape of the the button.
 
 If no modifiers are provided then the colour will default to grey, the style to flat, the size to normal and the shape to rounded.
 
@@ -83,9 +83,9 @@ If you want to enable button loaders or dropdowns then you will need to execute 
 
 ```html
 <body>
-   <button id="button-loader" class="mod-button _style-flat-blue">Button Loader</button>
+   <button id="button-loader" class="mod-button _mod-style-flat-blue">Button Loader</button>
 
-   <div id="btn-primary" class="mod-button _style-flat-blue">
+   <div id="btn-primary" class="mod-button _mod-style-flat-blue">
       Drop Down Default<div class="mod-button-arrow"></div>
       <ul>
          <li><a href>Link 1</a></li>

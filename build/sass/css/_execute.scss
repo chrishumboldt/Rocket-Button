@@ -13,37 +13,37 @@
    }
 
    // Size
-   #{$selector}._size-small {
+   #{$selector}._mod-size-small {
       @include mod-button-size(small);
    }
-   #{$selector}._size-large {
+   #{$selector}._mod-size-large {
       @include mod-button-size(large);
    }
-   #{$selector}._size-x-large {
+   #{$selector}._mod-size-x-large {
       @include mod-button-size(x-large);
    }
 
    // Shapes
-   #{$selector}._shape-square {
+   #{$selector}._mod-shape-square {
       @include mod-button-shape(square);
    }
-   #{$selector}._shape-pill {
+   #{$selector}._mod-shape-pill {
       @include mod-button-shape(pill);
    }
 
    // Styles
    @each $colour-name, $colour in $ar-colours-primary {
-      #{$selector}._style-flat-#{$colour-name} {
+      #{$selector}._mod-style-flat-#{$colour-name} {
          @include mod-button-style(flat, $colour);
       }
    }
    @each $colour-name, $colour in $ar-colours-primary {
-      #{$selector}._style-gradient-#{$colour-name} {
+      #{$selector}._mod-style-gradient-#{$colour-name} {
          @include mod-button-style(gradient, $colour);
       }
    }
    @each $colour-name, $colour in $ar-colours-primary {
-      #{$selector}._style-line-#{$colour-name} {
+      #{$selector}._mod-style-line-#{$colour-name} {
          @include mod-button-style(line, $colour);
       }
    }
