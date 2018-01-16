@@ -6,7 +6,7 @@ A lightweight, universal button module.
 * [Getting Started](#getting-started)
 * [CSS Implementation](#css-implementation)
 * [SASS Implementation](#sass-implementation)
-* [Javascript Initialization](#javascript-initialization)
+* [Javascript Initialisation](#javascript-initialisation)
    * [Loader Options](#loader-options)
    * [Defaults](#defaults)
 * [Buttonplate Deprecated](#buttonplate-deprecated)
@@ -108,7 +108,7 @@ If you want to enable button loaders or dropdowns then you will need to execute 
 
    // Drop down
    Rocket.button.dropdown({
-      targets: '#btn-primary'
+      target: '#btn-primary'
    });
 </script>
 </body>
@@ -134,7 +134,7 @@ setTimeout(function () {
 Each dropdown initialisation will return an array of module objects (An array will always be returned even if the target is an id). This includes the button element itself as well as relevant methods. For example:
 
 ```javascript
-// By default the targets option is set to '.mod-button'
+// By default the target option is set to '.mod-button'
 const buttons = Rocket.button.dropdown();
 
 // The buttons and all methods
@@ -149,7 +149,7 @@ Alternatively if you know the button target is unique you can reference the butt
 
 ```javascript
 const myButton = Rocket.button.dropdown({
-   targets: '#my-button'
+   target: '#my-button'
 })[0]; // Reference the first item in the array right away.
 ```
 
@@ -179,7 +179,7 @@ Twitter: <a href="https://twitter.com/chrishumboldt">twitter.com/chrishumboldt</
 GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><br>
 
 ## Copyright and License
-Copyright 2017 Rocket Project
+Copyright 2018 Rocket Project
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
