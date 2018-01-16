@@ -4,7 +4,7 @@
 
 // Set the defaults
 Rocket.defaults.button = {
-   dropdown: {targets: '.mod-button'},
+   dropdown: {target: '.mod-button'},
    loader: {reveal: 'appear', timeout: 0}
 };
 
@@ -84,9 +84,9 @@ Rocket.button = (() => {
    };
 
    const init = {
-      dropdown({ targets = Rocket.defaults.button.dropdown.targets } = {}) {
+      dropdown({ target = Rocket.defaults.button.dropdown.target } = {}) {
          const objReturn = new Array;
-         const buttons = Rocket.dom.select(targets);
+         const buttons = Rocket.dom.select(target);
 
          if (buttons.length <= 0) return;
 
