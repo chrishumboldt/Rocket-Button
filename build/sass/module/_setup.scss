@@ -19,7 +19,7 @@
 	@include position(relative);
 	@include display(inline-block);
 	@include text-align(center);
-	@include text-colour(lighten(#000, 40%));
+	@include text-colour-with-visited(lighten(#000, 40%));
 	@include text-decoration(none);
 	@include vertical-align(middle);
 	@include border-no();
@@ -29,9 +29,6 @@
 	outline: none;
 	-webkit-appearance: none;
 
-	&:visited {
-		@include text-colour(lighten(#000, 40%));
-	}
 	.rocket-no-touch &:hover {
 		@include cursor(pointer);
 		@include background-colour($grey-x-light);
