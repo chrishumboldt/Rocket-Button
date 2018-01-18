@@ -1,7 +1,11 @@
-@mixin text-colour-with-visited($colour) {
-	@include text-colour($colour);
+/**
+@author marnen
+**/
 
-  &:visited {
-    @include text-colour($colour);
-  }
+@mixin text-colour-with-visited($colour) {
+   @include text-colour($colour);
+
+   &:visited {
+      @include text-colour($colour);
+   }
 }

@@ -8,6 +8,7 @@ $font-face-rocket-button: "icon-font-rocket-button" !default;
 // Import
 @import "../../node_modules/rocket-propel/build/sass/import";
 
+@import "module/utilities";
 @import "module/drop-down";
 @import "module/loader";
 @import "module/setup";
