@@ -7,7 +7,7 @@ A lightweight button module.
 * [Javascript Initialisation](#javascript-initialisation)
    * [Loader Options](#loader-options)
    * [Defaults](#defaults)
-* [Rebuilding Files](rebuilding-files)
+* [Rebuilding Files](#rebuilding-files)
 * [Buttonplate Deprecated](#buttonplate-deprecated)
 
 ## Getting Started
