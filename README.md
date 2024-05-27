@@ -1,3 +1,5 @@
+# NO LONGER SUPPORTED
+
 # Rocket Button
 A lightweight button module.
 
@@ -189,7 +191,6 @@ The original library, Buttonplate, has been deprecated. The entire Webplate proj
 ## Author
 Created and maintained by Chris Humboldt<br>
 Website: <a href="http://chrishumboldt.com/">chrishumboldt.com</a><br>
-Twitter: <a href="https://twitter.com/chrishumboldt">twitter.com/chrishumboldt</a><br>
 GitHub <a href="https://github.com/chrishumboldt">github.com/chrishumboldt</a><br>
 
 ## Copyright and License
